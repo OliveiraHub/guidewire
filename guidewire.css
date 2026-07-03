@@ -12,7 +12,7 @@
   --header-h:  60px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Segoe UI',system-ui,sans-serif;background:#f8fafc;color:var(--text);line-height:1.7;}
+body{font-family:'Barlow','Segoe UI',system-ui,sans-serif;background:#f8fafc;color:var(--text);line-height:1.7;}
 
 /* HEADER */
 header{background:var(--gw-dark);color:var(--white);height:var(--header-h);padding:0 2rem;display:flex;align-items:center;gap:1rem;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.3);}
