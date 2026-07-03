@@ -1,0 +1,1343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Guia de estudo em PT-BR do PolicyCenter Overview — 13 páginas sobre administração de apólices, ciclo de vida, transações e configuração." />
+  <title>PolicyCenter Overview – Guidewire</title>
+  <link rel="icon" type="image/png" href="images/logo.png" />
+  <link rel="stylesheet" href="guidewire.css" />
+  <style>
+    /* PC-specific */
+    .module-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:0.75rem;margin-top:0.8rem;}
+    .module-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1rem;font-size:0.85rem;font-weight:600;color:var(--gw-dark);display:flex;align-items:center;gap:0.5rem;}
+    .module-card.final{border-color:var(--gw-teal);}
+    .num{background:var(--gw-blue);color:var(--white);font-size:0.7rem;font-weight:700;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .module-card.final .num{background:var(--gw-teal);}
+    /* Stepper */
+    .stepper{display:flex;flex-direction:column;gap:0;margin-top:1rem;}
+    .step{display:grid;grid-template-columns:40px 1fr;gap:0 1.2rem;}
+    .step-left{display:flex;flex-direction:column;align-items:center;}
+    .step-num{width:36px;height:36px;border-radius:50%;background:var(--gw-blue);color:var(--white);font-size:0.85rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .step-line{width:2px;background:var(--border);flex:1;min-height:1.5rem;margin:4px 0;}
+    .step:last-child .step-line{display:none;}
+    .step-content{padding-bottom:2rem;}
+    .step-content p{font-size:0.92rem;margin-bottom:0.8rem;color:var(--text);}
+    .step-img{width:100%;max-width:520px;border:1px solid var(--border);border-radius:10px;margin-top:0.75rem;box-shadow:0 2px 10px rgba(0,0,0,0.08);cursor:zoom-in;}
+    .step-img-caption{font-size:0.8rem;color:var(--muted);margin-top:0.4rem;font-style:italic;}
+    /* Lightbox */
+    .lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:999;align-items:center;justify-content:center;padding:2rem;}
+    .lightbox.open{display:flex;}
+    .lightbox img{max-width:90vw;max-height:90vh;border-radius:8px;box-shadow:0 8px 40px rgba(0,0,0,0.6);cursor:zoom-out;}
+    .lightbox-close{position:fixed;top:1.2rem;right:1.5rem;color:white;font-size:2rem;cursor:pointer;line-height:1;opacity:0.8;background:none;border:none;}
+    .lightbox-close:hover{opacity:1;}
+    .lightbox-prev,.lightbox-next{position:fixed;top:50%;transform:translateY(-50%);color:white;font-size:3rem;cursor:pointer;line-height:1;opacity:0.75;background:none;border:none;padding:0.5rem 1rem;transition:opacity .15s;}
+    .lightbox-prev:hover,.lightbox-next:hover{opacity:1;}
+    .lightbox-prev{left:0.5rem;}
+    .lightbox-next{right:0.5rem;}
+    /* Stepper SVG bridge */
+    .stepper-intro{font-size:0.88rem;color:var(--muted);font-style:italic;margin:0.5rem 0 1rem;padding:0.5rem 0.8rem;border-left:3px solid var(--gw-teal);}
+    @media(max-width:768px){.stepper{gap:0;}.step-img{max-width:100%;}.lightbox-prev,.lightbox-next{display:none;}}
+  </style>
+</head>
+<body>
+
+<header>
+  <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu de navegação">☰</button>
+  <img src="images/logo.png" alt="Guidewire" class="header-logo" />
+  <p>PolicyCenter Overview</p>
+  <a class="hub-link" href="Guidewire_Home.html">← Home</a>
+</header>
+
+<div class="breadcrumb">
+  <a href="Guidewire_Home.html">Home</a>
+  <span class="bc-sep">›</span>
+  <span>PolicyCenter Overview</span>
+  <span class="bc-sep">›</span>
+  <span id="bc-page">Introdução ao PolicyCenter</span>
+</div>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<div class="container">
+
+  <!-- SIDEBAR -->
+  <aside aria-label="Navegação do curso">
+    <h2 id="secoes">Seções</h2>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="sidebar-progress"></div>
+    </div>
+
+    <!-- Seções simples -->
+    <button type="button" class="nav-btn" data-page="1" aria-current="page">
+      <span class="dot current"></span><span>Introdução</span>
+    </button>
+    <button type="button" class="nav-btn" data-page="2">
+      <span class="dot pending"></span><span>Sistemas de Administração de Apólices</span>
+    </button>
+
+    <!-- Grupo: Navegação no PolicyCenter -->
+    <div class="nav-group" data-group="grp-navigation">
+      <button type="button" class="nav-group-header" onclick="toggleGroup('grp-navigation')">
+        <span class="dot pending"></span>
+        <span>Navegação no PolicyCenter</span>
+        <span class="nav-arrow-icon">›</span>
+      </button>
+      <div class="nav-sub-items" id="grp-navigation">
+        <button type="button" class="nav-btn nav-sub" data-page="3">
+          <span class="dot pending"></span><span>Acessando o PolicyCenter</span>
+        </button>
+        <button type="button" class="nav-btn nav-sub" data-page="4">
+          <span class="dot pending"></span><span>Interface do PolicyCenter</span>
+        </button>
+      </div>
+    </div>
+
+    <button type="button" class="nav-btn" data-page="5">
+      <span class="dot pending"></span><span>Definindo e Configurando Produtos</span>
+    </button>
+
+    <!-- Grupo: Transações no PolicyCenter -->
+    <div class="nav-group" data-group="grp-transactions">
+      <button type="button" class="nav-group-header" onclick="toggleGroup('grp-transactions')">
+        <span class="dot pending"></span>
+        <span>Transações no PolicyCenter</span>
+        <span class="nav-arrow-icon">›</span>
+      </button>
+      <div class="nav-sub-items" id="grp-transactions">
+        <button type="button" class="nav-btn nav-sub" data-page="6">
+          <span class="dot pending"></span><span>Tipos de Transações</span>
+        </button>
+        <button type="button" class="nav-btn nav-sub" data-page="7">
+          <span class="dot pending"></span><span>Propostas de Apólice</span>
+        </button>
+        <button type="button" class="nav-btn nav-sub" data-page="8">
+          <span class="dot pending"></span><span>Alterações de Apólice</span>
+        </button>
+        <button type="button" class="nav-btn nav-sub" data-page="9">
+          <span class="dot pending"></span><span>Renovações de Apólice</span>
+        </button>
+        <button type="button" class="nav-btn nav-sub" data-page="10">
+          <span class="dot pending"></span><span>Cancelamentos de Apólice</span>
+        </button>
+        <button type="button" class="nav-btn nav-sub" data-page="11">
+          <span class="dot pending"></span><span>Auditorias de Prêmio</span>
+        </button>
+      </div>
+    </div>
+
+    <button type="button" class="nav-btn" data-page="12">
+      <span class="dot pending"></span><span>Implementações do PolicyCenter</span>
+    </button>
+    <button type="button" class="nav-btn" data-page="13">
+      <span class="dot pending"></span><span>Resumo do Curso</span>
+    </button>
+  </aside>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- ══ PÁGINA 1 ══ -->
+    <div class="page-section active" id="page-1">
+
+      <div class="page-header">
+        <h1>Bem-vindo ao PolicyCenter Overview</h1>
+        <div class="divider"></div>
+        <p class="page-subtitle">Visão geral dos principais recursos do <em>Guidewire PolicyCenter™</em> e como seguradoras o utilizam para emitir apólices.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="o-que-voce-vai-aprender">O que você vai aprender</h2>
+        <div class="section-divider"></div>
+        <p>Ao concluir este curso, você será capaz de:</p>
+        <ul class="goal-list">
+          <li>Identificar o PolicyCenter como um <strong>Sistema de Administração de Apólices (PAS)</strong></li>
+          <li>Descrever os principais recursos e a navegação da interface do PolicyCenter</li>
+          <li>Descrever como buscar e adicionar uma Conta no PolicyCenter</li>
+          <li>
+            <div>
+              Descrever como o PolicyCenter executa as seguintes transações:
+              <ul class="sub-list">
+                <li>Criar nova proposta de apólice</li>
+                <li>Realizar alteração de apólice</li>
+                <li>Renovar uma apólice</li>
+                <li>Cancelar uma apólice</li>
+                <li>Reabilitar ou reescrever uma apólice</li>
+                <li>Executar Auditorias de Prêmio</li>
+              </ul>
+            </div>
+          </li>
+          <li>Listar formas de se preparar para implementar o PolicyCenter</li>
+        </ul>
+      </div>
+
+
+    </div>
+    <!-- ══ FIM PÁGINA 1 ══ -->
+
+    <!-- ══ PÁGINA 2 ══ -->
+    <div class="page-section" id="page-2">
+
+      <div class="page-header">
+        <h1>Sistemas de Administração de Apólices</h1>
+        <div class="divider"></div>
+        <p class="page-subtitle">O que é um PAS e como o PolicyCenter se posiciona nesse contexto.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="o-que-e-um-pas">O que é um PAS?</h2>
+        <div class="section-divider"></div>
+        <p><strong>Sistemas de Administração de Apólices (PAS)</strong> são soluções de software abrangentes projetadas para gerenciar todo o ciclo de vida das apólices de seguro — desde a emissão e endossos até as renovações e cancelamentos.</p>
+        <p>Esses sistemas automatizam tarefas rotineiras, otimizam fluxos de trabalho e integram-se a outros sistemas essenciais como CRM, faturamento e sinistros, criando um ambiente operacional coeso.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="policycenter-como-pas">PolicyCenter como PAS</h2>
+        <div class="section-divider"></div>
+        <p>O <strong>PolicyCenter®</strong> é um sistema líder de administração de apólices que permite às seguradoras lançar novos produtos rapidamente, adaptar-se às necessidades dos segurados e escalar com eficiência. Suporta o ciclo de vida completo de apólices de seguro pessoal e comercial — cotação, emissão, endosso e renovação.</p>
+        <p>Conta com motor de tarifação, business intelligence e integrações com fontes externas para análise de risco. Funciona como sistema independente ou como parte do <strong>Guidewire InsuranceSuite™</strong>, sendo compatível com implantações on-premises e em nuvem.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="capacidades-chave-do-policycenter">Capacidades-Chave do PolicyCenter</h2>
+        <div class="section-divider"></div>
+        <div class="capability-grid">
+          <div class="cap-card">
+            <div class="cap-icon">🎨</div>
+            <div class="cap-title">Design de Produto</div>
+            <div class="cap-desc">Equipes de negócio criam e lançam produtos com ferramentas no-code, do design de coberturas à experiência digital do cliente.</div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-icon">📋</div>
+            <div class="cap-title">Processamento de Propostas</div>
+            <div class="cap-desc">Automatiza formulários ISO e equipa subscrição com interface intuitiva para validação de dados de entrada.</div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-icon">🔍</div>
+            <div class="cap-title">Análise de Risco</div>
+            <div class="cap-desc">Analytics embarcados disponibilizam dados onde e quando são necessários para decisões de risco mais precisas.</div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-icon">⚖️</div>
+            <div class="cap-title">Subscrição e Tarifação</div>
+            <div class="cap-desc">Visão completa de cada conta e proposta, com motor de tarifação ágil e baseado em nuvem para decisões mais rápidas.</div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-icon">📝</div>
+            <div class="cap-title">Cotar, Vincular e Emitir</div>
+            <div class="cap-desc">Automatiza esses processos conforme as regras de negócio da seguradora, integrando com serviços preferidos para entrega ágil.</div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-icon">🔄</div>
+            <div class="cap-title">Renovação Informada</div>
+            <div class="cap-desc">Integra-se com sinistros e outros sistemas para embasar as decisões de renovação com dados completos do ciclo da apólice.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 id="por-que-implementar-um-pas">Por que implementar um PAS?</h2>
+        <div class="section-divider"></div>
+        <div class="accordion">
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">Eficiência Operacional <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">Automatiza emissão, endossos, renovações e cancelamentos. Reduz trabalho manual, minimiza erros e diminui custos operacionais com mão de obra e processos administrativos.</div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">Melhor Experiência do Cliente <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">Emissão mais rápida, atualizações em tempo real e atendimento mais eficiente de consultas. Maior satisfação gera maior retenção.</div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">Conformidade Regulatória <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">Garante que políticas e procedimentos sigam as leis vigentes, reduzindo risco de não-conformidade e multas.</div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">Gestão de Dados <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">Centraliza dados de apólices para análise e tomada de decisão. Analytics avançados identificam tendências e oportunidades de cross-selling e up-selling.</div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">Agilidade e Escalabilidade <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">Escala com o crescimento da empresa, suportando novos produtos e mercados sem aumento proporcional de overhead administrativo.</div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">Capacidades de Integração <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">Integra-se com CRM, faturamento e sinistros, criando um ambiente operacional mais coeso e eficiente.</div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">Subscrição Aprimorada <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">Fornece melhores ferramentas e dados para avaliação de risco, possibilitando precificação mais precisa e melhor rentabilidade do portfólio.</div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">Segurança e Gestão de Riscos <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">Recursos de segurança robustos protegem dados sensíveis dos clientes e garantem a continuidade dos negócios.</div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <!-- ══ FIM PÁGINA 2 ══ -->
+
+    <!-- ══ PÁGINA 3 ══ -->
+    <div class="page-section" id="page-3">
+
+      <div class="page-header">
+        <h1>Acessando o PolicyCenter</h1>
+        <div class="divider"></div>
+        <p class="page-subtitle">Passo a passo para acessar o PolicyCenter pela primeira vez na plataforma Guidewire Cloud.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="como-acessar-o-policycenter">Como Acessar o PolicyCenter</h2>
+        <div class="section-divider"></div>
+
+        <div class="stepper">
+
+          <div class="step">
+            <div class="step-left">
+              <div class="step-num">1</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+              <p>Acesse a <strong>Guidewire Home</strong>, a página inicial da Guidewire Cloud Platform.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-left">
+              <div class="step-num">2</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+              <p>Abra o <strong>App Launcher</strong> na Guidewire Home e clique em <strong>PolicyCenter</strong> na seção <em>Policy</em>.</p>
+              <img class="step-img" src="images/access-policy-center.jpg" alt="App Launcher da Guidewire Home com PolicyCenter destacado na seção Policy" />
+              <p class="step-img-caption">App Launcher — clique em PolicyCenter sob a categoria Policy</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-left">
+              <div class="step-num">3</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+              <p>Na janela pop-up, selecione o <strong>Star System</strong> e o <strong>Planet</strong> onde deseja trabalhar e clique em <strong>Apply</strong>.</p>
+              <img class="step-img" src="images/select-star-system.jpg" alt="Diálogo de seleção de Star System e Planet" />
+              <p class="step-img-caption">Selecione o ambiente (Star System + Planet) e confirme com Apply</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-left">
+              <div class="step-num">4</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+              <p>Insira seu <strong>Username</strong> e <strong>Password</strong> e clique em <strong>Log In</strong>.</p>
+              <img class="step-img" src="images/policy-center-login.jpg" alt="Tela de login do PolicyCenter" />
+              <p class="step-img-caption">Tela de login do PolicyCenter™</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    <!-- ══ FIM PÁGINA 3 ══ -->
+
+    <!-- ══ PÁGINA 4 ══ -->
+    <div class="page-section" id="page-4">
+
+      <div class="page-header">
+        <h1>Interface do PolicyCenter</h1>
+        <div class="divider"></div>
+        <p class="page-subtitle">Conheça as principais telas e elementos de navegação do PolicyCenter.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="my-summary-tela-inicial">My Summary — Tela Inicial</h2>
+        <div class="section-divider"></div>
+        <p>Ao fazer login, o usuário vê o <strong>Desktop</strong> do PolicyCenter. À esquerda fica o painel de navegação; na área principal, o dashboard personalizado <strong>My Summary</strong>.</p>
+
+        <div class="callout">
+          <div class="callout-title">💡 Atenção</div>
+          Os painéis e itens de menu variam conforme o <strong>papel, permissões e contexto</strong> do usuário.
+        </div>
+
+        <img class="step-img" style="max-width:100%; margin-top:1rem;"
+          src="images/my-summary-dashboard.jpg"
+          alt="Tela My Summary do PolicyCenter com painel lateral e dashboard" />
+        <p class="step-img-caption">Tela inicial do PolicyCenter — clique para ampliar</p>
+
+        <h2 style="margin-top:2rem;" id="painel-de-navegacao">Painel de Navegação</h2>
+        <div class="section-divider"></div>
+        <p>O painel lateral agrupa as principais áreas de trabalho do usuário:</p>
+
+        <div class="capability-grid" style="margin-top:0.8rem;">
+          <div class="cap-card">
+            <div class="cap-icon">⚡</div>
+            <div class="cap-title">Actions</div>
+            <div class="cap-desc">Atalhos rápidos para criar Nova Submissão ou Nova Conta.</div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-icon">📊</div>
+            <div class="cap-title">Summary</div>
+            <div class="cap-desc">Visão geral com contadores de Atividades, Submissões, Renovações e Cancelamentos.</div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-icon">✅</div>
+            <div class="cap-title">My Activities</div>
+            <div class="cap-desc">Lista de atividades abertas atribuídas ao usuário.</div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-icon">🏢</div>
+            <div class="cap-title">My Accounts</div>
+            <div class="cap-desc">Contas gerenciadas pelo usuário.</div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-icon">📄</div>
+            <div class="cap-title">My Submissions</div>
+            <div class="cap-desc">Propostas de apólice em andamento.</div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-icon">🔄</div>
+            <div class="cap-title">My Renewals</div>
+            <div class="cap-desc">Apólices com renovação pendente ou em processo.</div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-icon">📋</div>
+            <div class="cap-title">Other Policy Transactions</div>
+            <div class="cap-desc">Outras transações de apólice como alterações e cancelamentos.</div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-icon">📥</div>
+            <div class="cap-title">My Queues</div>
+            <div class="cap-desc">Filas de trabalho e itens aguardando ação.</div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-icon">📂</div>
+            <div class="cap-title">Uploaded Documents</div>
+            <div class="cap-desc">Documentos enviados associados a contas e apólices.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 id="account-summary">Account Summary</h2>
+        <div class="section-divider"></div>
+        <p>Ao clicar em uma conta em <strong>My Accounts</strong>, a página <strong>Account Summary</strong> é exibida. Ela centraliza todas as informações relevantes sobre a conta:</p>
+        <ul class="goal-list">
+          <li>Dados do titular (Account Holder), endereço, FEIN e tipo de organização</li>
+          <li>Atividades correntes e histórico de apólices (Policy Terms)</li>
+          <li>Transações, sinistros, contas relacionadas, produtores e locais</li>
+          <li>Seção de <strong>Billing</strong> com informações do BillingCenter (quando integrado)</li>
+        </ul>
+
+        <img class="step-img" style="max-width:100%; margin-top:1.2rem;"
+          src="images/account-summary.jpg"
+          alt="Tela Account Summary do PolicyCenter mostrando detalhes da conta Wright Construction" />
+        <p class="step-img-caption">Account Summary — clique para ampliar</p>
+      </div>
+
+    </div>
+    <!-- ══ FIM PÁGINA 4 ══ -->
+
+    <!-- ══ PÁGINA 5 ══ -->
+    <div class="page-section" id="page-5">
+
+      <div class="page-header">
+        <h1>Definindo e Configurando Produtos de Seguro</h1>
+        <div class="divider"></div>
+        <p class="page-subtitle">Como o PolicyCenter usa o <em>Advanced Product Designer App</em> e os <em>GO Products</em> para criar e lançar produtos de seguro.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="o-papel-do-policycenter-na-definicao-de-produtos">O Papel do PolicyCenter na Definição de Produtos</h2>
+        <div class="section-divider"></div>
+        <p>O PolicyCenter suporta uma ampla gama de produtos de seguro pessoal e comercial, oferecendo às equipes de desenvolvimento de produto, atuariais e de subscrição grande flexibilidade para definir produtos para diferentes mercados, marcas e canais de venda.</p>
+        <p>Para isso, o PolicyCenter utiliza o <strong>Guidewire Advanced Product Designer App™ (APD App)</strong> — uma ferramenta <em>low-code</em> que permite configurar definições de produto, regras de negócio, telas, fluxos de trabalho e modelos de dados diretamente na aplicação, sem necessidade de programação avançada.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="advanced-product-designer-app-apd-app">Advanced Product Designer App (APD App)</h2>
+        <div class="section-divider"></div>
+        <p>O <strong>APD App</strong> é uma ferramenta de negócio baseada em nuvem para criar e manter produtos de seguro. Com ele é possível:</p>
+        <ul class="goal-list">
+          <li>Projetar e construir produtos de seguro rapidamente, prontos para uso no PolicyCenter</li>
+          <li>Facilitar discussões de negócio com todas as partes interessadas ainda nas fases iniciais do projeto</li>
+        </ul>
+
+        <img src="images/apd-app.png" alt="Tela do APD App mostrando lista de produtos de seguro" class="step-img" style="margin-top: 1rem;">
+        <p class="step-img-caption">Interface do APD App — lista de produtos disponíveis (ex.: Renters, Cyber, Simple Small Business)</p>
+
+        <p style="margin-top:1.2rem;">Durante a implementação do PolicyCenter, é essencial compreender as capacidades do APD App e do <strong>PolicyCenter Product Model</strong> para atender aos requisitos de produto. A Guidewire recomenda o uso da <em>abordagem em três fases do APD</em> para criar produtos únicos de forma estruturada.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="guidewire-go-products">Guidewire GO Products</h2>
+        <div class="section-divider"></div>
+        <p>Para acelerar a criação de produtos, o programa <strong>Guidewire GO</strong> oferece linhas de produto pré-configuradas com <em>mind maps</em> e templates XML que podem ser importados diretamente no APD App.</p>
+        <p><strong>GO Products</strong> são coleções aprovadas pela Guidewire de conteúdo de produto pré-construído, disponíveis para download no <em>Guidewire Marketplace</em>. Permitem lançar produtos no InsuranceSuite e InsuranceNow mais rapidamente, com as melhores práticas da Guidewire já incorporadas. O conteúdo varia por produto ou linha de negócio, podendo incluir mind maps, conteúdo local, e mais.</p>
+
+        <img src="images/go-products.png" alt="Guidewire Marketplace mostrando tipos de produtos GO disponíveis" class="step-img" style="margin-top: 1rem;">
+        <p class="step-img-caption">Guidewire Marketplace — categorias de GO Products disponíveis (Habitação, Auto Pessoal, Auto Comercial, Propriedade Comercial, etc.)</p>
+
+        <div class="note" style="margin-top:1.5rem;">
+          <strong>💡 Saiba mais:</strong> Os kits de produtos GO estão disponíveis em <a href="https://marketplace.guidewire.com" target="_blank" rel="noopener">marketplace.guidewire.com</a>.
+        </div>
+      </div>
+
+    </div>
+    <!-- ══ FIM PÁGINA 5 ══ -->
+
+    <!-- ══ PÁGINA 6 ══ -->
+    <div class="page-section" id="page-6">
+
+      <div class="page-header">
+        <h1>Tipos de Transações</h1>
+        <div class="divider"></div>
+        <p class="page-subtitle">Visão geral das principais transações de apólice que o PolicyCenter é capaz de executar.</p>
+      </div>
+
+      <div class="section">
+        <p>O PolicyCenter gerencia o ciclo de vida completo das apólices de seguro por meio de transações específicas. As próximas seções detalham cada uma delas:</p>
+        <div class="capability-grid" style="margin-top: 1.2rem;">
+          <div class="cap-card">
+            <div class="cap-icon">📋</div>
+            <div class="cap-title">Propostas de Apólice</div>
+            <div class="cap-desc">Criação e cotação de novas apólices para segurados.</div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-icon">✏️</div>
+            <div class="cap-title">Alterações de Apólice</div>
+            <div class="cap-desc">Endossos e modificações em apólices vigentes.</div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-icon">🔄</div>
+            <div class="cap-title">Renovações de Apólice</div>
+            <div class="cap-desc">Extensão da cobertura ao término do período vigente.</div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-icon">🚫</div>
+            <div class="cap-title">Cancelamentos de Apólice</div>
+            <div class="cap-desc">Encerramento antecipado da cobertura de uma apólice.</div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-icon">↩️</div>
+            <div class="cap-title">Reabilitação ou Reescrição</div>
+            <div class="cap-desc">Restauração de apólices canceladas ou criação de nova apólice com base em uma existente.</div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-icon">💰</div>
+            <div class="cap-title">Auditorias de Prêmio</div>
+            <div class="cap-desc">Revisão do prêmio cobrado com base na exposição real do segurado durante o período.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- ══ FIM PÁGINA 6 ══ -->
+
+    <!-- ══ PÁGINA 7 ══ -->
+    <div class="page-section" id="page-7">
+
+      <div class="page-header">
+        <h1>Propostas de Apólice</h1>
+        <div class="divider"></div>
+        <p class="page-subtitle">A transação de proposta cria uma nova apólice — desde a qualificação do candidato até a emissão do contrato.</p>
+      </div>
+
+      <div class="section">
+        <p>A <strong>proposta</strong> é a transação que inicia a criação de uma nova apólice no PolicyCenter. Ela permite qualificar candidatos, gerar cotações e vincular/emitir um novo contrato caso o solicitante aceite os termos. Uma proposta pode não resultar em apólice emitida — o candidato pode não se qualificar ou a cotação pode não ser aceita.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="fluxo-de-proposta">Fluxo de Proposta</h2>
+        <div class="section-divider"></div>
+        <p>O PolicyCenter usa um <em>wizard</em> de proposta para guiar o usuário na coleta das informações necessárias. As telas variam conforme o produto de seguro, mas o fluxo segue um conjunto comum de etapas.</p>
+        <p>Há duas modalidades disponíveis:</p>
+        <ul class="goal-list" style="margin: 0.8rem 0 1.2rem;">
+          <li><strong>Quick Quote</strong> — coleta o mínimo de informações necessário para gerar uma cotação.</li>
+          <li><strong>Full Application</strong> — coleta o conjunto completo de informações para uma cotação vinculável.</li>
+        </ul>
+
+        <img src="images/submission-workflow.svg" alt="Fluxo de proposta de apólice no PolicyCenter" class="step-img">
+        <p class="step-img-caption">Fluxo completo de proposta — etapas 4 e 5 (Add Risk Objects / Select Coverages) variam por linha de negócio (LOB-specific)</p>
+      </div>
+
+      <div class="section">
+        <h2 id="passo-a-passo-da-proposta">Passo a Passo da Proposta</h2>
+        <div class="section-divider"></div>
+        <p>A proposta deve ser iniciada a partir de uma Conta usando o menu <strong>Actions</strong>. Com o wizard aberto, siga as etapas:</p>
+
+        <p class="stepper-intro">O diagrama acima mostra o fluxo completo em visão geral. Os passos abaixo detalham cada etapa do wizard de proposta dentro do PolicyCenter.</p>
+        <div class="stepper" style="margin-top: 1.2rem;">
+
+          <div class="step">
+            <div class="step-left">
+              <div class="step-num">1</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+              <p><strong>Selecionar o Produto</strong> — escolha o produto de seguro para a apólice.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-left">
+              <div class="step-num">2</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+              <p><strong>Qualificar</strong> — responda às perguntas de pré-qualificação do candidato.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-left">
+              <div class="step-num">3</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+              <p><strong>Informações da Apólice</strong> — insira os dados básicos da apólice.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-left">
+              <div class="step-num">4</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+              <p><strong>Adicionar Bens Segurados</strong> — adicione os itens a serem protegidos pela apólice (veículo, imóvel etc.).</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-left">
+              <div class="step-num">5</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+              <p><strong>Selecionar Coberturas</strong> — escolha as coberturas e condições para cada bem segurado.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-left">
+              <div class="step-num">6</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+              <p><strong>Análise de Risco</strong> — informe os detalhes de subscrição necessários para a análise de risco.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-left">
+              <div class="step-num">7</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+              <p><strong>Revisão da Apólice</strong> — navegue até a tela de revisão para conferir o resumo completo.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-left">
+              <div class="step-num">8</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+              <p><strong>Cotação</strong> — clique em <em>Quote</em> para gerar o prêmio calculado, formulários relacionados e opções de pagamento.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-left">
+              <div class="step-num">9</div>
+              <div class="step-line"></div>
+            </div>
+            <div class="step-content">
+              <p><strong>Opção de Pagamento</strong> — visualize e selecione as opções de pagamento e planos disponíveis.</p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-left">
+              <div class="step-num">10</div>
+            </div>
+            <div class="step-content">
+              <p><strong>Vincular e Emitir</strong> — se o cliente aceitar a cotação, vincule e emita a apólice.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="note" style="margin-top: 1.2rem;">
+          💡 Os detalhes da apólice podem ser editados a qualquer momento <strong>antes</strong> de a cotação ser criada.
+        </div>
+      </div>
+
+    </div>
+    <!-- ══ FIM PÁGINA 7 ══ -->
+
+    <!-- ══ PÁGINA 8 ══ -->
+    <div class="page-section" id="page-8">
+
+      <div class="page-header">
+        <h1>Alterações de Apólice</h1>
+        <div class="divider"></div>
+        <p class="page-subtitle">Como o PolicyCenter gerencia mudanças materiais em apólices vigentes, reversões e cenários complexos de alteração.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="o-que-e-uma-alteracao-de-apolice">O que é uma Alteração de Apólice?</h2>
+        <div class="section-divider"></div>
+        <p>A transação de <strong>alteração de apólice</strong> (<em>policy change</em>) é usada para fazer mudanças materiais em uma apólice antes da data de vencimento, geralmente resultando em alteração de prêmio. Uma apólice pode ser alterada para adicionar, remover ou modificar:</p>
+        <ul class="goal-list">
+          <li><strong>Bens segurados</strong> (itens cobertos ou seguráveis) da apólice</li>
+          <li><strong>Coberturas</strong> associadas ao bem segurado</li>
+          <li><strong>Condições de cobertura</strong> que definem os termos de cada cobertura</li>
+          <li><strong>Condições e exclusões</strong></li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2 id="reversao-de-alteracao">Reversão de Alteração</h2>
+        <div class="section-divider"></div>
+        <p>Se uma alteração foi feita por engano, o PolicyCenter oferece a ação <strong>Reverse Policy Change</strong> — sem precisar reconstruir manualmente o estado anterior com uma nova alteração. Essa reversão se aplica apenas à <em>última</em> transação de alteração vinculada.</p>
+
+        <div class="note" style="margin: 1rem 0;">
+          ⚠️ A reversão exige que <strong>toda</strong> a transação seja revertida — não é possível selecionar apenas itens específicos para reverter.
+        </div>
+
+        <p>Ao concluir a reversão, o PolicyCenter desfaz automaticamente todas as mudanças nos elementos afetados (incluindo custo) com data retroativa à data efetiva original:</p>
+        <ul class="goal-list">
+          <li>Itens adicionados serão removidos</li>
+          <li>Itens removidos serão restaurados</li>
+          <li>Itens modificados voltarão ao estado original</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2 id="cenarios-complexos-de-alteracao">Cenários Complexos de Alteração</h2>
+        <div class="section-divider"></div>
+        <p>O PolicyCenter também gerencia situações em que múltiplas alterações concorrentes são feitas na mesma apólice:</p>
+
+        <div class="accordion">
+          <button class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">
+            ⚡ Preempções
+          </button>
+          <div class="acc-body">
+            <p>Ocorrem quando uma nova transação de alteração é iniciada <strong>antes</strong> que uma alteração anterior seja vinculada. Com duas transações não vinculadas, apenas uma pode ser efetivada. O PolicyCenter alerta o usuário e oferece duas opções: vincular a alteração anterior ou deixar a nova substituí-la (preempção).</p>
+          </div>
+        </div>
+
+        <div class="accordion" style="margin-top: 0.5rem;">
+          <button class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">
+            🔀 Alterações Fora de Sequência
+          </button>
+          <div class="acc-body">
+            <p>Ocorrem quando uma nova alteração com <strong>data efetiva anterior</strong> é vinculada depois de uma alteração já vinculada. O PolicyCenter verifica conflitos (ex.: mesmo campo com valores diferentes) e exige que o usuário resolva cada um. Se não houver conflitos, as alterações anteriores são mescladas nas posteriores.</p>
+          </div>
+        </div>
+
+        <div class="note" style="margin-top: 1.2rem;">
+          ✅ <strong>Podem</strong> ser feitas fora de sequência: Alterações, Cancelamentos, Reabilitações e Reescrições.<br>
+          ❌ <strong>Não podem</strong>: Submissões, Renovações e Auditorias.
+        </div>
+      </div>
+
+    </div>
+    <!-- ══ FIM PÁGINA 8 ══ -->
+
+    <!-- ══ PÁGINA 9 ══ -->
+    <div class="page-section" id="page-9">
+
+      <div class="page-header">
+        <h1>Renovações de Apólice</h1>
+        <div class="divider"></div>
+        <p class="page-subtitle">A transação de renovação estende uma apólice para um novo período vigente, mantendo o mesmo número de apólice.</p>
+      </div>
+
+      <div class="section">
+        <p>A <strong>renovação</strong> estende uma apólice para um novo período. O número da apólice não muda — um novo número de vigência é acrescentado ao final. Se não renovada, a apólice expira ao término da vigência.</p>
+        <p>Por padrão, o PolicyCenter usa um <strong>fluxo automatizado</strong>, configurável para iniciar "X" dias antes do término da vigência. Há também outras opções:</p>
+      </div>
+
+      <div class="section">
+        <h2 id="opcoes-de-renovacao">Opções de Renovação</h2>
+        <div class="section-divider"></div>
+
+        <div class="accordion">
+          <button class="acc-header" aria-expanded="true" onclick="toggleAcc(this)">
+            ✋ Início Manual
+          </button>
+          <div class="acc-body open">
+            <p>Permite iniciar o processo de renovação antes do fluxo automático — útil para editar a apólice renovada (ex.: remover descontos ou alterar o prazo do novo período).</p>
+            <p><strong>Renovações de curto prazo:</strong> uma seguradora pode precisar renovar por um período reduzido para cumprir leis jurisdicionais que exigem aviso prévio antes de cancelamento.</p>
+          </div>
+        </div>
+
+        <div class="accordion" style="margin-top: 0.5rem;">
+          <button class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">
+            📋 Direção Pré-Renovação
+          </button>
+          <div class="acc-body">
+            <p>É possível definir uma direção antes do início do fluxo de renovação para que a apólice seja:</p>
+            <ul class="goal-list" style="margin-top: 0.5rem;">
+              <li><strong>Encaminhada (Referred)</strong> — enviada para revisão por Atendimento ao Cliente ou Subscrição</li>
+              <li><strong>Não renovada (Non-renewed)</strong> — quando a seguradora opta por não renovar por ser financeiramente desfavorável; a cobertura termina na data de expiração</li>
+              <li><strong>Não aceita (Not taken)</strong> — quando o segurado opta por não renovar, geralmente por ter encontrado uma apólice mais barata em outra seguradora</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- ══ FIM PÁGINA 9 ══ -->
+
+    <!-- ══ PÁGINA 10 ══ -->
+    <div class="page-section" id="page-10">
+
+      <div class="page-header">
+        <h1>Cancelamentos de Apólice</h1>
+        <div class="divider"></div>
+        <p class="page-subtitle">Cancelamento, reabilitação e reescrição — as três formas de encerrar ou restaurar uma apólice no PolicyCenter.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="o-que-e-um-cancelamento">O que é um Cancelamento?</h2>
+        <div class="section-divider"></div>
+        <p>A transação de <strong>cancelamento</strong> encerra prematuramente o contrato antes do término de vigência e do processo de renovação. Pode ser iniciada por:</p>
+        <ul class="goal-list">
+          <li><strong>Pelo segurado</strong> — encontrou preço melhor em outra seguradora ou não possui mais o bem segurado</li>
+          <li><strong>Pela seguradora</strong> — prêmio em atraso, fraude detectada ou outros motivos contratuais</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2 id="reabilitacao-de-apolice-cancelada">Reabilitação de Apólice Cancelada</h2>
+        <div class="section-divider"></div>
+        <p>A <strong>reabilitação</strong> (<em>Policy Reinstatement</em>) "descancela" a apólice, restaurando-a ao estado anterior ao cancelamento. A configuração base do Guidewire define a reabilitação exatamente como isso — reverter a transação de cancelamento.</p>
+        <ul class="goal-list">
+          <li>A data de reintegração deve ser <strong>igual</strong> à data efetiva do cancelamento, evitando qualquer lacuna de cobertura</li>
+          <li>É feita quando a causa do cancelamento foi resolvida — por exemplo, o segurado quitou o prêmio em atraso</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2 id="reescricao-de-apolice-cancelada">Reescrição de Apólice Cancelada</h2>
+        <div class="section-divider"></div>
+        <p>A <strong>reescrição</strong> (<em>Policy Rewrite</em>) cria uma nova apólice a partir de uma existente — com novas datas e condições. É usada para corrigir erros significativos ou fazer mudanças que não são permitidas em uma transação de alteração, como:</p>
+        <ul class="goal-list">
+          <li>Alterar o produtor responsável</li>
+          <li>Alterar o número da apólice</li>
+          <li>Alterar datas de vigência ou vencimento</li>
+          <li>Transferir a apólice para outra conta</li>
+        </ul>
+
+        <div class="capability-grid" style="margin-top: 1.2rem;">
+          <div class="cap-card">
+            <div class="cap-icon">✂️</div>
+            <div class="cap-title">Rewrite Intermediário</div>
+            <div class="cap-desc">Substitui parte do período original, permitindo reescrever até a data de término original ou uma nova data. Usado quando se deseja criar uma lacuna de cobertura.</div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-icon">🔁</div>
+            <div class="cap-title">Rewrite Nova Conta</div>
+            <div class="cap-desc">Usa os dados de uma apólice cancelada ou expirada para criar uma nova apólice com um novo número, vinculada a uma nova conta.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- ══ FIM PÁGINA 10 ══ -->
+
+    <!-- ══ PÁGINA 11 ══ -->
+    <div class="page-section" id="page-11">
+
+      <div class="page-header">
+        <h1>Auditorias de Prêmio</h1>
+        <div class="divider"></div>
+        <p class="page-subtitle">Transações de auditoria usadas para ajustar prêmios estimados com base nos valores reais ao longo ou ao fim da vigência.</p>
+      </div>
+
+      <div class="section">
+        <p>As <strong>Auditorias de Prêmio</strong> são usadas principalmente nas linhas de <em>Workers' Compensation</em> e <em>General Liability</em>, onde o prêmio é baseado em valores estimados (ex.: folha de pagamento dos segurados). Como esses valores variam ao longo da vigência, relatórios periódicos são necessários para converter estimativas em valores reais e ajustar o prêmio da apólice.</p>
+        <p>Outras linhas de negócio, não baseadas em estimativas, também podem ser submetidas a uma Auditoria Final ao término da vigência, se os valores mudaram.</p>
+
+        <div class="capability-grid" style="margin-top: 1.2rem;">
+          <div class="cap-card">
+            <div class="cap-icon">📊</div>
+            <div class="cap-title">Relatórios de Prêmio</div>
+            <div class="cap-desc">Criados para períodos intermediários dentro da vigência. Ajustam dados estimados (folha de pagamento, inventário, relatórios de construção). Preparados pelo próprio segurado — não verificados pela seguradora.</div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-icon">✅</div>
+            <div class="cap-title">Auditorias Finais</div>
+            <div class="cap-desc">Executadas pela seguradora ao término da vigência para determinar o custo real definitivo da apólice. Padrão para Workers' Compensation e General Liability; configuráveis para outras linhas.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 id="agenda-de-auditorias-no-policycenter">Agenda de Auditorias no PolicyCenter</h2>
+        <div class="section-divider"></div>
+        <p>Ao emitir uma apólice com auditorias de prêmio, o PolicyCenter adiciona automaticamente auditorias programadas à apólice. Elas podem ser visualizadas pelo link <strong>Audit Schedule</strong> no arquivo da apólice.</p>
+        <p>Trata-se de uma lista antecipada de auditorias ainda não inicializadas — com status <em>Scheduled</em> — ordenadas por data de início e término. Cada item inclui: Data de Início, Data de Término, Método de Auditoria e Data de Vencimento. Usuários com permissão adequada podem editar esses registros antes que a auditoria seja inicializada.</p>
+
+        <img src="images/premium-audit-schedule.jpg" alt="Tela de Agenda de Auditorias no PolicyCenter" class="step-img" style="margin-top: 1rem;">
+        <p class="step-img-caption">Audit Schedule — lista de Premium Reports e Final Audits programados para uma apólice de Workers' Compensation</p>
+      </div>
+
+    </div>
+    <!-- ══ FIM PÁGINA 11 ══ -->
+
+    <!-- ══ PÁGINA 12 ══ -->
+    <div class="page-section" id="page-12">
+
+      <div class="page-header">
+        <h1>Implementações do PolicyCenter</h1>
+        <div class="divider"></div>
+        <p class="page-subtitle">Como se preparar para implementar o PolicyCenter — levantamento de requisitos de negócio e alinhamento de equipes.</p>
+      </div>
+
+      <div class="section">
+        <p>Antes de implementar o PolicyCenter, levante informações detalhadas sobre os processos atuais de administração de apólices da sua organização. Isso ajudará a alinhar os fluxos de trabalho com os processos padrão do PolicyCenter e a definir o escopo, o cronograma e os pontos de integração. Uma preparação cuidadosa garante uma implementação mais fluida e melhor alinhamento com os objetivos de negócio.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="levantamento-de-requisitos-de-negocio">Levantamento de Requisitos de Negócio</h2>
+        <div class="section-divider"></div>
+        <p>Seis áreas críticas para explorar antes da implementação:</p>
+
+        <div class="accordion" style="margin-top: 1rem;">
+          <button class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">
+            🏷️ Produtos e Linhas de Negócio
+          </button>
+          <div class="acc-body">
+            <p>Identifique quais produtos e linhas de negócio serão gerenciados no PolicyCenter, sua estrutura e projeções de volume.</p>
+            <ul class="goal-list">
+              <li>Quais produtos sua empresa comercializa? Quais linhas de negócio estão incluídas?</li>
+              <li>Qual o volume de apólices por produto e linha? Qual a projeção para os próximos 5 anos?</li>
+              <li>Há produtos empacotados de formas diferentes para mercados ou segmentos distintos?</li>
+              <li>Quantas seguradoras você possui hoje? Quantas pretende implementar no PolicyCenter?</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion" style="margin-top: 0.5rem;">
+          <button class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">
+            📋 Transações de Apólice
+          </button>
+          <div class="acc-body">
+            <p>Determine quais transações (propostas, alterações, renovações, cancelamentos, reescrições, reabilitações, auditorias) serão gerenciadas no PolicyCenter e como interagirão com sistemas existentes.</p>
+            <ul class="goal-list">
+              <li>Alguma transação será iniciada em outro sistema mas gerenciada no PolicyCenter?</li>
+              <li>Você realiza verificação de nome/reserva de risco hoje? Como isso é feito?</li>
+              <li>Quais regras de avaliação de risco são usadas para triagem de novas propostas?</li>
+              <li>Informações de produtor ou agente fazem parte do processo de proposta?</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion" style="margin-top: 0.5rem;">
+          <button class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">
+            💲 Cotação e Tarifação
+          </button>
+          <div class="acc-body">
+            <p>Planeje os critérios de cotação e tarifação, incluindo se cotações alternativas ou ajustes manuais de prêmio serão permitidos.</p>
+            <ul class="goal-list">
+              <li>Você oferece "quick quotes" com informações mínimas no início do processo de vendas?</li>
+              <li>Vai manter a solução de tarifação atual ou implementar uma nova?</li>
+              <li>Permite ajuste manual de prêmio (override)? Para quais linhas de negócio?</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion" style="margin-top: 0.5rem;">
+          <button class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">
+            🏢 Estrutura Organizacional e Papéis
+          </button>
+          <div class="acc-body">
+            <p>Mapeie a estrutura interna, responsabilidades dos funcionários e requisitos de produtores e usuários externos que interagirão com o PolicyCenter.</p>
+            <ul class="goal-list">
+              <li>Como a empresa está organizada? Quantas unidades existem (matriz, regionais, call centers)?</li>
+              <li>Que tipos de equipes estão em cada unidade? Quais são suas responsabilidades?</li>
+              <li>Em quantos estados a empresa emite apólices? Qual a distribuição por linha de negócio?</li>
+              <li>Qual o perfil dos produtores (agentes diretos, cativos, independentes, corretores)?</li>
+              <li>Os produtores acessam sistemas internos atualmente? Qual o nível de autoridade deles?</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion" style="margin-top: 0.5rem;">
+          <button class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">
+            📄 Formulários de Apólice e Faturamento
+          </button>
+          <div class="acc-body">
+            <p>Considere as soluções atuais e futuras para emissão de formulários e integração com o sistema de faturamento.</p>
+            <ul class="goal-list">
+              <li>Vai manter a solução atual de emissão de formulários ou implementar uma nova?</li>
+              <li>Que dados o sistema de faturamento precisa receber do sistema de apólices?</li>
+              <li>Quais são os pontos de integração previstos entre PolicyCenter e o sistema de faturamento?</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion" style="margin-top: 0.5rem;">
+          <button class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">
+            👤 Gestão de Contas e Contatos
+          </button>
+          <div class="acc-body">
+            <p>Defina como as informações de conta e contato serão gerenciadas.</p>
+            <ul class="goal-list">
+              <li>Como as informações de conta e contato são gerenciadas no ambiente atual?</li>
+              <li>O PolicyCenter e/ou ContactCenter será o sistema de registro para contas e contatos?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 id="prepare-sua-equipe">Prepare sua Equipe</h2>
+        <div class="section-divider"></div>
+        <p>A Guidewire recomenda que as organizações dediquem <strong>30 a 45 dias</strong> à preparação antes do lançamento do projeto — reunindo informações e tomando decisões críticas. O Guidewire Education apoia essa fase com programas estruturados de capacitação e certificação que familiarizam as equipes de projeto com a funcionalidade, configuração e integração das aplicações Guidewire.</p>
+
+        <div class="note" style="margin-top: 1.2rem;">
+          🎓 <strong>Certificações disponíveis para PolicyCenter:</strong>
+          <ul class="goal-list" style="margin-top: 0.6rem;">
+            <li>PolicyCenter Business Analyst</li>
+            <li>PolicyCenter Configuration Developer</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+    <!-- ══ FIM PÁGINA 12 ══ -->
+
+    <!-- ══ PÁGINA 13 ══ -->
+    <div class="page-section" id="page-13">
+
+      <div class="page-header">
+        <h1>Resumo do Curso</h1>
+        <div class="divider"></div>
+        <p class="page-subtitle">Você concluiu o conteúdo do PolicyCenter Overview. Revise os pontos principais antes de avançar.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="o-que-voce-aprendeu">O que você aprendeu</h2>
+        <div class="section-divider"></div>
+        <p>O <strong>PolicyCenter</strong> é um sistema líder de administração de apólices (PAS) capaz de gerenciar o ciclo de vida completo das apólices de seguro — automatizando tarefas, otimizando fluxos de trabalho e integrando-se a outros sistemas para melhorar a eficiência e a experiência do cliente.</p>
+
+        <ul class="goal-list" style="margin-top: 1rem;">
+          <li>O PolicyCenter gerencia o <strong>ciclo de vida completo das apólices</strong> por meio de transações manuais e automatizadas: propostas, alterações, renovações, cancelamentos, reabilitações e reescrições.</li>
+          <li>O PolicyCenter utiliza o <strong>Guidewire Advanced Product Designer App™</strong> — uma ferramenta low-code — para projetar, desenvolver e configurar produtos de seguro.</li>
+          <li>Antes de implementar o PolicyCenter, as seguradoras devem levantar informações abrangentes sobre seus processos de administração de apólices, produtos, emissão de formulários, critérios de tarifação, faturamento, estrutura organizacional e requisitos de produtores.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2 id="proximos-passos">Próximos Passos</h2>
+        <div class="section-divider"></div>
+        <p>Dependendo do seu papel, aprofunde seus conhecimentos com os seguintes treinamentos Guidewire:</p>
+
+        <div class="capability-grid" style="margin-top: 1rem;">
+          <div class="cap-card">
+            <div class="cap-icon">📊</div>
+            <div class="cap-title">Business Analyst</div>
+            <div class="cap-desc">
+              PolicyCenter Introduction and Basics<br>
+              PolicyCenter Functional Requirements<br>
+              Advanced Product Designer App
+            </div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-icon">⚙️</div>
+            <div class="cap-title">Configuration Developer</div>
+            <div class="cap-desc">
+              PolicyCenter Configuration
+            </div>
+          </div>
+        </div>
+
+        <div class="note" style="margin-top: 1.5rem;">
+          📚 <strong>Documentação relacionada:</strong> PolicyCenter Application Guide · Advanced Product Designer App · PolicyCenter Configuration Guide
+        </div>
+      </div>
+
+    </div>
+    <!-- ══ FIM PÁGINA 13 ══ -->
+
+    <div class="pagination">
+      <button type="button" class="btn secondary" id="btn-prev" disabled>← Anterior</button>
+      <span class="page-info" id="page-info">Página 1 de 13</span>
+      <button type="button" class="btn" id="btn-next">Próxima →</button>
+    </div>
+    <a href="Guidewire_Home.html" class="home-footer-link">← Voltar ao Home</a>
+
+    <!-- ══ PÁGINA 14 ══ -->
+    <div class="page-section" id="page-14" style="display:none!important">
+      <div class="page-header">
+        <h1>Glossário</h1>
+        <div class="divider"></div>
+        <p class="page-subtitle">Termos técnicos de seguro e do PolicyCenter em português, com definições no contexto do curso.</p>
+      </div>
+
+      <div class="section">
+        <input type="text" id="gloss-search" placeholder="🔍  Buscar termo…"
+          oninput="filterGlossary(this.value)"
+          style="width:100%;padding:0.65rem 1rem;font-size:0.95rem;border:1.5px solid var(--border);border-radius:8px;outline:none;margin-bottom:1.5rem;font-family:inherit;color:var(--text);">
+
+        <div id="gloss-list">
+
+          <!-- A -->
+          <p class="gloss-letter" style="font-size:1.1rem;font-weight:800;color:var(--gw-dark);margin:0 0 0.5rem;border-bottom:2px solid var(--gw-teal);padding-bottom:0.2rem;">A</p>
+          <div class="gloss-item"><dt>Agente <span class="gloss-en">(Agent)</span></dt><dd>No mercado norte-americano, intermediário vinculado a uma seguradora específica. No Brasil, a figura equivalente e regulamentada pela SUSEP é o <strong>corretor de seguros</strong>. Ver também <em>Produtor</em>.</dd></div>
+          <div class="gloss-item"><dt>Endosso <span class="gloss-en">(Endorsement / Policy Change)</span></dt><dd>Termo consagrado no mercado brasileiro para qualquer alteração formal em uma apólice vigente. No PolicyCenter, aparece como <em>Policy Change</em> — transação que modifica bens segurados, coberturas ou condições antes do vencimento, podendo gerar ajuste de prêmio.</dd></div>
+          <div class="gloss-item"><dt>Apólice <span class="gloss-en">(Policy)</span></dt><dd>Contrato formal de seguro entre o segurado e a seguradora, que define coberturas, condições, exclusões, prêmio e período de vigência.</dd></div>
+          <div class="gloss-item"><dt>Auditoria de Prêmio <span class="gloss-en">(Premium Audit)</span></dt><dd>Revisão do prêmio cobrado com base nos valores reais de exposição (ex.: folha de pagamento) ao longo ou ao fim da vigência, para ajustar o prêmio estimado ao valor devido.</dd></div>
+          <div class="gloss-item"><dt>Auditoria Final <span class="gloss-en">(Final Audit)</span></dt><dd>Auditoria executada pela seguradora ao término da vigência para determinar o custo real definitivo da apólice.</dd></div>
+
+          <!-- B -->
+          <p class="gloss-letter" style="font-size:1.1rem;font-weight:800;color:var(--gw-dark);margin:1.2rem 0 0.5rem;border-bottom:2px solid var(--gw-teal);padding-bottom:0.2rem;">B</p>
+          <div class="gloss-item"><dt>Bem Segurado <span class="gloss-en">(Risk Object)</span></dt><dd>Item concreto coberto pela apólice — veículo, imóvel, equipamento etc. No PolicyCenter, são adicionados durante o fluxo de proposta.</dd></div>
+
+          <!-- C -->
+          <p class="gloss-letter" style="font-size:1.1rem;font-weight:800;color:var(--gw-dark);margin:1.2rem 0 0.5rem;border-bottom:2px solid var(--gw-teal);padding-bottom:0.2rem;">C</p>
+          <div class="gloss-item"><dt>Cancelamento <span class="gloss-en">(Cancellation)</span></dt><dd>Encerramento antecipado da apólice antes do término da vigência, podendo ser iniciado pelo segurado ou pela seguradora.</dd></div>
+          <div class="gloss-item"><dt>Cobertura <span class="gloss-en">(Coverage)</span></dt><dd>Proteção contratual contra um risco específico. Cada bem segurado pode ter múltiplas coberturas associadas.</dd></div>
+          <div class="gloss-item"><dt>Condição de Cobertura <span class="gloss-en">(Coverage Term)</span></dt><dd>Parâmetros que definem os limites e termos de uma cobertura, como limite máximo de indenização e franquia.</dd></div>
+          <div class="gloss-item"><dt>Cotação <span class="gloss-en">(Quote)</span></dt><dd>Estimativa de prêmio gerada pelo PolicyCenter após calcular o risco com base nas informações da proposta.</dd></div>
+
+          <!-- E -->
+          <p class="gloss-letter" style="font-size:1.1rem;font-weight:800;color:var(--gw-dark);margin:1.2rem 0 0.5rem;border-bottom:2px solid var(--gw-teal);padding-bottom:0.2rem;">E</p>
+          <div class="gloss-item"><dt>Exclusão <span class="gloss-en">(Exclusion)</span></dt><dd>Risco, situação ou evento especificamente excluído da cobertura da apólice.</dd></div>
+
+          <!-- L -->
+          <p class="gloss-letter" style="font-size:1.1rem;font-weight:800;color:var(--gw-dark);margin:1.2rem 0 0.5rem;border-bottom:2px solid var(--gw-teal);padding-bottom:0.2rem;">L</p>
+          <div class="gloss-item"><dt>Linha de Negócio <span class="gloss-en">(Line of Business — LOB)</span></dt><dd>Categoria de produtos de seguro, como Auto Pessoal, Propriedade Comercial ou Workers' Compensation. Cada LOB tem seu próprio conjunto de coberturas e regras de tarifação.</dd></div>
+
+          <!-- N -->
+          <p class="gloss-letter" style="font-size:1.1rem;font-weight:800;color:var(--gw-dark);margin:1.2rem 0 0.5rem;border-bottom:2px solid var(--gw-teal);padding-bottom:0.2rem;">N</p>
+          <div class="gloss-item"><dt>Não Renovação <span class="gloss-en">(Non-renewal)</span></dt><dd>Decisão da seguradora de não estender a apólice ao término da vigência. A cobertura encerra na data de expiração.</dd></div>
+
+          <!-- P -->
+          <p class="gloss-letter" style="font-size:1.1rem;font-weight:800;color:var(--gw-dark);margin:1.2rem 0 0.5rem;border-bottom:2px solid var(--gw-teal);padding-bottom:0.2rem;">P</p>
+          <div class="gloss-item"><dt>PAS <span class="gloss-en">(Policy Administration System)</span></dt><dd>Sistema de Administração de Apólices — software que gerencia o ciclo de vida completo das apólices de seguro. O PolicyCenter é um PAS.</dd></div>
+          <div class="gloss-item"><dt>Período de Vigência <span class="gloss-en">(Policy Term / Policy Period)</span></dt><dd>Intervalo de tempo durante o qual a apólice está em vigor, com datas de início e término definidas.</dd></div>
+          <div class="gloss-item"><dt>Preempção <span class="gloss-en">(Preemption)</span></dt><dd>Situação em que uma nova transação de alteração é iniciada antes que a anterior seja vinculada. O PolicyCenter exige resolução antes de prosseguir.</dd></div>
+          <div class="gloss-item"><dt>Prêmio <span class="gloss-en">(Premium)</span></dt><dd>Valor pago pelo segurado à seguradora pela cobertura contratada. Pode ser calculado com base em dados estimados (auditáveis) ou fixos.</dd></div>
+          <div class="gloss-item"><dt>Produtor <span class="gloss-en">(Producer)</span></dt><dd>Termo genérico do mercado norte-americano que agrupa agentes (vinculados a uma seguradora) e brokers (independentes). No Brasil, o equivalente regulamentado é o <strong>corretor de seguros</strong> — profissional licenciado pela SUSEP que intermedia a contratação de seguros entre segurado e seguradora, podendo representar múltiplas seguradoras. No PolicyCenter, o campo "Producer" corresponde ao corretor responsável pela apólice.</dd></div>
+          <div class="gloss-item"><dt>Proposta <span class="gloss-en">(Submission)</span></dt><dd>Transação que inicia a criação de uma nova apólice no PolicyCenter, da qualificação do candidato à emissão do contrato.</dd></div>
+
+          <!-- R -->
+          <p class="gloss-letter" style="font-size:1.1rem;font-weight:800;color:var(--gw-dark);margin:1.2rem 0 0.5rem;border-bottom:2px solid var(--gw-teal);padding-bottom:0.2rem;">R</p>
+          <div class="gloss-item"><dt>Reabilitação <span class="gloss-en">(Reinstatement)</span></dt><dd>Restauração de uma apólice cancelada ao estado anterior ao cancelamento. A data de reabilitação deve ser igual à data efetiva do cancelamento para evitar lacuna de cobertura.</dd></div>
+          <div class="gloss-item"><dt>Reescrição <span class="gloss-en">(Rewrite)</span></dt><dd>Criação de uma nova apólice a partir de uma existente, com novas datas e condições. Usada para alterações que não são permitidas em uma transação de alteração comum (ex.: mudança de produtor ou número de apólice).</dd></div>
+          <div class="gloss-item"><dt>Relatório de Prêmio <span class="gloss-en">(Premium Report)</span></dt><dd>Relatório periódico preparado pelo próprio segurado com dados reais de exposição (folha de pagamento, inventário etc.) para ajuste intermediário do prêmio durante a vigência.</dd></div>
+          <div class="gloss-item"><dt>Renovação <span class="gloss-en">(Renewal)</span></dt><dd>Extensão da apólice para um novo período de vigência. O número da apólice é mantido; um novo número de vigência é acrescentado.</dd></div>
+          <div class="gloss-item"><dt>Risco <span class="gloss-en">(Risk)</span></dt><dd>Possibilidade de perda ou dano coberto pela apólice. Na subscrição, é avaliado para determinar elegibilidade e prêmio.</dd></div>
+
+          <!-- S -->
+          <p class="gloss-letter" style="font-size:1.1rem;font-weight:800;color:var(--gw-dark);margin:1.2rem 0 0.5rem;border-bottom:2px solid var(--gw-teal);padding-bottom:0.2rem;">S</p>
+          <div class="gloss-item"><dt>Segurado <span class="gloss-en">(Insured / Policyholder)</span></dt><dd>Pessoa física ou jurídica cuja vida, saúde, propriedade ou responsabilidade é coberta pela apólice.</dd></div>
+          <div class="gloss-item"><dt>Seguradora <span class="gloss-en">(Insurer / Carrier)</span></dt><dd>Empresa que emite as apólices, assume os riscos e paga as indenizações em caso de sinistro.</dd></div>
+          <div class="gloss-item"><dt>Sinistro <span class="gloss-en">(Claim)</span></dt><dd>Solicitação formal do segurado à seguradora por indenização em função de um evento coberto pela apólice. No Guidewire, é gerenciado pelo ClaimCenter.</dd></div>
+          <div class="gloss-item"><dt>Subscrição <span class="gloss-en">(Underwriting)</span></dt><dd>Processo de avaliação e seleção de riscos para determinar se uma proposta é aceitável e a que preço. O subscritor analisa dados da proposta para tomar essa decisão.</dd></div>
+
+          <!-- T -->
+          <p class="gloss-letter" style="font-size:1.1rem;font-weight:800;color:var(--gw-dark);margin:1.2rem 0 0.5rem;border-bottom:2px solid var(--gw-teal);padding-bottom:0.2rem;">T</p>
+          <div class="gloss-item"><dt>Tarifação <span class="gloss-en">(Rating / Pricing)</span></dt><dd>Processo de cálculo do prêmio com base nos fatores de risco da apólice, regras tarifárias e dados do segurado. O PolicyCenter possui motor de tarifação nativo.</dd></div>
+
+          <!-- V -->
+          <p class="gloss-letter" style="font-size:1.1rem;font-weight:800;color:var(--gw-dark);margin:1.2rem 0 0.5rem;border-bottom:2px solid var(--gw-teal);padding-bottom:0.2rem;">V</p>
+          <div class="gloss-item"><dt>Vigência <span class="gloss-en">(Policy Term)</span></dt><dd>Período específico de cobertura de uma apólice, delimitado por data de início e data de término. Uma apólice renovada gera uma nova vigência.</dd></div>
+
+          <p id="gloss-empty" style="display:none;color:var(--muted);font-size:0.9rem;margin-top:1rem;">Nenhum termo encontrado.</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <button class="lightbox-prev" id="lb-prev" onclick="event.stopPropagation();lbNav(-1)">‹</button>
+  <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()" />
+  <button class="lightbox-next" id="lb-next" onclick="event.stopPropagation();lbNav(1)">›</button>
+</div>
+
+<script>
+  const TOTAL_PAGES = 13;
+  const _pc_saved = parseInt(localStorage.getItem('pc_page') || '1') || 1;
+  let currentPage = Math.min(Math.max(_pc_saved, 1), TOTAL_PAGES);
+  // Safety-net: garante init mesmo que final do arquivo seja truncado
+  document.addEventListener('DOMContentLoaded', function() { goToPage(currentPage); });
+
+  function pageExists(n) {
+    return !!document.getElementById('page-' + n);
+  }
+
+  function goToPage(n) {
+    if (n < 1 || n > TOTAL_PAGES || !pageExists(n)) return;
+    document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+    document.getElementById('page-' + n).classList.add('active');
+    currentPage = n;
+    try { localStorage.setItem('pc_page', n); } catch(e) {}
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    updateUI();
+  }
+
+  function toggleGroup(groupId) {
+    const sub = document.getElementById(groupId);
+    const header = sub && sub.previousElementSibling;
+    if (!sub) return;
+    const isOpen = sub.classList.toggle('open');
+    if (header) header.classList.toggle('expanded', isOpen);
+  }
+
+  function updateUI() {
+    const _h1 = document.getElementById('page-' + currentPage)?.querySelector('h1');
+    if (_h1) { const el = document.getElementById('bc-page'); if (el) el.textContent = _h1.textContent; }
+    // Paginação
+    document.getElementById('btn-prev').disabled = currentPage === 1;
+    document.getElementById('btn-next').disabled =
+      currentPage === TOTAL_PAGES || !pageExists(currentPage + 1);
+    document.getElementById('page-info').textContent =
+      'Página ' + currentPage + ' de ' + TOTAL_PAGES;
+
+    // Progresso
+    const pct = Math.round((currentPage / TOTAL_PAGES) * 100);
+    document.getElementById('sidebar-progress').style.width = pct + '%';
+
+    // Botões de páginas individuais
+    document.querySelectorAll('.nav-btn[data-page]').forEach(btn => {
+      const p = Number(btn.dataset.page);
+      const dot = btn.querySelector('.dot');
+      btn.removeAttribute('aria-current');
+      if (p === currentPage) {
+        btn.setAttribute('aria-current', 'page');
+        dot.className = 'dot current';
+      } else if (p < currentPage) {
+        dot.className = 'dot done';
+      } else {
+        dot.className = 'dot pending';
+      }
+    });
+
+    // Cabeçalhos de grupo — estado baseado nos filhos
+    document.querySelectorAll('.nav-group').forEach(group => {
+      const groupId = group.dataset.group;
+      const header = group.querySelector('.nav-group-header');
+      const dot = header.querySelector('.dot');
+      const pages = Array.from(group.querySelectorAll('.nav-btn[data-page]'))
+                         .map(b => Number(b.dataset.page));
+
+      header.classList.remove('active');
+      if (pages.includes(currentPage)) {
+        dot.className = 'dot current';
+        header.classList.add('active');
+        // Auto-expandir grupo da página atual
+        document.getElementById(groupId).classList.add('open');
+        header.classList.add('expanded');
+      } else if (pages.length && pages.every(p => p < currentPage)) {
+        dot.className = 'dot done';
+      } else {
+        dot.className = 'dot pending';
+      }
+    });
+  }
+
+  // ── Lightbox ──
+  let _lbImgs = [], _lbIdx = 0;
+  function openLightbox(src, alt) {
+    const active = document.querySelector('.page-section.active');
+    _lbImgs = active ? Array.from(active.querySelectorAll('.step-img')) : [];
+    _lbIdx = _lbImgs.findIndex(i => i.src === src);
+    if (_lbIdx < 0) { _lbImgs = []; _lbIdx = 0; }
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox-img').alt = alt;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    _lbUpdateNav();
+  }
+  function lbNav(dir) {
+    if (!_lbImgs.length) return;
+    _lbIdx = (_lbIdx + dir + _lbImgs.length) % _lbImgs.length;
+    const img = _lbImgs[_lbIdx];
+    document.getElementById('lightbox-img').src = img.src;
+    document.getElementById('lightbox-img').alt = img.alt;
+    _lbUpdateNav();
+  }
+  function _lbUpdateNav() {
+    const show = _lbImgs.length > 1;
+    document.getElementById('lb-prev').style.display = show ? 'block' : 'none';
+    document.getElementById('lb-next').style.display = show ? 'block' : 'none';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+    _lbImgs = []; _lbIdx = 0;
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft')  lbNav(-1);
+    if (e.key === 'ArrowRight') lbNav(1);
+  });
+
+  // Aplica lightbox em todas as step-img automaticamente
+  document.querySelectorAll('.step-img').forEach(img => {
+    img.addEventListener('click', () => openLightbox(img.src, img.alt));
+  });
+
+  // ── Accordion ──
+  function toggleAcc(btn) {
+    const body = btn.nextElementSibling;
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    body.classList.toggle('open', !open);
+  }
+
+  // ── Menu gaveta (mobile) ──
+  const menuToggle  = document.getElementById('menu-toggle');
+  const sidebarEl   = document.querySelector('aside');
+  const overlayEl   = document.getElementById('sidebar-overlay');
+
+  function openSidebar() {
+    sidebarEl.classList.add('open');
+    overlayEl.classList.add('open');
+    menuToggle.textContent = '✕';
+    menuToggle.setAttribute('aria-label', 'Fechar menu de navegação');
+  }
+  function closeSidebar() {
+    sidebarEl.classList.remove('open');
+    overlayEl.classList.remove('open');
+    menuToggle.textContent = '☰';
+    menuToggle.setAttribute('aria-label', 'Abrir menu de navegação');
+  }
+  menuToggle.addEventListener('click', () => {
+    sidebarEl.classList.contains('open') ? closeSidebar() : openSidebar();
+  });
+  overlayEl.addEventListener('click', closeSidebar);
+
+  // Eventos
+  document.getElementById('btn-prev').addEventListener('click', () => goToPage(currentPage - 1));
+  document.getElementById('btn-next').addEventListener('click', () => goToPage(currentPage + 1));
+  document.querySelectorAll('.nav-btn[data-page]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      goToPage(Number(btn.dataset.page));
+      if (window.innerWidth <= 768) closeSidebar();
+    });
+  });
+
+  // Inicializar estado correto do btn-next
+  goToPage(currentPage);
+
+</script>
+
+</body>
+</html>

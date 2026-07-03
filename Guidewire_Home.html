@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Hub de materiais de estudo Guidewire em PT-BR — guias de curso e glossário consolidado de terminologia de seguros e plataforma.">
+<title>Home — Guidewire</title>
+<link rel="icon" type="image/png" href="images/logo.png" />
+<style>
+  :root {
+    --gw-dark:  #0d2d4a;
+    --gw-blue:  #0077b6;
+    --gw-teal:  #00b4d8;
+    --white:    #ffffff;
+    --bg:       #f4f7fa;
+    --border:   #dde3ea;
+    --text:     #1a2e44;
+    --muted:    #6b7a8d;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--gw-dark);
+    color: var(--white);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  header div { display: flex; flex-direction: column; }
+  header h1 { font-size: 1.3rem; font-weight: 700; letter-spacing: 0.02em; }
+  header p  { font-size: 0.82rem; color: rgba(255,255,255,0.6); margin-top: 0.1rem; }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 1.5rem 1.5rem 3rem; }
+
+  /* ── SECTION TITLES ── */
+  .section-title {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gw-teal); margin-bottom: 0.8rem; padding-bottom: 0.3rem;
+    border-bottom: 1.5px solid var(--border);
+  }
+
+  /* ── COURSE CARDS ── */
+  .course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+  }
+  .course-card {
+    background: var(--white); border: 1px solid var(--border); border-radius: 10px;
+    padding: 1rem 1.1rem; text-decoration: none; color: var(--text);
+    transition: box-shadow .15s, border-color .15s;
+    display: flex; flex-direction: column; gap: 0.35rem;
+  }
+  .course-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.1); border-color: var(--gw-teal); }
+  .course-card .card-icon { font-size: 1.5rem; }
+  .course-card .card-title { font-weight: 700; font-size: 0.9rem; color: var(--gw-dark); line-height: 1.3; }
+  .course-card .card-sub { font-size: 0.76rem; color: var(--muted); }
+  .course-card.soon { opacity: 0.5; pointer-events: none; cursor: default; }
+  .course-card.soon .card-sub::after { content: ' · em breve'; font-style: italic; }
+
+  /* ── SEARCH + FILTERS ── */
+  #gloss-search {
+    width: 100%; padding: 0.6rem 1rem; margin-bottom: 0.7rem;
+    border: 1.5px solid var(--border); border-radius: 8px;
+    font-size: 0.92rem; background: var(--white); color: var(--text);
+    outline: none; transition: border-color .2s, box-shadow .2s;
+  }
+  #gloss-search:focus { border-color: var(--gw-teal); box-shadow: 0 0 0 3px rgba(0,180,216,0.15); }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.6rem; }
+  .tag-btn {
+    padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.78rem;
+    border: 1.5px solid var(--border); background: var(--white); color: var(--muted);
+    cursor: pointer; transition: all .15s;
+  }
+  .tag-btn:hover, .tag-btn.active { background: var(--gw-dark); color: var(--white); border-color: var(--gw-dark); }
+  #result-count { font-size: 0.76rem; color: var(--muted); margin-bottom: 0.8rem; min-height: 1.2em; }
+
+  /* ── LETTER GROUPS ── */
+  .gloss-letter { margin-bottom: 1.4rem; }
+  .gloss-letter h2 {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gw-teal); border-bottom: 1.5px solid var(--border); padding-bottom: 0.3rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ── ITEMS ── */
+  .gloss-item {
+    background: var(--white); border: 1px solid var(--border);
+    border-radius: 8px; padding: 0.75rem 1rem; margin-bottom: 0.4rem;
+    transition: box-shadow .15s;
+  }
+  .gloss-item:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+  .gloss-item dt {
+    font-weight: 700; font-size: 0.92rem; color: var(--gw-dark);
+    display: flex; align-items: center; flex-wrap: wrap; gap: 0.4rem;
+  }
+  .gloss-item dd { font-size: 0.85rem; color: var(--text); line-height: 1.65; margin-top: 0.3rem; }
+  .gloss-en { font-size: 0.76rem; color: var(--muted); font-style: italic; margin-top: 0.18rem; display: block; }
+
+  /* category + source badges */
+  .badge {
+    font-size: 0.66rem; font-weight: 600; padding: 0.1rem 0.42rem;
+    border-radius: 10px; text-transform: uppercase; letter-spacing: 0.04em; white-space: nowrap;
+  }
+  .cat-arch      { background: #e0f0ff; color: #0060a0; }
+  .cat-app       { background: #e0f5ee; color: #00704a; }
+  .cat-seguro    { background: #fff0e0; color: #a06000; }
+  .cat-integ     { background: #fff3e0; color: #a05000; }
+  .cat-analytics { background: #f3e8ff; color: #6a00aa; }
+  .cat-devops    { background: #e8f8e8; color: #2e7d32; }
+  .src-gwcp { background: #e0eeff; color: #0040a0; }
+  .src-pc   { background: #e8f5e9; color: #1b5e20; }
+
+  /* hidden */
+  .gloss-letter.hidden, .gloss-item.hidden { display: none; }
+  #no-results { display: none; text-align: center; padding: 2rem; color: var(--muted); font-size: 0.88rem; }
+
+  @media (max-width: 600px) {
+    header { padding: 1rem; }
+    .container { padding: 1rem 0.8rem 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <img src="images/logo.png" alt="Guidewire" style="height:28px;width:auto;object-fit:contain;flex-shrink:0;" />
+  <div>
+    <h1>Home — Guidewire</h1>
+    <p>Materiais do curso · Glossário consolidado</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- ══ MATERIAIS ══ -->
+  <p class="section-title">Materiais do Curso</p>
+  <div class="course-grid">
+    <a class="course-card" href="GuidewireCloud_Overview.html">
+      <div class="card-icon">☁️</div>
+      <div class="card-title">Guidewire Cloud Platform Overview</div>
+      <div class="card-sub">17 páginas</div>
+    </a>
+    <a class="course-card" href="PolicyCenter_Overview.html">
+      <div class="card-icon">📋</div>
+      <div class="card-title">PolicyCenter Overview</div>
+      <div class="card-sub">13 páginas</div>
+    </a>
+    <div class="course-card soon">
+      <div class="card-icon">⚖️</div>
+      <div class="card-title">ClaimCenter Overview</div>
+      <div class="card-sub">Em desenvolvimento</div>
+    </div>
+    <div class="course-card soon">
+      <div class="card-icon">💳</div>
+      <div class="card-title">BillingCenter Overview</div>
+      <div class="card-sub">Em desenvolvimento</div>
+    </div>
+    <div class="course-card soon">
+      <div class="card-icon">📊</div>
+      <div class="card-title">Data Analytics Overview</div>
+      <div class="card-sub">Em desenvolvimento</div>
+    </div>
+  </div>
+
+  <!-- ══ GLOSSÁRIO ══ -->
+  <p class="section-title" id="glossario">Glossário Consolidado</p>
+  <input type="search" id="gloss-search" placeholder="Buscar termo…" aria-label="Buscar no glossário" autocomplete="off" spellcheck="false">
+  <div class="tags">
+    <button class="tag-btn active" data-cat="all">Todos</button>
+    <button class="tag-btn" data-cat="arch">Arquitetura</button>
+    <button class="tag-btn" data-cat="app">Aplicações</button>
+    <button class="tag-btn" data-cat="seguro">Seguro</button>
+    <button class="tag-btn" data-cat="integ">Integração</button>
+    <button class="tag-btn" data-cat="analytics">Analytics</button>
+    <button class="tag-btn" data-cat="devops">Dev &amp; Ops</button>
+  </div>
+  <div id="result-count"></div>
+  <div id="no-results">Nenhum termo encontrado.</div>
+
+  <!-- ══ A ══ -->
+  <div class="gloss-letter" data-letter="A">
+    <h2>A</h2>
+    <dl class="gloss-item" data-cats="seguro">
+      <dt>Agente <span class="badge cat-seguro">Seguro</span><span class="badge src-pc">PolicyCenter</span></dt>
+      <dd>No mercado norte-americano, intermediário vinculado a uma seguradora específica. No Brasil, a figura equivalente e regulamentada pela SUSEP é o <strong>corretor de seguros</strong>. Ver também <em>Produtor</em>.</dd>
+      <span class="gloss-en">Agent</span>
+    </dl>
+    <dl class="gloss-item" data-cats="analytics">
+      <dt>Analytics Manager <span class="badge cat-analytics">Analytics</span><span class="badge src-gwcp">GWCP</span></dt>
+      <dd>Componente central do Predict que permite configurar, implantar e monitorar modelos preditivos dentro das aplicações InsuranceSuite. Suporta BYOM e oferece governança do ciclo de vida dos modelos.</dd>
+      <span class="gloss-en">Analytics Manager — model lifecycle management inside InsuranceSuite</span>
+    </dl>
+    <dl class="gloss-item" data-cats="seguro">
+      <dt>Apólice <span class="badge cat-seguro">Seguro</span><span class="badge src-pc">PolicyCenter</span></dt>
+      <dd>Contrato formal de seguro entre o segurado e a seguradora, que define coberturas, condições, exclusões, prêmio e período de vigência.</dd>
+      <span class="gloss-en">Policy</span>
+    </dl>
+    <dl class="gloss-item" data-cats="arch">
+      <dt>Asteroid <span class="badge cat-arch">Arquitetura</span><span class="badge src-gwcp">GWCP</span></dt>
+      <dd>Tipo especial de planet para hospedar workloads que não são aplicações InsuranceSuite — como serviços conteinerizados de terceiros. Planets e asteroids podem compartilhar a mesma orbit.</dd>
+      <span class="gloss-en">Asteroid — specialized planet for non-InsuranceSuite workloads</span>
+    </dl>
+    <dl class="gloss-item" data-cats="seguro">
+      <dt>Auditoria de Prêmio <span class="badge cat-seguro">Seguro</span><span class="badge src-pc">PolicyCenter</span></dt>
+      <dd>Revisão do prêmio cobrado com base nos valores reais de exposição (ex.: folha de pagamento) ao longo ou ao fim da vigência, para ajustar o prêmio estimado ao valor devido.</dd>
+      <span class="gloss-en">Premium Audit</span>
+    </dl>
+    <dl class="gloss-item" data-cats="seguro">
+      <dt>Auditoria Final <span class="badge cat-seguro">Seguro</span><span class="badge src-pc">PolicyCenter</span></dt>
+      <dd>Auditoria executada pela seguradora ao término da vigência para determinar o custo real definitivo da apólice.</dd>
+      <span class="gloss-en">Final Audit</span>
+    </dl>
+  </div>
+
+  <!-- ══ B ══ -->
+  <div class="gloss-letter" data-letter="B">
+    <h2>B</h2>
+    <dl class="gloss-item" data-cats="seguro">
+      <dt>Bem Segurado <span class="badge cat-seguro">Seguro</span><span class="badge src-pc">PolicyCenter</span></dt>
+      <dd>Item concreto coberto pela apólice — veículo, imóvel, equipamento etc. No PolicyCenter, são adicionados durante o fluxo de proposta.</dd>
+      <span class="gloss-en">Risk Object</span>
+    </dl>
+    <dl class="gloss-item" data-cats="app">
+      <dt>BillingCenter <span class="badge cat-app">Aplicação</span><span class="badge src-gwcp">GWCP</span></dt>
+      <dd>Aplicação de faturamento do InsuranceSuite. Centraliza o faturamento de prêmios e o atendimento de contas para apólices de seguro de danos. Gerencia faturas, pagamentos, delinquências, comissões e relatórios.</dd>
+      <span class="gloss-en">BillingCenter — premium billing and receivables management</span>
+    </dl>
+    <dl class="gloss-item" data-cats="analytics">
+      <dt>BYOM — Bring Your Own Model <span class="badge cat-analytics">Analytics</span><span class="badge src-gwcp">GWCP</span></dt>
+      <dd>Capacidade do Predict / Analytics Manager que permite importar modelos de machine learning desenvolvidos externamente (Python, R etc.) e integrá-los ao fluxo de trabalho do InsuranceSuite.</dd>
+      <span class="gloss-en">BYOM — import externally built ML models into Analytics Manager</span>
+    </dl>
+  </div>
+
+  <!-- ══ C ══ -->
+  <div class="gloss-letter" data-letter="C">
+    <h2>C</h2>
+    <dl class="gloss-item" data-cats="seguro">
+      <dt>Cancelamento <span class="badge cat-seguro">Seguro</span><span class="badge src-pc">PolicyCenter</span></dt>
+      <dd>Encerramento antecipado da apólice antes do término da vigência, podendo ser iniciado pelo segurado ou pela seguradora.</dd>
+      <span class="gloss-en">Cancellation</span>
+    </dl>
+    <dl class="gloss-item" data-cats="devops">
+      <dt>CI/CD <span class="badge cat-devops">Dev &amp; Ops</span><span class="badge src-gwcp">GWCP</span></dt>
+      <dd>Práticas automatizadas de integração e entrega de software suportadas pelo GWCP por meio de pipelines (Bitbucket → TeamCity → Guidewire Cloud). Garante que apenas código testado promova-se até produção.</dd>
+      <span class="gloss-en">Continuous Integration / Continuous Delivery</span>
+    </dl>
+    <dl class="gloss-item" data-cats="integ">
+      <dt>CIF — Cloud Integration Framework <span class="badge cat-integ">Integração</span><span class="badge src-gwcp">GWCP</span></dt>
+      <dd>Suite padronizada de tecnologias para integração entre o InsuranceSuite e sistemas externos. Inclui Cloud API (REST), REST API Client, App Events (assíncrono) e o Marketplace de integrações.</dd>
+      <span class="gloss-en">Cloud Integration Framework</span>
+    </dl>
+    <dl class="gloss-item" data-cats="app">
+      <dt>ClaimCenter <span class="badge cat-app">Aplicação</span><span class="badge src-gwcp">GWCP</span></dt>
+      <dd>Aplicação de gestão de sinistros do InsuranceSuite. Cobre o ciclo completo: intake, atribuição, avaliação, reserva e pagamento, negociação e encerramento.</dd>
+      <span class="gloss-en">ClaimCenter — end-to-end claims management</span>
+    </dl>
+    <dl class="gloss-item" data-cats="integ">
+      <dt>Cloud API <span class="badge cat-integ">Integração</span><span class="badge src-gwcp">GWCP</span></dt>
+      <dd>APIs REST expostas pelas aplicações InsuranceSuite no GWCP que permitem que sistemas externos acessem e manipulem dados de apólices, sinistros e faturamento de forma padronizada.</dd>
+      <span class="gloss-en">Cloud API — REST APIs exposed by InsuranceSuite</span>
+    </dl>
+    <dl class="gloss-item" data-cats="devops">
+      <dt>Cloud Data Access (CDA) <span class="badge cat-devops">Dev &amp; Ops</span><span class="badge src-gwcp">GWCP</span></dt>
+      <dd>Conectores que permitem acesso a dados do InsuranceSuite a partir de ferramentas externas de analytics ou relatórios. O número de conectores varia conforme a orbit do planet.</dd>
+      <span class="gloss-en">CDA — Cloud Data Access connectors</span>
+    </dl>
+    <dl class="gloss-item" data-cats="seguro">
+      <dt>Cobertura <span class="badge cat-seguro">Seguro</span><span class="badge src-pc">PolicyCenter</span></dt>
+      <dd>Proteção contratual contra um risco específico. Cada bem segurado pode ter múltiplas coberturas associadas.</dd>
+      <span class="gloss-en">Coverage</span>
+    </dl>
+    <dl class="gloss-item" data-cats="seguro">
+      <dt>Condição de Cobertura <span class="badge cat-seguro">Seguro</span><span class="badge src-pc">PolicyCenter</span></dt>
+      <dd>Parâmetros que definem os limites e termos de uma cobertura, como limite máximo de indenização e franquia.</dd>
+      <span class="gloss-en">Coverage Term</span>
+    </dl>
+    <dl class="gloss-item" data-cats="seguro">
+      <dt>Cotação <span class="badge cat-seguro">Seguro</span><span class="badge src-pc">PolicyCenter</span></dt>
+      <dd>Estimativa de prêmio gerada pelo PolicyCenter após calcular o risco com base nas informações da proposta.</dd>
+      <span class="gloss-en">Quote</span>
+    </dl>
+  </div>
+
+  <!-- ══ D ══ -->
+  <div class="gloss-letter" data-letter="D">
+    <h2>D</h2>
+    <dl class="gloss-item" data-cats="analytics">
+      <dt>Data Platform <span class="badge cat-analytics">Analytics</span><span class="badge src-gwcp">GWCP</span></dt>
+      <dd>Componente do GWCP que consolida dados das aplicações InsuranceSuite em uma visão única e confiável. Serve de base para as soluções Explore e Predict.</dd>
+      <span class="gloss-en">Data Platform — unified data layer for InsuranceSuite analytics</span>
+    </dl>
+  </div>
+
+  <!-- ══ E ══ -->
+  <div class="gloss-letter" data-letter="E">
+    <h2>E</h2>
+    <dl class="gloss-item" data-cats="seguro">
+      <dt>Endosso <span class="badge cat-seguro">Seguro</span><span class="badge src-pc">PolicyCenter</span></dt>
+      <dd>Termo consagrado no mercado brasileiro para qualquer alteração formal em uma apólice vigente. No PolicyCenter, aparece como <em>Policy Change</em> — transação que modifica bens segurados, coberturas ou condições antes do vencimento.</dd>
+      <span class="gloss-en">Endorsement / Policy Change</span>
+    </dl>
+    <dl class="gloss-item" data-cats="analytics">
+      <dt>Explore <span class="badge cat-analytics">Analytics</span><span class="badge src-gwcp">GWCP</span></dt>
+      <dd>Produto de Business Intelligence cloud-native do GWCP Analytics. Oferece Liveboards com dados quase em tempo real, busca em linguagem natural e alertas configuráveis. Não requer SQL ou ferramentas externas de BI.</dd>
+      <span class="gloss-en">Explore — cloud-native BI with Liveboards and natural-language search</span>
+    </dl>
+    <dl class="gloss-item" data-cats="seguro">
+      <dt>Exclusão <span class="badge cat-seguro">Seguro</span><span class="badge src-pc">PolicyCenter</span></dt>
+      <dd>Risco, situação ou evento especificamente excluído da cobertura da apólice.</dd>
+      <span class="gloss-en">Exclusion</span>
+    </dl>
+  </div>
+
+  <!-- ══ G ══ -->
+  <div class="gloss-letter" data-letter="G">
+    <h2>G</h2>
+    <dl class="gloss-item" data-cats="arch">
+      <dt>Galaxy <span class="badge cat-arch">Arquitetura</span><span class="badge src-gwcp">GWCP</span></dt>
+      <dd>A região geográfica da infraestrutura Guidewire Cloud. Cada galaxy representa uma região com seus próprios data centers. Uma isolation zone pode conter uma ou mais galaxies.</dd>
+      <span class="gloss-en">Galaxy — geographic infrastructure region</span>
+    </dl>
+    <dl class="gloss-item" data-cats="app">
+      <dt>Guidewire Home <span class="badge cat-app">Aplicação</span><span class="badge src-gwcp">GWCP</span></dt>
+      <dd>Portal unificado e ponto de entrada do GWCP. Oferece SSO para todas as aplicações Guidewire, App Launcher, CI/CD Activity, notificações, busca global e acesso à documentação.</dd>
+      <span class="gloss-en">Guidewire Home — unified SSO portal for all GWCP apps</span>
+    </dl>
+    <dl class="gloss-item" data-cats="arch">
+      <dt>GWCP — Guidewire Cloud Platform <span class="badge cat-arch">Arquitetura</span><span class="badge src-gwcp">GWCP</span></dt>
+      <dd>Fundação SaaS cloud-native da Guidewire, construída sobre AWS com orquestração Kubernetes. Unifica apólices, faturamento, sinistros, analytics e engajamento digital para seguradoras de seguro de danos em uma plataforma continuamente atualizada, com modelo híbrido de tenancy.</dd>
+      <span class="gloss-en">Guidewire Cloud Platform — managed SaaS foundation for P&amp;C insurance</span>
+    </dl>
+  </div>
+
+  <!-- ══ I ══ -->
+  <div class="gloss-letter" data-letter="I">
+    <h2>I</h2>
+    <dl class="gloss-item" data-cats="arch">
+      <dt>InsuranceSuite <span class="badge cat-arch">Arquitetura</span><span class="badge src-gwcp">GWCP</span></dt>
+      <dd>Suite integrada de aplicações core de seguro de danos da Guidewire: PolicyCenter, BillingCenter e ClaimCenter. Opera em plataforma única com dados, workflows e APIs compartilhados, entregue no GWCP.</dd>
+      <span class="gloss-en">InsuranceSuite — integrated PolicyCenter + BillingCenter + ClaimCenter</span>
+    </dl>
+    <dl class="gloss-item" data-cats="arch">
+      <dt>Isolation Zone <span class="badge cat-arch">Arquitetura</span><span class="badge src-gwcp">GWCP</span></dt>
+      <dd>Grupo de galaxies que entrega funcionalidades do Cloud Platform dentro de um limite geográfico e regulatório específico. Garante soberania de dados — os dados não cruzam fronteiras entre isolation zones.</dd>
+      <span class="gloss-en">Isolation Zone — geographic and regulatory boundary grouping galaxies</span>
+    </dl>
+  </div>
+
+  <!-- ══ J ══ -->
+  <div class="gloss-letter" data-letter="J">
+    <h2>J</h2>
+    <dl class="gloss-item" data-cats="app">
+      <dt>Jutro Digital Platform <span class="badge cat-app">Aplicação</span><span class="badge src-gwcp">GWCP</span></dt>
+      <dd>Plataforma de desenvolvimento de interfaces digitais da Guidewire, baseada em React. Oferece sistema de design, componentes de UI, acesso a APIs e suporte a múltiplos idiomas. Usada para portais de autoatendimento de segurados, agentes e funcionários.</dd>
+      <span class="gloss-en">Jutro Digital Platform — React-based UI toolkit for digital portals</span>
+    </dl>
+  </div>
+
+  <!-- ══ L ══ -->
+  <div class="gloss-letter" data-letter="L">
+    <h2>L</h2>
+    <dl class="gloss-item" data-cats="seguro">
+      <dt>Linha de Negócio <span class="badge cat-seguro">Seguro</span><span class="badge src-pc">PolicyCenter</span></dt>
+      <dd>Categoria de produtos de seguro, como Auto Pessoal, Propriedade Comercial ou Workers' Compensation. Cada LOB tem seu próprio conjunto de coberturas e regras de tarifação.</dd>
+      <span class="gloss-en">Line of Business (LOB)</span>
+    </dl>
+    <dl class="gloss-item" data-cats="analytics">
+      <dt>Liveboard <span class="badge cat-analytics">Analytics</span><span class="badge src-gwcp">GWCP</span></dt>
+      <dd>Dashboard interativo e em tempo real do Explore. Organizado por perfil de usuário, permite visualizar KPIs e métricas de negócio sem ferramentas externas de BI.</dd>
+      <span class="gloss-en">Liveboard — real-time role-based dashboard in Explore</span>
+    </dl>
+  </div>
+
+  <!-- ══ M ══ -->
+  <div class="gloss-letter" data-letter="M">
+    <h2>M</h2>
+    <dl class="gloss-item" data-cats="integ">
+      <dt>Marketplace (Guidewire) <span class="badge cat-integ">Integração</span><span class="badge src-gwcp">GWCP</span></dt>
+      <dd>Catálogo de integrações e aceleradores pré-construídos para o InsuranceSuite. Inclui conectores para sistemas externos, templates de integração e soluções de parceiros.</dd>
+      <span class="gloss-en">Guidewire Marketplace — catalog of prebuilt integrations and partner connectors</span>
+    </dl>
+  </div>
+
+  <!-- ══ N ══ -->
+  <div class="gloss-letter" data-letter="N">
+    <h2>N</h2>
+    <dl class="gloss-item" data-cats="seguro">
+      <dt>Não Renovação <span class="badge cat-seguro">Seguro</span><span class="badge src-pc">PolicyCenter</span></dt>
+      <dd>Decisão da seguradora de não estender a apólice ao término da vigência. A cobertura encerra na data de expiração.</dd>
+      <span class="gloss-en">Non-renewal</span>
+    </dl>
+  </div>
+
+  <!-- ══ O ══ -->
+  <div class="gloss-letter" data-letter="O">
+    <h2>O</h2>
+    <dl class="gloss-item" data-cats="arch">
+      <dt>Orbit <span class="badge cat-arch">Arquitetura</span><span class="badge src-gwcp">GWCP</span></dt>
+      <dd>Etapa no ciclo de vida de desenvolvimento (SDLC) dentro de um star system. Cada orbit define o propósito de um planet: Dev, QA, UAT, PreProd, Prod. Apenas um planet pode operar na orbit de produção.</dd>
+      <span class="gloss-en">Orbit — SDLC stage within a star system</span>
+    </dl>
+  </div>
+
+  <!-- ══ P ══ -->
+  <div class="gloss-letter" data-letter="P">
+    <h2>P</h2>
+    <dl class="gloss-item" data-cats="app">
+      <dt>PAS — Policy Administration System <span class="badge cat-app">Aplicação</span><span class="badge src-pc">PolicyCenter</span></dt>
+      <dd>Sistema de Administração de Apólices — software que gerencia o ciclo de vida completo das apólices de seguro. O PolicyCenter é um PAS.</dd>
+      <span class="gloss-en">PAS — Policy Administration System</span>
+    </dl>
+    <dl class="gloss-item" data-cats="seguro">
+      <dt>Período de Vigência <span class="badge cat-seguro">Seguro</span><span class="badge src-pc">PolicyCenter</span></dt>
+      <dd>Intervalo de tempo durante o qual a apólice está em vigor, com datas de início e término definidas.</dd>
+      <span class="gloss-en">Policy Term / Policy Period</span>
+    </dl>
+    <dl class="gloss-item" data-cats="arch">
+      <dt>Planet <span class="badge cat-arch">Arquitetura</span><span class="badge src-gwcp">GWCP</span></dt>
+      <dd>Ambiente onde o código é deployado e executado — ex.: aplicações InsuranceSuite. Um star system pode conter múltiplos planets em orbits diferentes, mas somente um pode ser Prod.</dd>
+      <span class="gloss-en">Planet — deployment environment within a star system</span>
+    </dl>
+    <dl class="gloss-item" data-cats="app">
+      <dt>PolicyCenter <span class="badge cat-app">Aplicação</span><span class="badge src-gwcp src-pc">GWCP · PolicyCenter</span></dt>
+      <dd>Sistema de administração de apólices (PAS) do InsuranceSuite. Suporta o ciclo completo da apólice: design de produto, submissão, análise de risco, subscrição e rating, cotação/binding/emissão e renovação. Inclui o Automated Decision Platform (ADP).</dd>
+      <span class="gloss-en">PolicyCenter — Policy Administration System</span>
+    </dl>
+    <dl class="gloss-item" data-cats="app">
+      <dt>Preempção <span class="badge cat-app">Aplicação</span><span class="badge src-pc">PolicyCenter</span></dt>
+      <dd>Situação em que uma nova transação de alteração é iniciada antes que a anterior seja vinculada. O PolicyCenter exige resolução antes de prosseguir.</dd>
+      <span class="gloss-en">Preemption</span>
+    </dl>
+    <dl class="gloss-item" data-cats="analytics">
+      <dt>Predict <span class="badge cat-analytics">Analytics</span><span class="badge src-gwcp">GWCP</span></dt>
+      <dd>Produto de analytics preditivo do GWCP que usa o Analytics Manager para incorporar scores e recomendações de ML nas telas do InsuranceSuite. Suporta BYOM e governança de modelos em produção.</dd>
+      <span class="gloss-en">Predict — ML-powered predictive analytics embedded in InsuranceSuite</span>
+    </dl>
+    <dl class="gloss-item" data-cats="seguro">
+      <dt>Prêmio <span class="badge cat-seguro">Seguro</span><span class="badge src-pc">PolicyCenter</span></dt>
+      <dd>Valor pago pelo segurado à seguradora pela cobertura contratada. Pode ser calculado com base em dados estimados (auditáveis) ou fixos.</dd>
+      <span class="gloss-en">Premium</span>
+    </dl>
+    <dl class="gloss-item" data-cats="seguro">
+      <dt>Produtor <span class="badge cat-seguro">Seguro</span><span class="badge src-pc">PolicyCenter</span></dt>
+      <dd>Termo genérico do mercado norte-americano que agrupa agentes (vinculados a uma seguradora) e brokers (independentes). No Brasil, o equivalente regulamentado é o <strong>corretor de seguros</strong> — licenciado pela SUSEP para intermediar contratos. No PolicyCenter, o campo "Producer" corresponde ao corretor responsável pela apólice.</dd>
+      <span class="gloss-en">Producer</span>
+    </dl>
+    <dl class="gloss-item" data-cats="app">
+      <dt>Proposta <span class="badge cat-app">Aplicação</span><span class="badge src-pc">PolicyCenter</span></dt>
+      <dd>Transação que inicia a criação de uma nova apólice no PolicyCenter, da qualificação do candidato à emissão do contrato.</dd>
+      <span class="gloss-en">Submission</span>
+    </dl>
+  </div>
+
+  <!-- ══ R ══ -->
+  <div class="gloss-letter" data-letter="R">
+    <h2>R</h2>
+    <dl class="gloss-item" data-cats="seguro">
+      <dt>Reabilitação <span class="badge cat-seguro">Seguro</span><span class="badge src-pc">PolicyCenter</span></dt>
+      <dd>Restauração de uma apólice cancelada ao estado anterior ao cancelamento. A data de reabilitação deve coincidir com a data efetiva do cancelamento para evitar lacuna de cobertura.</dd>
+      <span class="gloss-en">Reinstatement</span>
+    </dl>
+    <dl class="gloss-item" data-cats="seguro">
+      <dt>Reescrição <span class="badge cat-seguro">Seguro</span><span class="badge src-pc">PolicyCenter</span></dt>
+      <dd>Criação de uma nova apólice a partir de uma existente, com novas datas e condições. Usada para alterações não permitidas em uma transação comum (ex.: mudança de produtor).</dd>
+      <span class="gloss-en">Rewrite</span>
+    </dl>
+    <dl class="gloss-item" data-cats="seguro">
+      <dt>Relatório de Prêmio <span class="badge cat-seguro">Seguro</span><span class="badge src-pc">PolicyCenter</span></dt>
+      <dd>Relatório periódico preparado pelo segurado com dados reais de exposição (folha de pagamento, inventário etc.) para ajuste intermediário do prêmio durante a vigência.</dd>
+      <span class="gloss-en">Premium Report</span>
+    </dl>
+    <dl class="gloss-item" data-cats="seguro">
+      <dt>Renovação <span class="badge cat-seguro">Seguro</span><span class="badge src-pc">PolicyCenter</span></dt>
+      <dd>Extensão da apólice para um novo período de vigência. O número da apólice é mantido; um novo número de vigência é acrescentado.</dd>
+      <span class="gloss-en">Renewal</span>
+    </dl>
+    <dl class="gloss-item" data-cats="seguro">
+      <dt>Risco <span class="badge cat-seguro">Seguro</span><span class="badge src-pc">PolicyCenter</span></dt>
+      <dd>Possibilidade de perda ou dano coberto pela apólice. Na subscrição, é avaliado para determinar elegibilidade e prêmio.</dd>
+      <span class="gloss-en">Risk</span>
+    </dl>
+  </div>
+
+  <!-- ══ S ══ -->
+  <div class="gloss-letter" data-letter="S">
+    <h2>S</h2>
+    <dl class="gloss-item" data-cats="seguro">
+      <dt>Segurado <span class="badge cat-seguro">Seguro</span><span class="badge src-pc">PolicyCenter</span></dt>
+      <dd>Pessoa física ou jurídica cuja vida, saúde, propriedade ou responsabilidade é coberta pela apólice.</dd>
+      <span class="gloss-en">Insured / Policyholder</span>
+    </dl>
+    <dl class="gloss-item" data-cats="seguro">
+      <dt>Seguradora <span class="badge cat-seguro">Seguro</span><span class="badge src-pc">PolicyCenter</span></dt>
+      <dd>Empresa que emite as apólices, assume os riscos e paga as indenizações em caso de sinistro.</dd>
+      <span class="gloss-en">Insurer / Carrier</span>
+    </dl>
+    <dl class="gloss-item" data-cats="seguro">
+      <dt>Sinistro <span class="badge cat-seguro">Seguro</span><span class="badge src-pc">PolicyCenter</span></dt>
+      <dd>Solicitação formal do segurado à seguradora por indenização em função de um evento coberto pela apólice. No Guidewire, é gerenciado pelo ClaimCenter.</dd>
+      <span class="gloss-en">Claim</span>
+    </dl>
+    <dl class="gloss-item" data-cats="devops">
+      <dt>Ski Release <span class="badge cat-devops">Dev &amp; Ops</span><span class="badge src-gwcp">GWCP</span></dt>
+      <dd>Ciclo regular de atualização da plataforma Guidewire Cloud. As atualizações são entregues automaticamente, mantendo as aplicações core sempre na versão mais recente sem upgrades manuais.</dd>
+      <span class="gloss-en">Ski Release — Guidewire's regular automated platform update cycle</span>
+    </dl>
+    <dl class="gloss-item" data-cats="devops">
+      <dt>SSO — Single Sign-On <span class="badge cat-devops">Dev &amp; Ops</span><span class="badge src-gwcp">GWCP</span></dt>
+      <dd>Mecanismo de autenticação centralizado do Guidewire Home que permite ao usuário acessar todas as aplicações GWCP com um único login.</dd>
+      <span class="gloss-en">SSO — Single Sign-On via Guidewire Home</span>
+    </dl>
+    <dl class="gloss-item" data-cats="arch">
+      <dt>Star <span class="badge cat-arch">Arquitetura</span><span class="badge src-gwcp">GWCP</span></dt>
+      <dd>Unidade de negócio ou serviço compartilhado dentro de um tenant que se deseja gerenciar independentemente. Cada star pode conter até três star systems e é completamente separada das demais.</dd>
+      <span class="gloss-en">Star — independent business unit within a tenant</span>
+    </dl>
+    <dl class="gloss-item" data-cats="arch">
+      <dt>Star System <span class="badge cat-arch">Arquitetura</span><span class="badge src-gwcp">GWCP</span></dt>
+      <dd>Grupo de planets que compartilham serviços do Cloud Platform. Existem três classes: <em>dev</em> (Dev/QA/UAT), <em>pre-prod</em> (PreProd) e <em>prod</em> (Prod). Cada star system tem seu próprio banco de dados dedicado.</dd>
+      <span class="gloss-en">Star System — group of planets sharing Cloud Platform services</span>
+    </dl>
+    <dl class="gloss-item" data-cats="seguro">
+      <dt>Subscrição <span class="badge cat-seguro">Seguro</span><span class="badge src-pc">PolicyCenter</span></dt>
+      <dd>Processo de avaliação e seleção de riscos para determinar se uma proposta é aceitável e a que preço. O subscritor analisa dados da proposta para tomar essa decisão.</dd>
+      <span class="gloss-en">Underwriting</span>
+    </dl>
+  </div>
+
+  <!-- ══ T ══ -->
+  <div class="gloss-letter" data-letter="T">
+    <h2>T</h2>
+    <dl class="gloss-item" data-cats="seguro">
+      <dt>Tarifação <span class="badge cat-seguro">Seguro</span><span class="badge src-pc">PolicyCenter</span></dt>
+      <dd>Processo de cálculo do prêmio com base nos fatores de risco da apólice, regras tarifárias e dados do segurado. O PolicyCenter possui motor de tarifação nativo.</dd>
+      <span class="gloss-en">Rating / Pricing</span>
+    </dl>
+    <dl class="gloss-item" data-cats="arch">
+      <dt>Tenant <span class="badge cat-arch">Arquitetura</span><span class="badge src-gwcp">GWCP</span></dt>
+      <dd>Representa a presença de uma empresa em uma isolation zone do Cloud Platform. Limitado a uma única isolation zone por requisitos de residência de dados. Tenants são completamente isolados — sem compartilhamento de dados ou workloads.</dd>
+      <span class="gloss-en">Tenant — company presence in one isolation zone</span>
+    </dl>
+  </div>
+
+  <!-- ══ V ══ -->
+  <div class="gloss-letter" data-letter="V">
+    <h2>V</h2>
+    <dl class="gloss-item" data-cats="seguro">
+      <dt>Vigência <span class="badge cat-seguro">Seguro</span><span class="badge src-pc">PolicyCenter</span></dt>
+      <dd>Período específico de cobertura de uma apólice, delimitado por data de início e data de término. Uma apólice renovada gera uma nova vigência.</dd>
+      <span class="gloss-en">Policy Term</span>
+    </dl>
+  </div>
+
+</div><!-- /container -->
+
+<script>
+  const search  = document.getElementById('gloss-search');
+  const noRes   = document.getElementById('no-results');
+  const counter = document.getElementById('result-count');
+  const tagBtns = document.querySelectorAll('.tag-btn');
+  let activeCat = 'all';
+
+  function applyFilters() {
+    const q = search.value.trim().toLowerCase();
+    let visible = 0;
+
+    document.querySelectorAll('.gloss-item').forEach(item => {
+      const cats = item.dataset.cats || '';
+      const text = item.textContent.toLowerCase();
+      const catOk = activeCat === 'all' || cats.includes(activeCat);
+      const txtOk = !q || text.includes(q);
+      const show  = catOk && txtOk;
+      item.classList.toggle('hidden', !show);
+      if (show) visible++;
+    });
+
+    document.querySelectorAll('.gloss-letter').forEach(group => {
+      const any = [...group.querySelectorAll('.gloss-item')].some(i => !i.classList.contains('hidden'));
+      group.classList.toggle('hidden', !any);
+    });
+
+    noRes.style.display = visible === 0 ? 'block' : 'none';
+    counter.textContent = q || activeCat !== 'all'
+      ? `${visible} termo${visible !== 1 ? 's' : ''} encontrado${visible !== 1 ? 's' : ''}`
+      : '';
+  }
+
+  search.ad

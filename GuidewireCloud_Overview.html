@@ -1,0 +1,2336 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Guia de estudo em PT-BR do Guidewire Cloud Platform Overview — 17 páginas cobrindo arquitetura, terminologia, aplicações, analytics e integração." />
+  <title>Guidewire Cloud Overview</title>
+  <link rel="icon" type="image/png" href="images/logo.png" />
+  <link rel="stylesheet" href="guidewire.css" />
+  <style>
+    /* GWCP-specific: architecture diagram layers */
+    .arch-layer{display:flex;align-items:center;gap:0.75rem;padding:0.7rem 1rem;border-radius:8px;flex-wrap:wrap;}
+    .arch-label{font-size:0.82rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;min-width:90px;flex-shrink:0;}
+    .arch-badges{display:flex;flex-wrap:wrap;gap:0.4rem;}
+    .arch-badge{padding:0.2rem 0.55rem;border-radius:4px;font-size:0.82rem;}
+  </style>
+</head>
+<body>
+
+<header>
+  <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menu de navegação">☰</button>
+  <img src="images/logo.png" alt="Guidewire" class="header-logo" />
+  <p>Guidewire Cloud Overview</p>
+  <a class="hub-link" href="Guidewire_Home.html">← Home</a>
+</header>
+
+<div class="breadcrumb">
+  <a href="Guidewire_Home.html">Home</a>
+  <span class="bc-sep">›</span>
+  <span>Guidewire Cloud Overview</span>
+  <span class="bc-sep">›</span>
+  <span id="bc-page">Bem-vindo</span>
+</div>
+<div class="sidebar-overlay" id="sidebar-overlay"></div>
+<div class="container">
+
+  <!-- SIDEBAR -->
+  <aside aria-label="Navegação do curso">
+    <h2 id="secoes">Seções</h2>
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="sidebar-progress"></div>
+    </div>
+
+    <div class="nav-group" data-group="grp-welcome">
+      <button type="button" class="nav-group-header" onclick="toggleGroup('grp-welcome')">
+        <span class="dot current"></span>
+        <span>Boas-vindas e Introdução</span>
+        <span class="nav-arrow-icon">›</span>
+      </button>
+      <div class="nav-sub-items" id="grp-welcome">
+        <button type="button" class="nav-btn nav-sub" data-page="1">
+          <span class="dot current"></span><span>Bem-vindo ao Guidewire Cloud Overview</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="nav-group" data-group="grp-platform">
+      <button type="button" class="nav-group-header" onclick="toggleGroup('grp-platform')">
+        <span class="dot pending"></span>
+        <span>A Guidewire Cloud Platform</span>
+        <span class="nav-arrow-icon">›</span>
+      </button>
+      <div class="nav-sub-items" id="grp-platform">
+        <button type="button" class="nav-btn nav-sub" data-page="2"><span class="dot pending"></span><span>A Guidewire Cloud Platform</span></button>
+        <button type="button" class="nav-btn nav-sub" data-page="3"><span class="dot pending"></span><span>Introdução ao GWCP</span></button>
+        <button type="button" class="nav-btn nav-sub" data-page="4"><span class="dot pending"></span><span>Arquitetura GWCP</span></button>
+        <button type="button" class="nav-btn nav-sub" data-page="5"><span class="dot pending"></span><span>Terminologia do GWCP</span></button>
+        <button type="button" class="nav-btn nav-sub" data-page="6"><span class="dot pending"></span><span>Experiência de Desenvolvimento e Operação</span></button>
+        <button type="button" class="nav-btn nav-sub" data-page="7"><span class="dot pending"></span><span>Visão Geral do Guidewire Home</span></button>
+        <button type="button" class="nav-btn nav-sub" data-page="8"><span class="dot pending"></span><span>Cloud Integration Framework</span></button>
+        <button type="button" class="nav-btn nav-sub" data-page="9"><span class="dot pending"></span><span>Introdução à Plataforma de Dados</span></button>
+      </div>
+    </div>
+
+    <div class="nav-group" data-group="grp-apps">
+      <button type="button" class="nav-group-header" onclick="toggleGroup('grp-apps')">
+        <span class="dot pending"></span>
+        <span>Aplicações Guidewire Cloud</span>
+        <span class="nav-arrow-icon">›</span>
+      </button>
+      <div class="nav-sub-items" id="grp-apps">
+        <button type="button" class="nav-btn nav-sub" data-page="10"><span class="dot pending"></span><span>Aplicações Guidewire Cloud</span></button>
+        <button type="button" class="nav-btn nav-sub" data-page="11"><span class="dot pending"></span><span>Tour pelas Aplicações Cloud</span></button>
+        <button type="button" class="nav-btn nav-sub" data-page="12"><span class="dot pending"></span><span>Jutro Digital Platform</span></button>
+        <button type="button" class="nav-btn nav-sub" data-page="13"><span class="dot pending"></span><span>PolicyCenter</span></button>
+        <button type="button" class="nav-btn nav-sub" data-page="14"><span class="dot pending"></span><span>ClaimCenter</span></button>
+        <button type="button" class="nav-btn nav-sub" data-page="15"><span class="dot pending"></span><span>BillingCenter</span></button>
+        <button type="button" class="nav-btn nav-sub" data-page="16"><span class="dot pending"></span><span>GWCP Analytics</span></button>
+      </div>
+    </div>
+
+    <div class="nav-group" data-group="grp-summary">
+      <button type="button" class="nav-group-header" onclick="toggleGroup('grp-summary')">
+        <span class="dot pending"></span>
+        <span>Resumo do Curso</span>
+        <span class="nav-arrow-icon">›</span>
+      </button>
+      <div class="nav-sub-items" id="grp-summary">
+        <button type="button" class="nav-btn nav-sub" data-page="17"><span class="dot pending"></span><span>Resumo do Guidewire Cloud Platform</span></button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- ══ PÁGINA 1 ══ -->
+    <div class="page-section active" id="page-1">
+      <div class="page-header">
+        <h1>Bem-vindo ao Guidewire Cloud Overview</h1>
+        <div class="divider"></div>
+        <p class="page-subtitle">Fundamentos do <em>Guidewire Cloud Platform (GWCP)</em> — a base cloud-native para operações de seguro P&C.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="por-que-fazer-este-curso">Por que fazer este curso?</h2>
+        <div class="section-divider"></div>
+        <p>Este curso fornece a base necessária sobre o <strong>Guidewire Cloud Platform (GWCP)</strong> — a fundação segura e cloud-native para entregar operações centrais de seguro e experiências digitais, projetada especificamente para o setor de seguros de danos.</p>
+        <p>Você vai entender como essa plataforma unificada reúne todos os elementos essenciais — apólices, faturamento, sinistros, analytics e engajamento digital — permitindo que seguradoras gerenciem todo o ciclo de negócio em um único ambiente seguro.</p>
+        <p>O curso explica como o GWCP cumpre sua promessa de <strong>impulsionar crescimento rentável, acelerar a transformação digital e reduzir a complexidade de TI</strong>. Você também vai conhecer os quatro Pilares Arquiteturais Chave — Segurança, Escalabilidade, Observabilidade e Integração — que garantem que a plataforma seja robusta, escalável e continuamente atualizada.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="para-quem-e-este-curso">Para quem é este curso?</h2>
+        <div class="section-divider"></div>
+        <ul class="goal-list">
+          <li>Seu papel é <strong>desenvolvedor full-stack, administrador ou DevOps</strong></li>
+          <li>Você está trabalhando na <strong>implementação de aplicações e serviços Guidewire Cloud</strong></li>
+          <li>Você é <strong>novo em implementações Guidewire Cloud</strong> e quer conhecer os fundamentos do GWCP</li>
+        </ul>
+        <div class="callout" style="margin-top: 1.2rem;">
+          <div class="callout-title">⚠️ Escopo do Curso</div>
+          O conteúdo deste curso se aplica <strong>somente a implementações Guidewire Cloud</strong>, salvo indicação em contrário.
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 id="objetivos-do-curso">Objetivos do Curso</h2>
+        <div class="section-divider"></div>
+        <p>Ao concluir este curso, você será capaz de:</p>
+        <ul class="goal-list">
+          <li>Explicar o que é o Guidewire Cloud Platform e como ele executa aplicações de forma <strong>segura e confiável</strong></li>
+          <li>Descrever como mudanças <strong>se movem com segurança do desenvolvimento à produção</strong>, como sistemas se conectam e onde encontrar ferramentas e dados no Guidewire Home</li>
+          <li>
+            Descrever o que cada aplicação core faz:
+            <ul class="sub-list">
+              <li><strong>Jutro</strong> — autoatendimento digital</li>
+              <li><strong>PolicyCenter</strong> — cotações e apólices</li>
+              <li><strong>ClaimCenter</strong> — sinistros</li>
+              <li><strong>BillingCenter</strong> — faturamento e pagamentos</li>
+              <li><strong>Analytics</strong> com Explore e Predict</li>
+            </ul>
+          </li>
+          <li>Explicar como tarefas de cliente e apólice <strong>transitam entre as aplicações core</strong> da cotação ao sinistro</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2 id="outros-cursos-relacionados">Outros cursos relacionados</h2>
+        <div class="section-divider"></div>
+        <div class="capability-grid">
+          <div class="cap-card"><div class="cap-icon">💻</div><div class="cap-title">Developing with Guidewire Cloud</div><div class="cap-desc">Desenvolvimento e customização no ambiente GWCP — para desenvolvedores e DevOps.</div></div>
+          <div class="cap-card"><div class="cap-icon">📋</div><div class="cap-title">PolicyCenter Overview</div><div class="cap-desc">Aprofundamento no sistema de administração de apólices da Guidewire.</div></div>
+          <div class="cap-card"><div class="cap-icon">🎨</div><div class="cap-title">Jutro Digital Platform Overview</div><div class="cap-desc">Framework de UI da Guidewire para portais digitais de clientes e corretores.</div></div>
+          <div class="cap-card"><div class="cap-icon">📊</div><div class="cap-title">Data Analytics Overview</div><div class="cap-desc">Plataforma de dados, analytics e modelos de ML embarcados no GWCP.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ PÁGINA 2 ══ -->
+    <div class="page-section" id="page-2">
+      <div class="page-header">
+        <h1>A Guidewire Cloud Platform</h1>
+        <div class="divider"></div>
+        <p class="page-subtitle">Visão geral do valor de negócio do GWCP e objetivos do módulo.</p>
+      </div>
+      <div class="section">
+        <h2 id="valor-de-negocio">Valor de Negócio</h2>
+        <div class="section-divider"></div>
+        <p>O <strong>Guidewire Cloud Platform (GWCP)</strong> é uma fundação segura e cloud-native que unifica apólices, faturamento, sinistros, analytics e engajamento digital para seguradoras de seguro de danos — consolidando as operações centrais em uma única plataforma continuamente atualizada.</p>
+        <p>O GWCP capacita tanto usuários de negócio quanto técnicos a trabalharem com mais eficiência. Ajuda as equipes a entregar experiências digitais superiores acelerando o lançamento de produtos e automatizando e integrando processos. Também <strong>reduz o overhead de TI, garante conformidade e suporta adaptação rápida</strong> à medida que as necessidades de negócio e tecnologia evoluem.</p>
+      </div>
+      <div class="section">
+        <h2 id="objetivos-do-modulo">Objetivos do Módulo</h2>
+        <div class="section-divider"></div>
+        <p>Ao concluir este módulo, você será capaz de:</p>
+        <ul class="goal-list">
+          <li>Explicar o que é o GWCP e por que uma <strong>fundação cloud segura e compartilhada</strong> é importante para executar aplicações de seguro</li>
+          <li>Explicar os <strong>componentes arquiteturais core do GWCP</strong> e usar corretamente sua terminologia específica de plataforma</li>
+          <li>Navegar na <strong>página do Guidewire Home</strong> e explicar seu papel no Guidewire Cloud Platform</li>
+          <li>Explicar como o GWCP ajuda equipes a <strong>construir, testar, lançar e monitorar aplicações</strong> usando pipelines e dashboards gerenciados pela plataforma, a partir do Guidewire Home</li>
+          <li>Explicar como o GWCP <strong>conecta aplicações e sistemas externos</strong> usando opções padronizadas</li>
+          <li>Explicar o que é o <strong>Guidewire Data Platform</strong> e como ele cria uma visão única e confiável dos dados</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ══ PÁGINA 3 ══ -->
+    <div class="page-section" id="page-3">
+      <div class="page-header">
+        <h1>Introdução ao Guidewire Cloud Platform</h1>
+        <div class="divider"></div>
+        <p class="page-subtitle">Arquitetura em camadas, linhas de produto e usuários típicos do GWCP.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="o-que-e-o-gwcp">O que é o GWCP?</h2>
+        <div class="section-divider"></div>
+        <p>O GWCP é uma <strong>fundação cloud-native moderna</strong> para entrega de operações centrais de seguro e experiências digitais. Projetado especificamente para o setor de seguros de danos, oferece um ambiente SaaS seguro, escalável e continuamente atualizado.</p>
+        <p>Reúne gestão de apólices, faturamento, sinistros, analytics e engajamento digital em uma única plataforma unificada — permitindo que seguradoras gerenciem todo o seu ciclo de negócio em um lugar, com confiança de que seus dados estão protegidos e seus sistemas sempre atualizados.</p>
+        <p>O GWCP orquestra cargas de trabalho conteinerizadas no <strong>Kubernetes</strong> para proteger, implantar, testar, gerenciar e atualizar declarativamente as aplicações InsuranceSuite. Expõe a <strong>AWS</strong> de forma unificada e segura para que as aplicações core, digitais, de dados e de analytics possam aproveitá-la consistentemente. É a fundação SaaS <strong>multi-tenant baseada em microsserviços</strong> para todas as aplicações Guidewire.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="arquitetura-em-camadas-do-gwcp">Arquitetura em Camadas do GWCP</h2>
+        <div class="section-divider"></div>
+        <!-- Diagrama textual das camadas -->
+        <div style="border:1px solid var(--border);border-radius:10px;overflow:hidden;font-size:0.85rem;">
+          <!-- Extensions -->
+          <div style="background:#1a2e44;color:white;padding:0.6rem 1rem;display:flex;align-items:center;gap:1rem;">
+            <span style="font-weight:700;font-size:0.82rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--gw-teal);min-width:90px;">Extensions</span>
+            <span style="background:rgba(255,255,255,0.15);padding:0.3rem 0.8rem;border-radius:4px;">Guidewire Extensions</span>
+            <span style="background:rgba(255,255,255,0.15);padding:0.3rem 0.8rem;border-radius:4px;">Marketplace</span>
+            <span style="background:rgba(255,255,255,0.15);padding:0.3rem 0.8rem;border-radius:4px;">Partner Extensions</span>
+          </div>
+          <!-- Applications -->
+          <div style="background:#e8f4f8;padding:0.8rem 1rem;display:flex;align-items:flex-start;gap:1rem;">
+            <span style="font-weight:700;font-size:0.82rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--gw-teal);min-width:90px;padding-top:0.2rem;">Applications</span>
+            <div style="flex:1;">
+              <div style="display:flex;gap:2rem;flex-wrap:wrap;">
+                <div>
+                  <div style="font-size:0.82rem;font-weight:700;color:var(--gw-blue);margin-bottom:0.3rem;">Business Applications</div>
+                  <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+                    <span style="background:white;border:1px solid var(--border);padding:0.2rem 0.6rem;border-radius:4px;">PolicyCenter</span>
+                    <span style="background:white;border:1px solid var(--border);padding:0.2rem 0.6rem;border-radius:4px;">BillingCenter</span>
+                    <span style="background:white;border:1px solid var(--border);padding:0.2rem 0.6rem;border-radius:4px;">ClaimCenter</span>
+                    <span style="background:white;border:1px solid var(--border);padding:0.2rem 0.6rem;border-radius:4px;">InsuranceNow</span>
+                  </div>
+                </div>
+                <div>
+                  <div style="font-size:0.82rem;font-weight:700;color:var(--gw-blue);margin-bottom:0.3rem;">Analytics Applications</div>
+                  <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+                    <span style="background:white;border:1px solid var(--border);padding:0.2rem 0.6rem;border-radius:4px;">Predict</span>
+                    <span style="background:white;border:1px solid var(--border);padding:0.2rem 0.6rem;border-radius:4px;">HazardHub</span>
+                    <span style="background:white;border:1px solid var(--border);padding:0.2rem 0.6rem;border-radius:4px;">Explore</span>
+                    <span style="background:white;border:1px solid var(--border);padding:0.2rem 0.6rem;border-radius:4px;">Industry Intel</span>
+                    <span style="background:white;border:1px solid var(--border);padding:0.2rem 0.6rem;border-radius:4px;">Cyence</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- App Services -->
+          <div style="background:#d1ece8;padding:0.8rem 1rem;display:flex;align-items:center;gap:1rem;">
+            <span style="font-weight:700;font-size:0.82rem;letter-spacing:0.06em;text-transform:uppercase;color:#155e4a;min-width:90px;">App Services</span>
+            <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
+              <span style="background:#2a9d8f;color:white;padding:0.25rem 0.6rem;border-radius:20px;font-weight:600;">Product</span>
+              <span style="background:#2a9d8f;color:white;padding:0.25rem 0.6rem;border-radius:20px;font-weight:600;">Integration</span>
+              <span style="background:#2a9d8f;color:white;padding:0.25rem 0.6rem;border-radius:20px;font-weight:600;">Rules</span>
+              <span style="background:#2a9d8f;color:white;padding:0.25rem 0.6rem;border-radius:20px;font-weight:600;">Workflow</span>
+              <span style="background:#2a9d8f;color:white;padding:0.25rem 0.6rem;border-radius:20px;font-weight:600;">Rating</span>
+              <span style="background:#4a6fa5;color:white;padding:0.25rem 0.6rem;border-radius:20px;font-weight:600;">Data</span>
+              <span style="background:#4a6fa5;color:white;padding:0.25rem 0.6rem;border-radius:20px;font-weight:600;">Digital</span>
+              <span style="background:#3a3a8c;color:white;padding:0.25rem 0.6rem;border-radius:20px;font-weight:600;">AI</span>
+            </div>
+          </div>
+          <!-- Platform Services -->
+          <div style="background:#1a2e44;padding:0.8rem 1rem;display:flex;align-items:center;gap:1rem;">
+            <span style="font-weight:700;font-size:0.82rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--gw-teal);min-width:90px;">Platform</span>
+            <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
+              <span style="background:rgba(255,255,255,0.12);color:#e2e8f0;padding:0.2rem 0.55rem;border-radius:4px;font-size:0.8rem;">Containerization</span>
+              <span style="background:rgba(255,255,255,0.12);color:#e2e8f0;padding:0.2rem 0.55rem;border-radius:4px;font-size:0.8rem;">Configuration</span>
+              <span style="background:rgba(255,255,255,0.12);color:#e2e8f0;padding:0.2rem 0.55rem;border-radius:4px;font-size:0.8rem;">Provisioning</span>
+              <span style="background:rgba(255,255,255,0.12);color:#e2e8f0;padding:0.2rem 0.55rem;border-radius:4px;font-size:0.8rem;">Security</span>
+              <span style="background:rgba(255,255,255,0.12);color:#e2e8f0;padding:0.2rem 0.55rem;border-radius:4px;font-size:0.8rem;">Connectivity</span>
+              <span style="background:rgba(255,255,255,0.12);color:#e2e8f0;padding:0.2rem 0.55rem;border-radius:4px;font-size:0.8rem;">Deployment</span>
+              <span style="background:rgba(255,255,255,0.12);color:#e2e8f0;padding:0.2rem 0.55rem;border-radius:4px;font-size:0.8rem;">Observability</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 id="duas-linhas-de-produto">Duas Linhas de Produto</h2>
+        <div class="section-divider"></div>
+        <div class="capability-grid">
+          <div class="cap-card" style="border-color:var(--gw-blue);">
+            <div class="cap-icon">📦</div>
+            <div class="cap-title">InsuranceSuite</div>
+            <div class="cap-desc">Aplicações modulares para apólices (PolicyCenter), faturamento (BillingCenter) e sinistros (ClaimCenter). Escolhida quando a seguradora precisa de <strong>máxima flexibilidade</strong> para personalizar produtos, workflows e integrações.</div>
+          </div>
+          <div class="cap-card" style="border-color:var(--gw-teal);">
+            <div class="cap-icon">⚡</div>
+            <div class="cap-title">InsuranceNow</div>
+            <div class="cap-desc">Aplicação all-in-one que combina apólices, faturamento e sinistros em um único sistema. Escolhida quando a seguradora quer <strong>implantação mais rápida</strong> com processos padronizados e operações simplificadas.</div>
+          </div>
+        </div>
+        <div class="note" style="margin-top:1rem;">Ambas rodam no GWCP e se conectam às mesmas capacidades de digital, dados e analytics — garantindo segurança e atualização contínua.</div>
+      </div>
+
+      <div class="section">
+        <h2 id="principais-caracteristicas-e-beneficios">Principais Características e Benefícios</h2>
+        <div class="section-divider"></div>
+        <div class="accordion">
+          <div class="acc-item"><button type="button" class="acc-header" aria-expanded="true" onclick="toggleAcc(this)">⚙️ Características-Chave <span class="acc-arrow">▾</span></button><div class="acc-body open"><ul class="goal-list" style="margin-top:0.5rem;"><li><strong>Arquitetura cloud-native</strong> para máxima flexibilidade e confiabilidade</li><li><strong>Atualizações contínuas</strong> e melhorias com mínima disrupção</li><li><strong>Segurança e conformidade</strong> de nível enterprise</li></ul></div></div>
+          <div class="acc-item"><button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">🚀 Benefícios <span class="acc-arrow">▾</span></button><div class="acc-body"><ul class="goal-list" style="margin-top:0.5rem;"><li><strong>Acelera o desenvolvimento e a transformação digital</strong> — lançamentos de produtos mais rápidos e melhores experiências ao cliente</li><li><strong>Integração aprimorada</strong> — APIs abertas e conectores pré-construídos facilitam a conexão com serviços de terceiros (processadores de pagamento, provedores de dados)</li><li><strong>Reduz o overhead de TI</strong> — com a Guidewire gerenciando a infraestrutura, os times de TI focam em inovação, não em manutenção</li><li><strong>Aumenta a agilidade de negócio</strong> para impulsionar crescimento rentável</li><li><strong>Entrega melhor serviço</strong> a clientes e agentes por meio de interfaces modernas e intuitivas</li></ul></div></div>
+        </div>
+        <div class="callout" style="margin-top:1.2rem;">
+          <div class="callout-title">💡 Exemplo Prático</div>
+          Imagine uma seguradora lançando um novo produto de seguro auto. Com o GWCP, ela pode configurar, testar e implantar o produto rapidamente — sem aguardar longos upgrades de software ou se preocupar com infraestrutura.
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 id="usuarios-e-papeis-no-gwcp">Usuários e Papéis no GWCP</h2>
+        <div class="section-divider"></div>
+        <p>Os usuários típicos do GWCP se organizam em três grupos:</p>
+        <div class="accordion" style="margin-top:1rem;">
+          <div class="acc-item"><button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">👔 Profissionais de Seguro <span class="acc-arrow">▾</span></button><div class="acc-body">
+            <ul class="goal-list" style="margin-top:0.5rem;">
+              <li><strong>Subscritores</strong> — avaliam risco, precificam apólices e gerenciam renovações com eficiência</li>
+              <li><strong>Reguladores de Sinistros</strong> — tratam sinistros com rapidez e precisão, com acesso a todas as informações relevantes</li>
+              <li><strong>Agentes / Corretores</strong> — fornecem cotações, vendem apólices e atendem clientes usando ferramentas digitais modernas</li>
+            </ul>
+          </div></div>
+          <div class="acc-item"><button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">📊 Usuários de Negócio <span class="acc-arrow">▾</span></button><div class="acc-body">
+            <ul class="goal-list" style="margin-top:0.5rem;">
+              <li><strong>Analistas de Negócio</strong> — analisam dados para identificar tendências, riscos e oportunidades</li>
+              <li><strong>Especialistas em Faturamento</strong> — gerenciam pagamentos, cobranças e consultas de clientes</li>
+              <li><strong>Executivos</strong> — monitoram o desempenho do negócio e tomam decisões estratégicas com analytics em tempo real</li>
+              <li><strong>Gerentes de Produto</strong> — definem e lançam produtos de seguro, acompanham adoção e rentabilidade, e alinham workflows de subscrição, faturamento e sinistros</li>
+              <li><strong>Gestores de Operações</strong> — monitoram cargas de trabalho, SLAs e tempos de ciclo entre equipes, rebalanceiam capacidade com alertas e dashboards, e impulsionam melhorias de processo</li>
+            </ul>
+          </div></div>
+          <div class="acc-item"><button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">💻 Usuários Técnicos <span class="acc-arrow">▾</span></button><div class="acc-body">
+            <ul class="goal-list" style="margin-top:0.5rem;">
+              <li><strong>Profissionais de Dados</strong> (Data Scientists, Data Integration Engineers, Data Architects) — trabalham com Guidewire Data Platform, DataHub, InfoCenter e Explore para analytics, reporting e integração de dados</li>
+              <li><strong>Times de TI</strong> — integram o GWCP com outros sistemas e gerenciam configurações</li>
+              <li><strong>Desenvolvedores de Aplicações (Insurer Developers)</strong> — desenvolvem, configuram e customizam as aplicações Guidewire</li>
+              <li><strong>DevOps Engineers</strong> — responsáveis pelo gerenciamento de pipelines CI/CD, testes automatizados, deployment e orquestração de ambientes</li>
+              <li><strong>Arquitetos de Solução</strong> — projetam e supervisionam a integração das aplicações Guidewire com outros sistemas</li>
+              <li><strong>Desenvolvedores e UX Designers Jutro</strong> — constroem, customizam e implantam experiências digitais usando Jutro, aproveitando o design system, templates e SDKs</li>
+            </ul>
+          </div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ PÁGINA 4 ══ -->
+    <div class="page-section" id="page-4">
+      <div class="page-header">
+        <h1>Arquitetura GWCP</h1>
+        <div class="divider"></div>
+        <p class="page-subtitle">Como o Guidewire Cloud Platform é estruturado internamente — tenancy híbrido, isolamento e pilares arquiteturais.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="infraestrutura-e-tecnologia-base">Infraestrutura e Tecnologia Base</h2>
+        <div class="section-divider"></div>
+        <p>O Guidewire Cloud Platform roda sobre a <strong>Amazon Web Services (AWS)</strong> com uma camada de serviços gerenciados pela Guidewire que usa <strong>Kubernetes</strong> para orquestrar workloads <span class="tooltip-wrap"><span class="tooltip-term">conteinerizados</span><span class="tooltip-box">Um contêiner é um pacote pequeno e autossuficiente que empacota uma aplicação com tudo que ela precisa (código, bibliotecas, configurações) para rodar da mesma forma em qualquer ambiente — seja no laptop do desenvolvedor ou na nuvem. Pense como um container de carga: padronizado por fora, o que está dentro chega intacto e funciona de forma consistente.</span></span>.</p>
+        <p style="margin-top:0.8rem;">A arquitetura usa serviços cloud modernos, incluindo bancos de dados cloud-native como <strong>Amazon Aurora</strong> e <strong>DynamoDB</strong>, para entregar um ambiente escalável, resiliente e seguro para seguradoras de seguro de danos. O objetivo é desempenho consistente, alta disponibilidade e atualizações mais seguras nas aplicações core.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="modelo-de-tenancy-hibrido">Modelo de Tenancy Híbrido</h2>
+        <div class="section-divider"></div>
+        <p>O GWCP utiliza um <strong>modelo híbrido de cloud tenancy</strong>, combinando dois tipos de serviços:</p>
+        <div class="capability-grid">
+          <div class="cap-card">
+            <div class="cap-title">Serviços Single-Tenant</div>
+            <div class="cap-desc">As aplicações core do InsuranceSuite (PolicyCenter, BillingCenter, ClaimCenter) são implantadas em instâncias dedicadas para cada seguradora. Isso garante isolamento em relação a outros clientes para atender requisitos de segurança.</div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-title">Serviços Multi-Tenant</div>
+            <div class="cap-desc">Microsserviços separados das aplicações core que proveem capacidades funcionais essenciais para seguro de danos. São compartilhados entre seguradoras, mas com dados completamente isolados entre os tenants.</div>
+          </div>
+        </div>
+        <div class="callout" style="margin-top:1rem;">
+          <div class="callout-title">💡 "Compartilhado" não significa dados compartilhados</div>
+          Quando dizemos que capacidades são entregues como microsserviços compartilhados, significa que as seguradoras usam o <em>mesmo software e operações</em> — não que compartilham dados. Cada seguradora opera como seu próprio tenant: dados, modelos, jobs e configurações são estritamente isolados.
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 id="como-o-isolamento-e-garantido">Como o Isolamento é Garantido</h2>
+        <div class="section-divider"></div>
+        <ul class="goal-list">
+          <li><strong>Limites de tenant fortes:</strong> Cada requisição e conjunto de dados é identificado com o tenant específico — o serviço retorna apenas os dados daquele tenant.</li>
+          <li><strong>Controles de acesso:</strong> SSO e permissões baseadas em papéis (RBAC) garantem que apenas pessoas autorizadas da sua empresa visualizem ou alterem seu conteúdo.</li>
+          <li><strong>Separação de dados:</strong> Seus dados são mantidos em armazenamento logicamente separado, com criptografia em trânsito e em repouso.</li>
+          <li><strong>Isolamento operacional:</strong> Workloads são roteados e limitados por tenant — a atividade de um cliente não impacta a performance de outro.</li>
+          <li><strong>Auditabilidade:</strong> Logs com escopo de tenant e trilhas de auditoria fornecem visibilidade sobre quem acessou o quê e quando.</li>
+        </ul>
+        <p style="margin-top:0.8rem;">As aplicações core single-tenant interagem com os serviços cloud multi-tenant para atender necessidades funcionais, otimizar uso de recursos e minimizar custos.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="diagrama-de-arquitetura">Diagrama de Arquitetura</h2>
+        <div class="section-divider"></div>
+        <!-- Diagrama de arquitetura GWCP híbrida -->
+        <div style="border:1px solid var(--border); border-radius:10px; overflow:hidden; font-size:0.82rem; text-align:center; margin-bottom:1.2rem;">
+          <!-- Header carriers -->
+          <div style="display:grid; grid-template-columns:1fr 1fr; background:#b8d8f0;">
+            <div style="padding:0.6rem; font-weight:700; border-right:2px solid white;">Carrier 1</div>
+            <div style="padding:0.6rem; font-weight:700;">Carrier...n</div>
+          </div>
+          <!-- Config Layer -->
+          <div style="display:grid; grid-template-columns:1fr 1fr; background:#1a3a5c; color:white;">
+            <div style="padding:0.5rem; font-weight:700; letter-spacing:0.05em; border-right:2px solid #2a5a8c;">CONFIG LAYER</div>
+            <div style="padding:0.5rem; font-weight:700; letter-spacing:0.05em;">CONFIG LAYER</div>
+          </div>
+          <!-- Core Apps -->
+          <div style="display:grid; grid-template-columns:1fr 1fr; background:#1a3a5c; padding:0 0.5rem 0.5rem;">
+            <div style="border:2px solid #3a7abf; border-radius:8px; margin-right:0.3rem; padding:0.6rem; color:white;">
+              <div style="display:flex; justify-content:center; gap:1rem; margin-bottom:0.3rem;">
+                <span>🏛️ PolicyCenter</span>
+                <span>💳 BillingCenter</span>
+                <span>📋 ClaimCenter</span>
+              </div>
+              <div style="font-size:0.82rem; color:#90c4e8;">Core Applications</div>
+            </div>
+            <div style="border:2px solid #3a7abf; border-radius:8px; margin-left:0.3rem; padding:0.6rem; color:white;">
+              <div style="display:flex; justify-content:center; gap:1rem; margin-bottom:0.3rem;">
+                <span>🏛️ PolicyCenter</span>
+                <span>💳 BillingCenter</span>
+                <span>📋 ClaimCenter</span>
+              </div>
+              <div style="font-size:0.82rem; color:#90c4e8;">Core Applications</div>
+            </div>
+          </div>
+          <!-- Database -->
+          <div style="display:grid; grid-template-columns:1fr 1fr; background:#1a3a5c; color:white; padding-bottom:0.5rem;">
+            <div style="padding:0.4rem; font-weight:700; letter-spacing:0.05em; border-right:2px solid #2a5a8c;">DATABASE</div>
+            <div style="padding:0.4rem; font-weight:700; letter-spacing:0.05em;">DATABASE</div>
+          </div>
+          <!-- Shared Microservices -->
+          <div style="background:#a8dde0; padding:0.7rem;">
+            <div style="font-weight:700; margin-bottom:0.5rem;">Shared Microservices</div>
+            <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:0.8rem; font-size:0.82rem;">
+              <span>📋 Rules</span>
+              <span>🎨 Product Designer</span>
+              <span>⭐ Rating</span>
+              <span>🔄 Workflow</span>
+              <span>📱 Digital</span>
+              <span>📊 Data &amp; Analytics</span>
+              <span>🔗 Integration</span>
+            </div>
+          </div>
+          <!-- Cloud Infrastructure -->
+          <div style="background:#7ecac9; padding:0.5rem; font-weight:700; letter-spacing:0.05em; font-size:0.8rem;">CLOUD INFRASTRUCTURE</div>
+        </div>
+
+        <!-- Tabela de benefícios -->
+        <table class="term-table" style="margin-top:1rem;">
+          <thead>
+            <tr>
+              <th>Instância dedicada de software oferece:</th>
+              <th>Infraestrutura e serviços compartilhados permitem:</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>✅ Cadência de upgrade independente</td>
+              <td>✅ Escalabilidade simplificada</td>
+            </tr>
+            <tr>
+              <td>✅ Diferenciação via camada de configuração</td>
+              <td>✅ Disaster recovery eficiente e testado</td>
+            </tr>
+            <tr>
+              <td>✅ Isolamento de dados para privacidade e segurança</td>
+              <td>✅ Monitoramento ágil</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="section">
+        <h2 id="pilares-arquiteturais-do-gwcp">Pilares Arquiteturais do GWCP</h2>
+        <div class="section-divider"></div>
+        <p>Os seguintes pilares arquiteturais formam a base do design e evolução contínua do GWCP, garantindo que a plataforma seja robusta, escalável e segura para uma ampla gama de workloads de seguros.</p>
+        <div class="accordion" style="margin-top:1rem;">
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">Excelência Operacional <span class="acc-arrow">▾</span></button>
+            <div class="acc-body"><p>Foca nas operações na nuvem, incluindo monitoramento, automação e melhoria contínua.</p></div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">Confiabilidade <span class="acc-arrow">▾</span></button>
+            <div class="acc-body"><p>Garante que a plataforma seja altamente disponível e resiliente, suportando disaster recovery e minimizando downtime.</p></div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">Eficiência de Performance <span class="acc-arrow">▾</span></button>
+            <div class="acc-body"><p>Otimiza o uso de recursos e a performance do sistema, aproveitando tecnologias cloud-native como Kubernetes, conteinerização e auto-scaling.</p></div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">Otimização de Custos <span class="acc-arrow">▾</span></button>
+            <div class="acc-body"><p>Gerencia recursos de forma eficiente para controlar custos enquanto mantém performance e confiabilidade.</p></div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">Segurança <span class="acc-arrow">▾</span></button>
+            <div class="acc-body"><p>Implementa controles de segurança robustos, incluindo gerenciamento de identidade e acesso, proteção de dados e conformidade com padrões da indústria.</p></div>
+          </div>
+        </div>
+        <div class="note" style="margin-top:1rem;">Esses pilares são suportados por uma arquitetura híbrida que combina modelos single-tenant (aplicações core de seguros) e multi-tenant (microsserviços compartilhados), tendo a AWS como provedor cloud subjacente. A arquitetura também enfatiza isolamento de tenants, escalabilidade e uma abordagem em camadas para segurança e gestão.</div>
+      </div>
+    </div>
+
+    <!-- ══ PÁGINA 5 ══ -->
+    <div class="page-section" id="page-5">
+      <div class="page-header">
+        <h1>Terminologia do Guidewire Cloud</h1>
+        <div class="divider"></div>
+        <p class="page-subtitle">O GWCP usa uma metáfora astronômica para classificar os recursos do Cloud Platform. Os principais componentes em ordem hierárquica incluem:</p>
+      </div>
+      <div class="note" style="margin-bottom:1.5rem;">📖 Consulte o <a href="Guidewire_Home.html#glossario">Glossário Consolidado no Home</a> para definições completas de todos os termos do GWCP e do PolicyCenter.</div>
+
+      <div class="section">
+        <h2 id="diagrama-hierarquia-de-recursos">Diagrama: Hierarquia de Recursos</h2>
+        <div class="section-divider"></div>
+        <!-- Diagrama astronomia: Insurance Company → Tenant → Star/Planet/Orbit dentro de Isolation Zone/Galaxy -->
+        <div style="border:1px solid var(--border); border-radius:10px; padding:1.2rem; background:#f8fafc; overflow-x:auto;">
+          <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap; justify-content:center; font-size:0.82rem; color:var(--gw-dark); font-weight:600;">
+            <!-- Insurance Company -->
+            <div style="text-align:center;">
+              <div style="font-size:2rem;">🏢</div>
+              <div style="font-size:0.82rem; text-transform:uppercase; letter-spacing:0.05em;">Insurance<br>Company</div>
+            </div>
+            <div style="font-size:1.2rem; color:var(--border);">—</div>
+            <!-- Tenant -->
+            <div style="text-align:center;">
+              <div style="font-size:2rem;">☁️</div>
+              <div style="font-size:0.82rem; text-transform:uppercase; letter-spacing:0.05em;">Tenant</div>
+            </div>
+            <div style="font-size:1.2rem; color:var(--border);">—</div>
+            <!-- Star -->
+            <div style="text-align:center;">
+              <div style="font-size:2rem;">✦</div>
+              <div style="font-size:0.82rem; text-transform:uppercase; letter-spacing:0.05em;">Star</div>
+            </div>
+            <!-- Isolation Zone box -->
+            <div style="border:1.5px solid var(--gw-blue); border-radius:8px; padding:0.8rem 1.2rem; margin-left:0.5rem;">
+              <div style="font-size:0.82rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--gw-blue); margin-bottom:0.5rem; text-align:center;">Isolation Zone</div>
+              <div style="border:1.5px solid var(--gw-teal); border-radius:6px; padding:0.6rem 1rem;">
+                <div style="font-size:0.82rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--gw-teal); margin-bottom:0.5rem; text-align:center;">Galaxy</div>
+                <div style="display:flex; gap:1.5rem; align-items:flex-end; justify-content:center; flex-wrap:wrap;">
+                  <div style="text-align:center; font-size:0.82rem;">
+                    <div style="font-size:1.3rem; color:var(--gw-blue);">🪐</div>
+                    <div style="text-transform:uppercase; letter-spacing:0.05em;">Asteroid</div>
+                  </div>
+                  <div style="text-align:center; font-size:0.82rem;">
+                    <div style="font-size:1.3rem; color:#1a2e44;">🪐</div>
+                    <div style="text-transform:uppercase; letter-spacing:0.05em;">Planet</div>
+                    <div style="color:var(--muted); font-size:0.82rem;">DEV</div>
+                  </div>
+                  <div style="text-align:center; font-size:0.82rem;">
+                    <div style="font-size:1.3rem; color:#1a2e44;">🪐</div>
+                    <div style="text-transform:uppercase; letter-spacing:0.05em;">Planet</div>
+                    <div style="color:var(--muted); font-size:0.82rem;">UAT / PREPROD / PROD</div>
+                  </div>
+                </div>
+                <div style="font-size:0.82rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--gw-teal); margin-top:0.5rem; text-align:center;">Orbits</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 id="definicoes-dos-termos">Definições dos Termos</h2>
+        <div class="section-divider"></div>
+        <div class="accordion">
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">Isolation Zone <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">
+              <ul class="goal-list">
+                <li>Uma isolation zone é um grupo de galáxias projetado para entregar um conjunto completo de funcionalidades do Cloud Platform dentro de um limite geográfico e regulatório específico.</li>
+                <li>As isolation zones são criadas principalmente para suportar soberania de dados e atender requisitos regionais de conformidade, garantindo que os dados não cruzem fronteiras entre regiões.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">Tenant <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">
+              <ul class="goal-list">
+                <li>Um tenant representa a presença da sua empresa em uma isolation zone específica no Cloud Platform. Devido a regulamentações de residência e segurança de dados, cada tenant é limitado a uma única isolation zone.</li>
+                <li>Os tenants são completamente isolados uns dos outros — não há compartilhamento de dados, configurações ou workloads entre eles.</li>
+                <li>Se sua empresa precisa operar em diferentes isolation zones, a Guidewire cria um tenant separado para cada isolation zone.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">Galaxy <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">
+              <ul class="goal-list">
+                <li>A região geográfica da infraestrutura Guidewire Cloud.</li>
+                <li>Cada galaxy representa uma região com seus próprios data centers dedicados.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">Star <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">
+              <ul class="goal-list">
+                <li>Uma star representa uma unidade de negócio ou serviço compartilhado dentro da sua empresa que você deseja gerenciar de forma independente no Cloud Platform.</li>
+                <li>Cada star é mantida completamente separada das demais, permitindo que diferentes partes das operações do seu negócio sejam independentes, mesmo operando sob o mesmo tenant.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">Orbit <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">
+              <p>Uma orbit de um planet ou asteroid representa caminhos de promoção de código ou etapas dentro do ciclo de vida de desenvolvimento de software (SDLC). Orbits também podem especificar atributos como o número de conectores Cloud Data Access (CDA). O Cloud Platform suporta as seguintes orbits:</p>
+              <ul class="goal-list" style="margin-top:0.5rem;">
+                <li><strong>Prod</strong></li>
+                <li><strong>PreProd</strong></li>
+                <li><strong>Dev</strong></li>
+                <li><strong>UAT</strong></li>
+                <li><strong>QA</strong></li>
+              </ul>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">Planet <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">
+              <ul class="goal-list">
+                <li>Um planet é um ambiente onde você faz deploy e executa código, como as aplicações InsuranceSuite, EnterpriseEngage ou InsuranceNow. Todo o trabalho é realizado em um planet.</li>
+                <li>Um star system pode conter múltiplos planets, cada um para uma finalidade ou aplicação diferente. Por exemplo, você pode ter um planet para desenvolvimento e outro para testes. Apenas um planet pode operar em uma orbit de produção.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">Asteroid <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">
+              <p>Asteroid é um tipo especial de planet projetado para suportar workloads diferentes das aplicações InsuranceSuite, EnterpriseEngage ou InsuranceNow. Asteroids suportam workloads:</p>
+              <ul class="goal-list" style="margin-top:0.5rem;">
+                <li>Conteinerizados para operação no Cloud Platform.</li>
+                <li>Criados pela Guidewire, pela sua empresa ou por fornecedores de software terceiros.</li>
+              </ul>
+              <p style="margin-top:0.5rem;">Planets e asteroids podem compartilhar orbits.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 id="exemplo-pratico">Exemplo Prático</h2>
+        <div class="section-divider"></div>
+        <ul class="goal-list">
+          <li>Uma seguradora tem um tenant localizado em uma galaxy que opera dentro de uma isolation zone.</li>
+          <li>O tenant possui duas stars, cada uma representando uma unidade de negócio diferente.</li>
+          <li>As stars possuem planets nas orbits <em>DEV</em>, <em>UAT</em>, <em>QA</em>, <em>PREPROD</em> e <em>PROD</em>.</li>
+        </ul>
+        <!-- Diagrama de exemplo: ISOLATION ZONE > TENANT > GALAXY > 2 STARs com orbits e planets -->
+        <div style="border:1px solid var(--border); border-radius:10px; overflow:hidden; font-size:0.82rem; margin-top:1rem; text-align:center;">
+          <div style="background:#1a3a5c; color:white; padding:0.4rem; font-weight:700; letter-spacing:0.08em;">ISOLATION ZONE</div>
+          <div style="background:#2a6090; color:white; padding:0.3rem; font-weight:700; letter-spacing:0.08em;">TENANT</div>
+          <div style="background:#3a8abf; color:white; padding:0.3rem; font-weight:700; letter-spacing:0.08em;">GALAXY</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; padding:0.6rem; background:#f0f6fb;">
+            <!-- Star 1 -->
+            <div style="border:1.5px solid var(--gw-blue); border-radius:8px; overflow:hidden;">
+              <div style="background:#1a3a5c; color:white; padding:0.3rem; font-weight:700; font-size:0.82rem; letter-spacing:0.06em;">STAR</div>
+              <div style="padding:0.4rem; display:flex; flex-direction:column; gap:0.3rem;">
+                <div style="background:#e8f4ff; border-radius:4px; padding:0.3rem; font-size:0.82rem;"><span style="color:var(--muted); font-size:0.82rem; display:block;">DEV ORBIT</span>🪐 dev &nbsp; 🪐 dev2</div>
+                <div style="background:#e8f4ff; border-radius:4px; padding:0.3rem; font-size:0.82rem;"><span style="color:var(--muted); font-size:0.82rem; display:block;">PRE-PRODUCTION ORBIT</span>🪐 futurepre</div>
+                <div style="background:#e8f4ff; border-radius:4px; padding:0.3rem; font-size:0.82rem;"><span style="color:var(--muted); font-size:0.82rem; display:block;">UAT ORBIT</span>🪐 test</div>
+                <div style="background:#e8f4ff; border-radius:4px; padding:0.3rem; font-size:0.82rem;"><span style="color:var(--muted); font-size:0.82rem; display:block;">PRODUCTION ORBIT</span>🪐 futureprod</div>
+              </div>
+            </div>
+            <!-- Star 2 -->
+            <div style="border:1.5px solid var(--gw-blue); border-radius:8px; overflow:hidden;">
+              <div style="background:#1a3a5c; color:white; padding:0.3rem; font-weight:700; font-size:0.82rem; letter-spacing:0.06em;">STAR</div>
+              <div style="padding:0.4rem; display:flex; flex-direction:column; gap:0.3rem;">
+                <div style="background:#e8f4ff; border-radius:4px; padding:0.3rem; font-size:0.82rem;"><span style="color:var(--muted); font-size:0.82rem; display:block;">DEV ORBIT</span>🪐 dev &nbsp; 🪐 dev2</div>
+                <div style="background:#e8f4ff; border-radius:4px; padding:0.3rem; font-size:0.82rem;"><span style="color:var(--muted); font-size:0.82rem; display:block;">PRE-PRODUCTION ORBIT</span>🪐 insurerpre</div>
+                <div style="background:#e8f4ff; border-radius:4px; padding:0.3rem; font-size:0.82rem;"><span style="color:var(--muted); font-size:0.82rem; display:block;">QA ORBIT</span>🪐 test</div>
+                <div style="background:#e8f4ff; border-radius:4px; padding:0.3rem; font-size:0.82rem;"><span style="color:var(--muted); font-size:0.82rem; display:block;">PRODUCTION ORBIT</span>🪐 insurerprod</div>
+              </div>
+            </div>
+          </div>
+          <div style="background:#a8dde0; padding:0.3rem; font-size:0.82rem; font-weight:700; letter-spacing:0.06em;">ORBITS</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 id="star-e-star-system">Star e Star System</h2>
+        <div class="section-divider"></div>
+        <!-- Diagrama Star / Star System: TENANT > 2 STARs com 3 tipos de star system -->
+        <div style="border:1px solid var(--border); border-radius:10px; overflow:hidden; font-size:0.82rem; margin-bottom:1rem; text-align:center;">
+          <div style="background:#1a3a5c; color:white; padding:0.4rem; font-weight:700; letter-spacing:0.08em;">TENANT</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; padding:0.6rem; background:#f0f6fb;">
+            <!-- STAR Car Insurance -->
+            <div style="border:1.5px solid var(--gw-blue); border-radius:8px; overflow:hidden;">
+              <div style="background:#1a3a5c; color:white; padding:0.3rem; font-size:0.82rem; font-weight:700;">STAR<br><span style="font-weight:400; font-size:0.82rem;">Car Insurance</span></div>
+              <div style="padding:0.4rem; display:flex; gap:0.3rem; flex-wrap:wrap;">
+                <div style="background:#dceefb; border-radius:4px; padding:0.3rem; flex:1; min-width:90px; font-size:0.82rem;">
+                  <div style="font-weight:700; font-size:0.82rem; margin-bottom:0.2rem; color:var(--gw-dark);">Non-production<br><span style="color:var(--muted);">STAR SYSTEM</span></div>
+                  <div>🪐 Dev</div><div>🪐 QA</div><div>🪐 UAT</div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:0.3rem; flex:1; min-width:90px;">
+                  <div style="background:#b8e0d2; border-radius:4px; padding:0.3rem; font-size:0.82rem;">
+                    <div style="font-weight:700; font-size:0.82rem; margin-bottom:0.2rem; color:var(--gw-dark);">Pre-production<br><span style="color:var(--muted);">STAR SYSTEM</span></div>
+                    <div>🪐 PreProd</div>
+                  </div>
+                  <div style="background:#b8e0d2; border-radius:4px; padding:0.3rem; font-size:0.82rem;">
+                    <div style="font-weight:700; font-size:0.82rem; margin-bottom:0.2rem; color:var(--gw-dark);">Production<br><span style="color:var(--muted);">STAR SYSTEM</span></div>
+                    <div>🪐 Prod</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- STAR Property Insurance -->
+            <div style="border:1.5px solid var(--gw-blue); border-radius:8px; overflow:hidden;">
+              <div style="background:#1a3a5c; color:white; padding:0.3rem; font-size:0.82rem; font-weight:700;">STAR<br><span style="font-weight:400; font-size:0.82rem;">Property Insurance</span></div>
+              <div style="padding:0.4rem; display:flex; gap:0.3rem; flex-wrap:wrap;">
+                <div style="background:#dceefb; border-radius:4px; padding:0.3rem; flex:1; min-width:90px; font-size:0.82rem;">
+                  <div style="font-weight:700; font-size:0.82rem; margin-bottom:0.2rem; color:var(--gw-dark);">Non-production<br><span style="color:var(--muted);">STAR SYSTEM</span></div>
+                  <div>🪐 Dev</div><div>🪐 QA</div><div>🪐 UAT</div>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:0.3rem; flex:1; min-width:90px;">
+                  <div style="background:#b8e0d2; border-radius:4px; padding:0.3rem; font-size:0.82rem;">
+                    <div style="font-weight:700; font-size:0.82rem; margin-bottom:0.2rem; color:var(--gw-dark);">Pre-production<br><span style="color:var(--muted);">STAR SYSTEM</span></div>
+                    <div>🪐 PreProd</div>
+                  </div>
+                  <div style="background:#b8e0d2; border-radius:4px; padding:0.3rem; font-size:0.82rem;">
+                    <div style="font-weight:700; font-size:0.82rem; margin-bottom:0.2rem; color:var(--gw-dark);">Production<br><span style="color:var(--muted);">STAR SYSTEM</span></div>
+                    <div>🪐 Prod</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <ul class="goal-list">
+          <li><strong>Stars</strong> refletem diferentes unidades de negócio e fornecem os recursos necessários para desenvolver as aplicações InsuranceSuite.
+            <ul style="margin-top:0.4rem; margin-left:1.2rem; list-style:disc;">
+              <li>Para cada star, existe um projeto no TeamCity e um projeto no Bitbucket com repositórios para os produtos cobertos no seu contrato com a Guidewire.</li>
+              <li>Cada star contém até três star systems.</li>
+            </ul>
+          </li>
+          <li>Um <strong>star system</strong> é um grupo de planets que compartilham serviços do Cloud Platform. Cada star system contém planets em orbits específicas. As seguintes classes definem quais planets podem ser criados dentro de um star system:
+            <ul style="margin-top:0.4rem; margin-left:1.2rem; list-style:disc;">
+              <li><em>dev</em>: Um star system não-produtivo para planets nas orbits Dev, QA e UAT.</li>
+              <li><em>prod</em>: Um star system de produção para planets exclusivamente na orbit <em>Prod</em>.</li>
+              <li><em>pre-prod</em>: Um star system de pré-produção para planets na orbit <em>Preprod</em>.</li>
+            </ul>
+          </li>
+        </ul>
+        <p style="margin-top:0.8rem;">Você pode ter múltiplos star systems, e cada um mantém seus dados separados dos demais. Cada star system tem seu próprio banco de dados dedicado.</p>
+
+        <div class="callout" style="margin-top:1rem;">
+          <div class="callout-title">📚 Para mais detalhes, consulte a documentação Guidewire:</div>
+          <ul style="margin-top:0.4rem; list-style:disc; padding-left:1.2rem; font-size:0.9rem;">
+            <li>Guidewire terminology</li>
+            <li>Star and star systems</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ PÁGINA 6 ══ -->
+    <div class="page-section" id="page-6">
+      <div class="page-header">
+        <h1>Experiência de Desenvolvimento e Operação</h1>
+        <div class="divider"></div>
+        <p class="page-subtitle">O GWCP oferece serviços de plataforma cloud-native e integrações gerenciadas para automatizar e simplificar desenvolvimento, deployment e operações.</p>
+      </div>
+
+      <!-- Banner 4 pilares -->
+      <div style="background:#0077b6; color:white; border-radius:10px; padding:1.2rem 1rem; margin-bottom:1.5rem; display:grid; grid-template-columns:repeat(4,1fr); gap:0.5rem; text-align:center; font-size:0.82rem; font-weight:600;">
+        <div style="border-right:1px solid rgba(255,255,255,0.3); padding:0.5rem;">
+          <div style="font-size:1.8rem; margin-bottom:0.4rem;">💻</div>
+          Integrated Developer Tooling
+        </div>
+        <div style="border-right:1px solid rgba(255,255,255,0.3); padding:0.5rem;">
+          <div style="font-size:1.8rem; margin-bottom:0.4rem;">⚙️</div>
+          Automated Software Delivery
+        </div>
+        <div style="border-right:1px solid rgba(255,255,255,0.3); padding:0.5rem;">
+          <div style="font-size:1.8rem; margin-bottom:0.4rem;">📊</div>
+          Continuous Observability
+        </div>
+        <div style="padding:0.5rem;">
+          <div style="font-size:1.8rem; margin-bottom:0.4rem;">🛠️</div>
+          Self-Service DevOps
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 id="visao-geral">Visão Geral</h2>
+        <div class="section-divider"></div>
+        <p>O GWCP oferece serviços de plataforma cloud-native e integrações gerenciadas para automatizar e simplificar desenvolvimento, deployment e operações. Ferramentas específicas e opções de observabilidade são incluídas ou opcionais dependendo da sua assinatura e ambiente.</p>
+        <ul class="goal-list" style="margin-top:0.8rem;">
+          <li><strong>Integrated Developer Tooling:</strong> Simplifica as atividades dos desenvolvedores com ferramentas unificadas para gerenciamento de código, integração e deployment contínuo (CI/CD), e provisionamento de ambientes.</li>
+          <li><strong>Automated Software Delivery:</strong> Suporta pipelines de integração e entrega contínua.</li>
+          <li><strong>Continuous Observability:</strong> Usa o Datadog para monitoramento em tempo real, dashboards, detecção de anomalias e previsibilidade operacional em aplicações e infraestrutura.</li>
+          <li><strong>Self-Service DevOps:</strong> Fornece ferramentas de autoatendimento para o cliente, incluindo gerenciamento de deployment (novo, seletivo, blue/green, rollback), agendamento de builds e automação de testes pós-deployment.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2 id="experiencia-de-desenvolvimento">Experiência de Desenvolvimento</h2>
+        <div class="section-divider"></div>
+        <p>Desenvolvedores no GWCP se beneficiam de um workflow automatizado e simplificado que suporta entrega de software rápida e confiável e minimiza o overhead operacional.</p>
+        <p style="margin-top:0.6rem;">O código percorre um caminho de promoção estruturado, garantindo que apenas código devidamente testado e validado chegue à produção. Esse processo é gerenciado pelo Guidewire Home e pipelines automatizados.</p>
+
+        <!-- Pipeline diagram -->
+        <div style="border:1px solid var(--border); border-radius:10px; padding:1rem; margin-top:1rem; overflow-x:auto;">
+          <p style="font-size:0.82rem; color:var(--muted); font-style:italic; margin-bottom:0.8rem;">Pipeline de desenvolvimento: do ambiente local até a infraestrutura Guidewire Cloud</p>
+          <div style="display:flex; align-items:center; gap:0.3rem; flex-wrap:wrap; font-size:0.82rem; justify-content:center;">
+            <div style="background:#f0f6fb; border:1.5px solid var(--border); border-radius:6px; padding:0.4rem 0.7rem; text-align:center; min-width:80px;">
+              <div>💻</div><div style="font-weight:600;">Local development</div>
+              <div style="font-size:0.82rem; color:var(--muted); margin-top:0.2rem;">Seu workspace local para build, teste e execução antes de subir para a nuvem.</div>
+            </div>
+            <div style="color:var(--gw-teal); font-size:1.2rem;">▶</div>
+            <div style="background:#e8f4ff; border:1.5px solid var(--gw-blue); border-radius:6px; padding:0.4rem 0.7rem; text-align:center; min-width:80px;">
+              <div>🗂️</div><div style="font-weight:600;">Bitbucket</div>
+              <div style="font-size:0.82rem; color:var(--muted); margin-top:0.2rem;">Source code management — Git-based code hosting e colaboração.</div>
+            </div>
+            <div style="color:var(--gw-teal); font-size:1.2rem;">▶</div>
+            <div style="background:#e8f4ff; border:1.5px solid var(--gw-blue); border-radius:6px; padding:0.4rem 0.7rem; text-align:center; min-width:80px;">
+              <div>⚙️</div><div style="font-weight:600;">TeamCity</div>
+              <div style="font-size:0.82rem; color:var(--muted); margin-top:0.2rem;">Test and build — infraestrutura de build e teste. Digital apps são deployados via TeamCity.</div>
+            </div>
+            <div style="color:var(--gw-teal); font-size:1.2rem;">▶</div>
+            <div style="background:#e8f4ff; border:1.5px solid var(--gw-blue); border-radius:6px; padding:0.4rem 0.7rem; text-align:center; min-width:80px;">
+              <div>🚀</div><div style="font-weight:600;">Deploy &amp; Promote</div>
+              <div style="font-size:0.82rem; color:var(--muted); margin-top:0.2rem;">Dev → UAT → Pre-Prod → Prod, feito via Guidewire Home.</div>
+            </div>
+            <div style="color:var(--gw-teal); font-size:1.2rem;">▶</div>
+            <div style="background:#e8f4ff; border:1.5px solid var(--gw-blue); border-radius:6px; padding:0.4rem 0.7rem; text-align:center; min-width:80px;">
+              <div>📈</div><div style="font-weight:600;">Datadog</div>
+              <div style="font-size:0.82rem; color:var(--muted); margin-top:0.2rem;">Observe and monitor — reporting, logging, detecção de anomalias e root cause analysis.</div>
+            </div>
+            <div style="color:var(--gw-teal); font-size:1.2rem;">▶</div>
+            <div style="background:#1a3a5c; color:white; border-radius:6px; padding:0.4rem 0.7rem; text-align:center; min-width:80px;">
+              <div>🏠</div><div style="font-weight:600; font-size:0.82rem;">Guidewire Home</div>
+            </div>
+            <div style="color:var(--gw-teal); font-size:1.2rem;">▶</div>
+            <div style="background:#00b4d8; color:white; border-radius:6px; padding:0.4rem 0.7rem; text-align:center; min-width:80px;">
+              <div>☁️</div><div style="font-weight:600; font-size:0.82rem;">GW Cloud Infrastructure</div>
+            </div>
+          </div>
+        </div>
+
+        <p style="margin-top:1rem; font-weight:600;">Componentes-chave da development experience:</p>
+        <ul class="goal-list" style="margin-top:0.5rem;">
+          <li><strong>Guidewire Home:</strong> Fornece uma landing page personalizada que atua como hub central para todas as aplicações e ferramentas da plataforma. A partir desta página, você pode fazer deploy, gerenciar e monitorar suas aplicações em um único lugar.</li>
+          <li><strong>CI/CD pipeline (gerenciado pela plataforma):</strong> Constrói, testa e libera alterações automaticamente, com verificações após cada release. Em ambientes gerenciados pela Guidewire, Bitbucket (código) e TeamCity (builds) são o padrão; você pode conectar repositórios aprovados ou ferramentas de teste, mas o GWCP ainda controla o processo de release.
+            <ul style="margin-top:0.4rem; margin-left:1.2rem; list-style:disc;">
+              <li><strong>Source code management:</strong> Infraestrutura disponível no Bitbucket para armazenar seu código.</li>
+              <li><strong>Build management:</strong> Infraestrutura disponível no TeamCity para build e teste das suas apps.</li>
+              <li><strong>Deployment and build promotion:</strong> Deployments das aplicações InsuranceSuite e suas promoções para star systems de pré-produção e produção são feitos via Guidewire Home.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2 id="desenvolvimento-e-atualizacoes-cloud">Desenvolvimento e Atualizações Cloud</h2>
+        <div class="section-divider"></div>
+        <p>Configurar aplicações no GWCP é fazer mudanças de forma rápida e segura sem codificação customizada pesada ou risco para seus processos de negócio. A cada ano, a Guidewire entrega novas funcionalidades para seus produtos cloud por meio de três grandes atualizações de plataforma chamadas <strong>ski releases</strong>. Essas releases recebem o nome de resorts de ski. Cada ski release inclui melhorias, atualizações de segurança, aprimoramentos de performance e novas capacidades em PolicyCenter, BillingCenter, ClaimCenter e outros componentes do InsuranceSuite.</p>
+        <p style="margin-top:0.8rem;">As ski releases mantêm a plataforma atualizada, mas o Cloud Platform também garante que você possa desenvolver e melhorar continuamente suas próprias apps: PolicyCenter, ClaimCenter, BillingCenter, Jutro apps, Integration apps e camadas customizadas. Ao gerenciar a plataforma, infraestrutura e upgrades, o Cloud Platform permite que você foque em inovação de negócio e entrega de produtos em vez de manutenção técnica.</p>
+
+        <!-- Diagrama Guidewire Dev vs Customer Dev -->
+        <div style="border:1px solid var(--border); border-radius:10px; overflow:hidden; margin-top:1rem; font-size:0.82rem;">
+          <div style="display:grid; grid-template-columns:1fr auto 1fr; gap:0; align-items:start;">
+            <!-- Multi-Tenant (Guidewire) -->
+            <div style="background:#e8faf5; padding:0.8rem; border-right:1px solid var(--border);">
+              <div style="font-weight:700; color:#00796b; text-align:center; margin-bottom:0.5rem;">Guidewire Development</div>
+              <div style="background:#00b4a0; color:white; border-radius:8px; padding:0.6rem; text-align:center;">
+                <div style="font-weight:700; margin-bottom:0.4rem;">Multi-Tenant</div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.3rem; font-size:0.82rem;">
+                  <div style="background:rgba(255,255,255,0.2); border-radius:4px; padding:0.3rem;">📋 Rules</div>
+                  <div style="background:rgba(255,255,255,0.2); border-radius:4px; padding:0.3rem;">🔄 Workflow</div>
+                  <div style="background:rgba(255,255,255,0.2); border-radius:4px; padding:0.3rem;">♻️ Lifecycle Mgmt</div>
+                  <div style="background:rgba(255,255,255,0.2); border-radius:4px; padding:0.3rem;">🗄️ Data</div>
+                  <div style="background:rgba(255,255,255,0.2); border-radius:4px; padding:0.3rem;">🎨 Product Design</div>
+                  <div style="background:rgba(255,255,255,0.2); border-radius:4px; padding:0.3rem;">⬡ Other</div>
+                </div>
+              </div>
+              <div style="text-align:center; margin-top:0.4rem; color:var(--gw-teal); font-weight:600;">3x year ↓</div>
+            </div>
+            <!-- Centro: Source Control / Build / Home / API -->
+            <div style="padding:0.8rem; display:flex; flex-direction:column; gap:0.4rem; align-items:center; min-width:130px;">
+              <div style="background:#f0f6fb; border:1px solid var(--border); border-radius:6px; padding:0.4rem 0.7rem; text-align:center; width:100%;">Source Control</div>
+              <div style="color:var(--muted);">↓</div>
+              <div style="background:#f0f6fb; border:1px solid var(--border); border-radius:6px; padding:0.4rem 0.7rem; text-align:center; width:100%;">Build &amp; Test Management</div>
+              <div style="color:var(--muted);">↓</div>
+              <div style="background:#f0f6fb; border:1px solid var(--border); border-radius:6px; padding:0.4rem 0.7rem; text-align:center; width:100%;">Guidewire Home</div>
+              <div style="color:var(--muted);">↓</div>
+              <div style="background:#00b4d8; color:white; border-radius:50%; width:38px; height:38px; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.82rem; margin:0 auto;">API</div>
+            </div>
+            <!-- Single Tenant (Customer) -->
+            <div style="background:#e8f4ff; padding:0.8rem; border-left:1px solid var(--border);">
+              <div style="font-weight:700; color:var(--gw-blue); text-align:center; margin-bottom:0.5rem;">Customer Development</div>
+              <div style="background:#1a3a5c; color:white; border-radius:8px; padding:0.6rem; text-align:center;">
+                <div style="font-weight:700; margin-bottom:0.4rem;">Single Tenant</div>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.3rem; font-size:0.82rem;">
+                  <div style="background:rgba(255,255,255,0.15); border-radius:4px; padding:0.3rem;">🏛️ Policy</div>
+                  <div style="background:rgba(255,255,255,0.15); border-radius:4px; padding:0.3rem;">💳 Billing</div>
+                  <div style="background:rgba(255,255,255,0.15); border-radius:4px; padding:0.3rem;">📱 Digital</div>
+                  <div style="background:rgba(255,255,255,0.15); border-radius:4px; padding:0.3rem;">📋 Claims</div>
+                  <div style="background:rgba(255,255,255,0.15); border-radius:4px; padding:0.3rem;">🔗 IG</div>
+                  <div style="background:rgba(255,255,255,0.15); border-radius:4px; padding:0.3rem;">J Jutro</div>
+                </div>
+              </div>
+              <div style="text-align:center; margin-top:0.4rem; color:var(--gw-teal); font-weight:600;">continuous ↑</div>
+            </div>
+          </div>
+          <div style="background:#1a3a5c; color:white; text-align:center; padding:0.4rem; font-size:0.82rem; font-weight:600;">🔷 Guidewire Cloud Platform</div>
+        </div>
+
+        <p style="margin-top:1rem;">O Cloud Platform fornece uma separação clara entre apps e ferramentas de plataforma gerenciadas pela Guidewire e apps que pertencem ao seu tenant. Apps de Tenant e Plataforma se comunicam e trocam dados por meio de APIs.</p>
+
+        <div class="capability-grid" style="margin-top:1rem;">
+          <div class="cap-card">
+            <div class="cap-title">Platform apps and tools managed by Guidewire</div>
+            <div class="cap-desc">
+              <ul style="margin-top:0.4rem; margin-left:1rem; list-style:disc;">
+                <li>Capacidades compartilhadas como regras de negócio, workflows, serviços de dados, lifecycle management e ferramentas de product design.</li>
+                <li>Entregues como componentes multi-tenant e compartilhados entre múltiplos clientes, permitindo maior eficiência de recursos, escalabilidade mais fácil e atualizações mais frequentes e sem interrupções.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-title">Tenant apps managed by you</div>
+            <div class="cap-desc">
+              <ul style="margin-top:0.4rem; margin-left:1rem; list-style:disc;">
+                <li>Aplicações core como PolicyCenter, ClaimCenter, BillingCenter, Jutro Web apps e Integration apps.</li>
+                <li>Deployadas em um setup single-tenant — você tem sua própria instância dedicada dessas apps e seu próprio banco de dados. Isso garante forte isolamento de dados, privacidade e capacidade de atender requisitos regulatórios ou de residência de dados específicos.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ PÁGINA 7 ══ -->
+    <div class="page-section" id="page-7">
+      <div class="page-header">
+        <h1>Visão Geral do Guidewire Home</h1>
+        <div class="divider"></div>
+        <p class="page-subtitle">O Guidewire Home é o hub central para todas as aplicações, microsserviços e documentação no GWCP. A página de lançamento é personalizada de acordo com seu papel e atividade.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="o-que-e-o-guidewire-home">O que é o Guidewire Home?</h2>
+        <div class="section-divider"></div>
+        <p>O Guidewire Home é projetado para uma ampla gama de usuários, incluindo desenvolvedores, analistas de negócio, administradores e release managers. Ele suporta usuários técnicos e não-técnicos, adaptando a experiência com base nos papéis e permissões do usuário.</p>
+        <p style="margin-top:0.6rem;">A partir da landing page do Guidewire Home, você pode:</p>
+        <ul class="goal-list" style="margin-top:0.5rem;">
+          <li>Abrir aplicações e documentação do usuário diretamente do Guidewire Home.</li>
+          <li>Fixar (pin) suas apps e documentações mais usadas no Home para acesso mais rápido.</li>
+          <li>Adicionar o widget de Status à landing page e fixar suas apps nele; você verá a saúde atual da app e, para papéis técnicos, atualizações recentes de build e deployment.</li>
+          <li>Navegar para repositórios de código-fonte no Bitbucket, sistemas de gerenciamento de build no TeamCity, e logs de aplicações no DataDog.</li>
+          <li>Usar a barra de busca global para encontrar rapidamente apps, ferramentas e documentação relacionada.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2 id="funcionalidades-e-navegacao">Funcionalidades e Navegação</h2>
+        <div class="section-divider"></div>
+        <p>O Guidewire Home oferece uma landing page personalizada que coloca suas aplicações, documentos e ferramentas mais usados em destaque, adaptada ao seu papel e preferências. Com navegação intuitiva, categorias de app organizadas e recursos de acesso rápido como busca global, notificações e ajuda contextual, você pode gerenciar eficientemente suas tarefas diárias.</p>
+
+        <div class="capability-grid" style="margin-top:1rem;">
+          <div class="cap-card">
+            <div class="cap-title">📊 CI/CD Activity</div>
+            <div class="cap-desc">Visualize o status dos builds e deployments das suas aplicações e acesse todo o código-fonte e builds de projeto.</div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-title">🔧 Tools</div>
+            <div class="cap-desc">Acesse rapidamente apps e ferramentas recentemente usadas e fixadas. Você pode fixar até 12 apps e ferramentas.</div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-title">☰ Application Navigation Panel</div>
+            <div class="cap-desc">Acesse todas as suas aplicações e ferramentas Guidewire pelo ícone <em>Apps</em>. Apps organizadas por categoria: Admin &amp; Business, Policy, Claims, Billing, Digital, App Tools, Infrastructure, CI/CD etc.</div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-title">🔍 Global Search Bar</div>
+            <div class="cap-desc">Encontre rapidamente apps, ferramentas e documentação relacionada. Suporta fuzzy matching (tolerante a erros de digitação).</div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-title">🔄 Working Context</div>
+            <div class="cap-desc">Veja e mude instantaneamente seu contexto de trabalho (Star system). Exibe o Tenant e Star atual com opção de "Switch Context".</div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-title">❓ Help Menu</div>
+            <div class="cap-desc">Acesse ajuda contextual, Guidewire Community Support e Marketplace. Fornece links para documentação específica da aplicação em que você está trabalhando.</div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-title">🔔 Notifications</div>
+            <div class="cap-desc">Fique informado sobre status de apps, releases e downtime. Painel ordenável por data, tipo e prioridade; filtro All / Unread.</div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-title">👤 Profile Menu</div>
+            <div class="cap-desc">Configure idioma, região, tema e preferências de notificação. Exibe Personal Settings com Language &amp; regional format e Guidewire themes.</div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-title">📦 Additional Sections</div>
+            <div class="cap-desc">Dependendo do seu papel, veja widgets como My Jutro Apps, Platform Usage, My APD Products e Cloud Updates.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 id="capacidades-do-guidewire-home">Capacidades do Guidewire Home</h2>
+        <div class="section-divider"></div>
+        <div class="accordion">
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">Change the Working Context <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">
+              <p>Você pode mudar o contexto de trabalho (star system) selecionando o ícone de edição no cabeçalho global e então selecionando o botão <em>Switch Context</em>.</p>
+              <p style="margin-top:0.5rem;"><strong>Nota:</strong> Na lista de star system, você pode selecionar um físico ou uma Star. A Star está no nível superior (não indentado) na lista. Star systems que pertencem a uma Star aparecem indentados abaixo da Star.</p>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">Notifications <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">
+              <p>Você pode visualizar notificações para qualquer uma das suas aplicações pelo menu <em>Notifications</em>.</p>
+              <p style="margin-top:0.4rem;">O painel de notificações permite ordenar as notificações por data, tipo e prioridade.</p>
+              <p style="margin-top:0.4rem;">Você pode ver todas as notificações ou apenas as não lidas. Cada notificação não lida mostra um ponto azul escuro no lado direito.</p>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">My Applications <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">
+              <p>Para visualizar e abrir suas aplicações Guidewire Cloud, selecione o <em>ícone Apps</em> no cabeçalho global. Dentro deste painel de navegação, você pode:</p>
+              <ul class="goal-list" style="margin-top:0.5rem;">
+                <li>Encontrar suas aplicações agrupadas por categoria funcional.</li>
+                <li>Fixar e desafixar uma app nos seus favoritos passando o mouse sobre o nome da app e selecionando o ícone de pin.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">Documentation <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">
+              <p>Você pode acessar a documentação a partir de:</p>
+              <ul class="goal-list" style="margin-top:0.5rem;">
+                <li>A seção <em>Documentation</em> da landing page — contém links para o site de documentação Guidewire. Usando a opção <em>+ Add</em>, você pode abrir e fixar documentação das aplicações que tem acesso.</li>
+                <li>O menu <em>Help</em> no cabeçalho global — fornece links para documentação específica da aplicação em que você está trabalhando quando abre o menu.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">CI/CD Activity <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">
+              <ul class="goal-list">
+                <li>A seção <em>CI/CD activity</em> é a principal forma de visualizar o status dos builds e deployments das suas aplicações e acessar todo o código-fonte e builds de projeto.</li>
+                <li>Você pode fixar aplicações acessadas com frequência na seção <em>CI/CD activity</em>, em todos os seus planets deployados dentro do seu contexto de trabalho.</li>
+                <li>Você pode selecionar o link <em>Lifecycle Manager</em> na seção <em>CI/CD activity</em> para revisar, commitar e fazer deploy de mudanças de aplicação disponíveis para seus planets.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">Global Search <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">
+              <p>Você pode usar a barra de busca global para encontrar rapidamente apps, ferramentas e documentação relacionada.</p>
+              <ul class="goal-list" style="margin-top:0.5rem;">
+                <li>Os resultados de busca aparecerão abaixo da barra de busca.</li>
+                <li>A barra de busca suporta fuzzy matching, permitindo pequenos erros de digitação ou variações nos termos de busca.</li>
+                <li>Na lista de resultados, selecione a app, ferramenta ou documentação que deseja acessar para abri-la, ou simplesmente pressione Enter. O Guidewire Home navega até ela.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ PÁGINA 8 ══ -->
+    <div class="page-section" id="page-8">
+      <div class="page-header">
+        <h1>Cloud Integration Framework (CIF)</h1>
+        <div class="divider"></div>
+        <p class="page-subtitle">Suite padronizada de tecnologias e ferramentas para integração segura, escalável e sem atrito entre o InsuranceSuite e sistemas externos ou internos no GWCP.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="o-que-e-o-guidewire-integration-framework">O que é o Guidewire Integration Framework?</h2>
+        <div class="section-divider"></div>
+        <p>O Guidewire Integration Framework é uma suite padronizada de tecnologias e ferramentas projetada para permitir integração contínua, segura e escalável entre as aplicações Guidewire InsuranceSuite e sistemas externos ou internos no Guidewire Cloud Platform.</p>
+        <p style="margin-top:0.6rem;">É projetado para simplificar conexões, reduzir cargas de manutenção e melhorar a responsividade em tempo real em todo o ecossistema de seguros, melhorando em última análise a eficiência operacional e as experiências digitais dos usuários.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="componentes-principais">Componentes Principais</h2>
+        <div class="section-divider"></div>
+        <p>O integration framework suporta uma variedade de padrões de integração, incluindo comunicação em tempo real e assíncrona, e é projetado para funcionar com uma ampla gama de endpoints e protocolos externos.</p>
+
+        <!-- Diagrama: Arquitetura geral do Integration Framework -->
+        <div style="border:1px solid #ccc;border-radius:8px;padding:1.2rem 1.5rem;margin:1rem 0;background:#fafafa;font-size:0.82rem;">
+          <div style="display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:0.8rem;align-items:center;">
+            <div style="border:1.5px solid #555;border-radius:6px;padding:0.8rem;background:#fff;">
+              <div style="font-weight:700;margin-bottom:0.5rem;">InsuranceSuite app</div>
+              <div style="display:flex;flex-direction:column;gap:0.4rem;">
+                <div style="border:1.5px dashed #c87533;padding:0.3rem 0.5rem;border-radius:4px;background:#fff3e0;font-size:0.82rem;">Cloud API</div>
+                <div style="border:1.5px dashed #c87533;padding:0.3rem 0.5rem;border-radius:4px;background:#fff3e0;font-size:0.82rem;">REST API Client</div>
+                <div style="border:1.5px dashed #c87533;padding:0.3rem 0.5rem;border-radius:4px;background:#fff3e0;font-size:0.82rem;">App Events</div>
+                <div style="padding:0.3rem 0.5rem;border-radius:50%;border:1px solid #888;background:#e8e8e8;text-align:center;font-size:0.82rem;">Logic</div>
+              </div>
+            </div>
+            <div style="color:#555;font-size:1rem;">→</div>
+            <div style="border:1.5px solid #555;border-radius:6px;padding:0.8rem;background:#fff;">
+              <div style="font-weight:700;margin-bottom:0.3rem;">Integration Gateway</div>
+              <div style="font-size:0.82rem;color:#777;margin-bottom:0.4rem;">Apache Camel</div>
+              <div style="border:1px solid #c87533;padding:0.3rem 0.5rem;border-radius:4px;background:#fff3e0;font-size:0.82rem;">IG apps (camel routes)</div>
+              <div style="margin-top:0.5rem;border:1px solid #e0a83c;padding:0.3rem 0.5rem;border-radius:4px;background:#fff8e1;font-size:0.82rem;">App Events Webhooks</div>
+              <div style="margin-top:0.3rem;font-size:0.82rem;color:#555;">Event bus ⬤</div>
+            </div>
+            <div style="color:#555;font-size:1rem;">→</div>
+            <div style="border:1.5px dashed #888;border-radius:6px;padding:0.8rem;background:#fff;">
+              <div style="font-weight:700;margin-bottom:0.5rem;">Third-party applications</div>
+              <div style="background:#ccc;padding:0.3rem 0.5rem;border-radius:4px;font-size:0.82rem;margin-bottom:0.3rem;">Clients</div>
+              <div style="font-size:0.82rem;color:#555;">Web Messaging</div>
+              <div style="font-size:0.82rem;color:#555;">Files (XML, JSON)</div>
+              <div style="background:#ccc;padding:0.3rem 0.5rem;border-radius:4px;font-size:0.82rem;margin-top:0.3rem;">API</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion" style="margin-top:1rem;">
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">Cloud API <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">
+              <ul class="goal-list">
+                <li>Cloud APIs é um conjunto abrangente de APIs de sistema RESTful (construído sobre padrões OpenAPI/Swagger) que permite a aplicações externas solicitar dados ou iniciar ações dentro do InsuranceSuite.</li>
+                <li>Essas APIs garantem que toda lógica de negócio, permissões e regras de validação sejam aplicadas, fornecendo acesso seguro e confiável à funcionalidade do sistema central.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">App Events <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">
+              <ul class="goal-list">
+                <li>App Events é um serviço configurável low-code ou no-code dentro do Guidewire Integration Framework para integrações outbound orientadas a eventos.</li>
+                <li>App Events permite ao InsuranceSuite publicar eventos de negócio (por exemplo, sinistro criado ou apólice alterada) para outros sistemas, Guidewire ou terceiros, através de webhooks ou do Integration Gateway, habilitando reações assíncronas em near real-time com low/no code.</li>
+                <li>Por exemplo, um evento de sinistro criado pode acionar o Analytics Manager para rodar soluções de probabilidade de sub-rogação, lesão corporal ou probabilidade de litígio e retornar os resultados ao ClaimCenter.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">Integration Gateway <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">
+              <ul class="goal-list">
+                <li>Integration Gateway é um serviço cloud-managed (construído sobre Apache Camel) que atua como middleware para mediar, orquestrar e transformar dados entre o InsuranceSuite e sistemas externos.</li>
+                <li>Fornece um framework e infraestrutura para desenvolver, deployar e gerenciar microsserviços de integração construídos independentemente (chamados Integration Gateway apps) no Guidewire Cloud Platform.</li>
+                <li>Suporta padrões de integração síncronos e assíncronos.</li>
+              </ul>
+              <!-- Diagrama: IG Workflow -->
+              <div style="border:1px solid #ccc;border-radius:6px;padding:1rem;margin-top:0.8rem;background:#fafafa;font-size:0.8rem;">
+                <div style="font-style:italic;color:#777;font-size:0.82rem;margin-bottom:0.5rem;">IG-IntegrationGateway-WF</div>
+                <div style="display:grid;grid-template-columns:auto auto auto auto;gap:0.5rem;align-items:center;">
+                  <div style="border:1.5px solid #4a90d9;padding:0.5rem;border-radius:4px;font-size:0.82rem;text-align:center;">InsuranceSuite</div>
+                  <div style="display:flex;flex-direction:column;gap:0.3rem;">
+                    <div style="border:1.5px dashed #c87533;padding:0.25rem 0.4rem;border-radius:4px;background:#fff3e0;font-size:0.82rem;">Cloud API Inbound</div>
+                    <div style="border:1.5px dashed #c87533;padding:0.25rem 0.4rem;border-radius:4px;background:#fff3e0;font-size:0.82rem;">App Events Publish/outbound</div>
+                    <div style="border:1.5px dashed #c87533;padding:0.25rem 0.4rem;border-radius:4px;background:#fff3e0;font-size:0.82rem;">REST Outbound</div>
+                  </div>
+                  <div style="border:1.5px solid #555;border-radius:6px;padding:0.5rem;background:#fff;text-align:center;">
+                    <div style="font-weight:700;font-size:0.82rem;">Integration Gateway</div>
+                    <div style="font-size:0.82rem;color:#777;">Apache Camel</div>
+                    <div style="border:1px solid #c87533;padding:0.2rem 0.3rem;border-radius:4px;background:#fff3e0;font-size:0.82rem;margin-top:0.3rem;">IG apps (camel routes)</div>
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:0.3rem;">
+                    <div style="background:#ccc;padding:0.25rem 0.4rem;border-radius:4px;font-size:0.82rem;">Outbound ☁</div>
+                    <div style="background:#ccc;padding:0.25rem 0.4rem;border-radius:4px;font-size:0.82rem;">API Inbound</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">REST API Client <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">
+              <ul class="goal-list">
+                <li>REST API Client permite ao InsuranceSuite ou aplicações de integração consumir serviços REST conformes com OpenAPI Spec fornecidos por terceiros.</li>
+                <li>É usado para integrações outbound e síncronas.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">Integration Data Manager <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">
+              <ul class="goal-list">
+                <li>Integration Data Manager (IDM) é um serviço de armazenamento de documentos JSON projetado para simplificar a integração de dados de terceiros com o Guidewire InsuranceSuite, sem exigir mudanças no modelo de dados central do InsuranceSuite.</li>
+                <li>Essa abordagem simplifica a configuração, facilita upgrades e melhora a governança de dados mantendo dados externos (non-system-of-record) separados dos dados do sistema central.</li>
+              </ul>
+              <!-- Diagrama: IDM -->
+              <div style="border:1px solid #ccc;border-radius:6px;padding:1rem;margin-top:0.8rem;background:#fafafa;font-size:0.8rem;">
+                <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:center;text-align:center;">
+                  <div>
+                    <div style="font-size:1.5rem;">☐</div>
+                    <div style="font-weight:700;">InsuranceSuite</div>
+                    <div style="font-size:0.82rem;color:#555;margin-top:0.4rem;">③ Data cross-referenced in InsuranceSuite ↕</div>
+                  </div>
+                  <div style="font-size:0.82rem;color:#555;">① Data request →</div>
+                  <div>
+                    <div style="font-size:1.5rem;">☁</div>
+                    <div style="font-weight:700;">External System</div>
+                    <div style="font-size:0.82rem;color:#555;margin-top:0.4rem;">② Data stored in Integration Data Manager ↓</div>
+                  </div>
+                </div>
+                <div style="text-align:center;margin-top:0.8rem;">
+                  <div style="display:inline-block;background:#1a6fa8;color:#fff;padding:0.4rem 1rem;border-radius:6px;font-size:0.82rem;font-weight:700;">🗄 Integration Data Manager</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 id="beneficios">Benefícios</h2>
+        <div class="section-divider"></div>
+        <ul class="goal-list">
+          <li><strong>Separation of Concerns:</strong> A lógica de integração é externalizada do InsuranceSuite, permitindo atualizações independentes, melhor desenvolvimento paralelo e conflitos reduzidos durante upgrades.</li>
+          <li><strong>Standardization:</strong> Fornece uma abordagem consistente para integração, reduzindo a necessidade de código customizado e apoiando melhores práticas para deployments cloud.</li>
+          <li><strong>Agility and Scalability:</strong> Habilita desenvolvimento de integração mais rápido, manutenção mais fácil e a capacidade de escalar workloads de integração independentemente.</li>
+          <li><strong>Modularization and fault isolation:</strong> Quebra fluxos de integração em rotas/serviços pequenos e autossuficientes com ownership claro, logging e retries, tornando os problemas mais rápidos de localizar, testar e corrigir enquanto limita o blast radius de falhas.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2 id="marketplace">Marketplace</h2>
+        <div class="section-divider"></div>
+        <p>Guidewire Marketplace oferece um ecossistema curado de mais de 215 parceiros tecnológicos e assets pré-construídos e validados pela Guidewire. Usar esses assets ajuda a adotar novas capacidades mais rapidamente, reduzir esforço e risco de integração e responder rapidamente a mudanças por meio de:</p>
+        <ul class="goal-list" style="margin-top:0.6rem;">
+          <li><strong>Extensions:</strong> Adicione recursos ou componentes de UI upgrade-safe que aprimoram as aplicações centrais sem código customizado pesado.</li>
+          <li><strong>Integrations:</strong> Conecte o InsuranceSuite a provedores de pagamento, fontes de dados, serviços de documentos e outros sistemas com conectores pré-construídos.</li>
+          <li><strong>Workflows:</strong> Blueprints de processo e padrões de automação drop-in que aceleram jornadas comuns (por exemplo, cotação, FNOL, faturamento ou aprovações).</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ══ PÁGINA 9 ══ -->
+    <div class="page-section" id="page-9">
+      <div class="page-header">
+        <h1>Introdução ao Data Platform</h1>
+        <div class="divider"></div>
+        <p class="page-subtitle">Plataforma de dados específica para seguros de property &amp; casualty, entregue como serviço cloud, que transforma dados em insights acionáveis.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="o-que-e-o-guidewire-data-platform">O que é o Guidewire Data Platform?</h2>
+        <div class="section-divider"></div>
+        <p>O Guidewire Data Platform é uma plataforma de dados específica para seguros de property &amp; casualty, entregue como serviço cloud. É um componente-chave do Guidewire Cloud Platform e é projetado para permitir às seguradoras:</p>
+        <ul class="goal-list" style="margin-top:0.6rem;">
+          <li><strong>Acessar uma visão completa dos seus dados InsuranceSuite</strong> através de um modelo de dados e repositório construídos especificamente para dados core da Guidewire.</li>
+          <li><strong>Enriquecer e <em>curar</em> dados para serem insights-ready</strong> para alimentar aplicações de analytics e casos de uso.</li>
+          <li><strong>Orientar <em>insights</em> de negócio precisos</strong> que melhoram a subscrição, análise de risco e performance de sinistros.</li>
+        </ul>
+
+        <!-- Diagrama: Semicírculo ACCESS / CURATION / INSIGHT -->
+        <div style="border:1px solid #ccc;border-radius:8px;padding:1rem 1.5rem;margin-top:1rem;background:#fafafa;font-size:0.82rem;">
+          <div style="text-align:center;font-weight:700;color:#fff;background:linear-gradient(135deg,#0d4d6e,#1a8a7a);border-radius:6px;padding:0.5rem;margin-bottom:0.8rem;font-size:0.9rem;">Guidewire Data Platform — ACCESS · CURATION · INSIGHT</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.8rem;">
+            <div style="background:#1a5f8a;color:#fff;border-radius:6px;padding:0.8rem;text-align:center;">
+              <div style="font-weight:700;margin-bottom:0.5rem;">ACCESS</div>
+              <div style="font-size:0.82rem;line-height:1.5;">Read replicas<br>Streamed transactions<br>Periodic snapshots<br>Cloud Data Access</div>
+            </div>
+            <div style="background:#1a7a6e;color:#fff;border-radius:6px;padding:0.8rem;text-align:center;">
+              <div style="font-weight:700;margin-bottom:0.5rem;">CURATION</div>
+              <div style="font-size:0.82rem;line-height:1.5;">Insurance Data Model<br>Dataset creation<br>Business-ready datasets<br>Data Studio · InsuranceSuite</div>
+            </div>
+            <div style="background:#1a8a6a;color:#fff;border-radius:6px;padding:0.8rem;text-align:center;">
+              <div style="font-weight:700;margin-bottom:0.5rem;">INSIGHT</div>
+              <div style="font-size:0.82rem;line-height:1.5;">Embedded insight<br>Operational insights<br>Financial insights<br>Predict · Explore</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 id="beneficios-do-guidewire-data-platform">Benefícios do Guidewire Data Platform</h2>
+        <div class="section-divider"></div>
+        <p>O Guidewire Data Platform oferece uma suite abrangente de capacidades para garantir que os dados sejam business-ready, acessíveis e acionáveis:</p>
+        <ul class="goal-list" style="margin-top:0.6rem;">
+          <li><strong>Complete, unified view of data:</strong> Fornece uma única fonte de verdade, quebrando silos de dados e habilitando análise holística.</li>
+          <li><strong>Comprehensive data access:</strong> Permite aos usuários acessar todos os seus dados brutos e curados, que podem então alimentar outras aplicações e serviços.</li>
+          <li><strong>Accelerated time-to-insight:</strong> A plataforma acelera o time-to-insight com curação de dados, que gera conteúdo business-ready útil para casos de uso de reporting e analytics de seguros.</li>
+          <li><strong>Improved operational efficiency by powering analytics and reporting:</strong> Dashboards em tempo real e dados em streaming ajudam os usuários a monitorar e otimizar processos críticos, como gestão de sinistros e subscrição.</li>
+          <li><strong>Support for AI/ML and advanced analytics:</strong> A plataforma suporta modelagem AI/ML e estratégias de dados empresariais com streaming near real-time de change data, habilitando analytics preditivo e inovação.</li>
+          <li><strong>Centralized data governance, security, and compliance:</strong> Reduz riscos aplicando qualidade de dados e controles de acesso, e suportando requisitos regulatórios.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2 id="componentes-principais-e-fluxo">Componentes Principais e Fluxo</h2>
+        <div class="section-divider"></div>
+        <p><strong>Guidewire Data Platform</strong> — Ingests, auto-curates and transforms petabytes of data to business-ready content.</p>
+
+        <!-- Diagrama: Pipeline da Data Platform -->
+        <div style="border:1px solid #ccc;border-radius:8px;padding:1rem 1.5rem;margin:0.8rem 0;background:#fafafa;font-size:0.8rem;">
+          <div style="display:grid;grid-template-columns:auto auto auto;gap:1rem;align-items:start;text-align:center;">
+            <div>
+              <div style="font-size:0.82rem;color:#777;margin-bottom:0.4rem;">Fontes</div>
+              <div style="display:flex;flex-direction:column;gap:0.3rem;">
+                <div style="padding:0.3rem 0.5rem;background:#e3f0fa;border:1px solid #4a90d9;border-radius:4px;font-size:0.82rem;">InsuranceSuite</div>
+                <div style="padding:0.3rem 0.5rem;background:#e3f0fa;border:1px solid #4a90d9;border-radius:4px;font-size:0.82rem;">InsuranceNow</div>
+                <div style="padding:0.3rem 0.5rem;background:#e3f0fa;border:1px solid #4a90d9;border-radius:4px;font-size:0.82rem;">External Systems</div>
+                <div style="padding:0.3rem 0.5rem;background:#c7dff7;border:1px solid #4a90d9;border-radius:4px;font-size:0.82rem;">InsuranceSuite DBs</div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:0.82rem;color:#777;margin-bottom:0.4rem;">Guidewire Data Platform</div>
+              <div style="border:2px solid #f0a030;border-radius:6px;padding:0.5rem;background:#fff8ed;">
+                <div style="font-size:0.82rem;text-align:center;display:flex;gap:0.4rem;justify-content:center;">
+                  <span style="background:#c7dff7;border:1px solid #4a90d9;padding:0.25rem 0.4rem;border-radius:4px;">Data Ingestion<br><em style="font-size:0.82rem;">Near real time</em></span>
+                  <span>→</span>
+                  <span style="background:#c7dff7;border:1px solid #4a90d9;padding:0.25rem 0.4rem;border-radius:4px;">Transformation and Curation</span>
+                  <span>→</span>
+                  <span style="background:#c7dff7;border:1px solid #4a90d9;padding:0.25rem 0.4rem;border-radius:4px;">Data Lake</span>
+                </div>
+              </div>
+              <div style="display:flex;gap:0.5rem;margin-top:0.5rem;justify-content:center;font-size:0.82rem;">
+                <div style="text-align:center;"><div style="color:#555;">Real time ↓</div><div style="background:#c7dff7;border:1px solid #4a90d9;padding:0.25rem 0.4rem;border-radius:4px;">Read Replica</div></div>
+                <div style="text-align:center;"><div style="color:#555;">Daily, weekly ↓</div><div style="background:#c7dff7;border:1px solid #4a90d9;padding:0.25rem 0.4rem;border-radius:4px;">Snapshot Export</div></div>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:0.82rem;color:#777;margin-bottom:0.4rem;">Data access apps</div>
+              <div style="display:flex;flex-direction:column;gap:0.3rem;">
+                <div style="font-size:0.82rem;color:#555;font-style:italic;">Curated and uncurated →</div>
+                <div style="padding:0.3rem 0.5rem;background:#e3f0fa;border:1px solid #4a90d9;border-radius:4px;font-size:0.82rem;">Data Studio → Published datasets</div>
+                <div style="font-size:0.82rem;color:#555;font-style:italic;margin-top:0.3rem;">Uncurated →</div>
+                <div style="padding:0.3rem 0.5rem;background:#e3f0fa;border:1px solid #4a90d9;border-radius:4px;font-size:0.82rem;">Cloud Data Access (CDA) → CDA S3 bucket</div>
+                <div style="font-size:0.82rem;color:#555;font-style:italic;margin-top:0.3rem;">Insights →</div>
+                <div style="padding:0.3rem 0.5rem;background:#e3f0fa;border:1px solid #4a90d9;border-radius:4px;font-size:0.82rem;">External Apps / Explore / Predict</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion" style="margin-top:1rem;">
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">Data Access <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">
+              <ul class="goal-list">
+                <li><strong>Cloud Data Access (CDA):</strong> Transmite change data do banco de dados do InsuranceSuite e InsuranceNow em near real-time para um data lake (S3 bucket) como arquivos Parquet. Inclui dados de mudança atuais e históricos. Projetado para streaming de dados brutos (com histórico completo de mudanças) para ambientes de dados externos, data warehouses ou data lakes. Alimenta analytics, business intelligence e casos de uso de machine learning que se beneficiam de dados atuais e históricos.</li>
+                <li><strong>Read Replica:</strong> Fornece uma visão em tempo real, somente leitura, do estado atual do banco de dados de produção do InsuranceSuite. Não há acesso a mudanças históricas. Usado para consultas SQL ad-hoc diretas, reporting operacional ou analytics, e integrações baseadas em ETL que requerem dados transacionais up-to-date.</li>
+                <li><strong>Snapshot Export:</strong> Entrega uma cópia point-in-time de leitura/gravação do banco de dados, tipicamente atualizada diariamente ou semanalmente. Ideal para geração de dados de teste, backups de banco de dados de produção e ETL periódico.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">Data Curation — Guidewire Data Studio <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">
+              <p>A ferramenta de curação principal que a Guidewire fornece é o <strong>Guidewire Data Studio</strong>. O Data Studio permite descobrir, gerenciar e usar todos os seus dados no Guidewire Data Platform. Usando o Data Studio, você pode:</p>
+              <ul class="goal-list" style="margin-top:0.5rem;">
+                <li>Encontrar, acessar e consultar dados tanto brutos quanto curados.</li>
+                <li>Criar e instanciar conteúdo curado novo e customizado.</li>
+                <li>Configurar datasets para capturar os dados mais recentes ou dados de mudança históricos.</li>
+                <li>Entregar esse conteúdo para outras aplicações de analytics, reporting e integração.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">Data Insights — Explore, Predict, External Apps <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">
+              <p>Um sistema de insight fornece visões, análises e previsões baseadas em dados sobre um negócio, que servem como base para tomada de decisão informada. A Guidewire fornece uma variedade de apps de analytics, construídas especificamente para fornecer insight em áreas específicas de um negócio de seguros de property &amp; casualty.</p>
+              <ul class="goal-list" style="margin-top:0.5rem;">
+                <li>Uma vez que um dataset esteja pronto no Data Studio, ele pode ser publicado diretamente para o <strong>Guidewire Explore</strong>. Isso torna o dataset imediatamente disponível no Explore para criação de dashboards, visualização e análise adicional.</li>
+                <li>Para analytics preditivo, o Data Studio pode entregar datasets model-ready para o <strong>Guidewire Predict</strong>, agilizando o deployment de modelos preditivos dentro de fluxos de negócio.</li>
+                <li>Aplicações de analytics externas também podem acessar datasets curados conforme necessário via conexões JDBC ou ODBC.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 id="personas-quem-usa-o-guidewire-data-platform">Personas — Quem usa o Guidewire Data Platform?</h2>
+        <div class="section-divider"></div>
+        <p>O Guidewire Data Platform é projetado para suportar uma ampla gama de usuários, cada um com responsabilidades e fluxos de trabalho distintos:</p>
+        <div class="capability-grid" style="margin-top:0.8rem;">
+          <div class="cap-card">
+            <div class="cap-title">👔 Sam Succeed — Manager</div>
+            <div class="cap-desc"><strong>Atividades típicas:</strong> Acessar dashboards de visualização de dados curados e relatórios para insights operacionais, financeiros e estratégicos.<br><strong>Produtos/Serviços:</strong> Explore, Canvas, Cyence.</div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-title">📊 Priya — Data Professional</div>
+            <div class="cap-desc"><strong>Atividades típicas:</strong> Integrar, curar e gerenciar data pipelines; habilitar acesso a dados para sistemas downstream e ferramentas de BI.<br><strong>Produtos/Serviços:</strong> Cloud Data Access (CDA), Data Studio, Analytics Manager.</div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-title">💼 Emma — Business Analyst</div>
+            <div class="cap-desc"><strong>Atividades típicas:</strong> Acessar dashboards e relatórios de visualização de dados curados para insights operacionais, financeiros e estratégicos.<br><strong>Produtos/Serviços:</strong> Explore, Canvas — Dashboards embedded nas aplicações core InsuranceSuite.</div>
+          </div>
+          <div class="cap-card">
+            <div class="cap-title">💻 Chase — Developer</div>
+            <div class="cap-desc"><strong>Atividades típicas:</strong> Acessar dados brutos e curados para analytics avançado, modelagem preditiva e desenvolvimento de modelos AI/ML.<br><strong>Produtos/Serviços:</strong> Cloud Data Access (CDA), Data Studio, Predict.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ PÁGINA 10 ══ -->
+    <div class="page-section" id="page-10">
+      <div class="page-header">
+        <h1>Aplicações Guidewire Cloud</h1>
+        <div class="divider"></div>
+        <p class="page-subtitle">Apps cloud construídas especificamente para seguros que conectam toda a jornada do seguro — da cotação ao sinistro — em uma única plataforma.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="valor-de-negocio">Valor de Negócio</h2>
+        <div class="section-divider"></div>
+        <p>Guidewire applications are purpose built cloud apps that run on the Guidewire Cloud Platform. Together, Jutro Digital Platform, PolicyCenter, ClaimCenter, BillingCenter, Explore, and Predict connect the insurance journey from quote to claim. They unify digital experiences, core processing, analytics, and decisions on a single platform.</p>
+        <p style="margin-top:0.6rem;">These applications speed product launches, reduce handoffs and errors, and improve customer service with self-service and real-time insights. Business users gain clear visibility and consistent decisions. Technical teams get upgrade-safe integrations and automation. The result is faster operations, lower risk, and the flexibility to adapt as needs change.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="objetivos">Objetivos</h2>
+        <div class="section-divider"></div>
+        <p>After completing this module, you will be able to:</p>
+        <ul class="goal-list" style="margin-top:0.6rem;">
+          <li>Explain how insurance policy tasks flow across the core apps: Jutro (web/mobile self-service), PolicyCenter (quotes and policies), ClaimCenter (claims), and BillingCenter (billing and payments).</li>
+          <li>Describe how analytics help make decisions and, how Explore shows what's happening, and how Predict guides what to do next.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ══ PÁGINA 11 ══ -->
+    <div class="page-section" id="page-11">
+      <div class="page-header">
+        <h1>Tour das Aplicações Cloud</h1>
+        <div class="divider"></div>
+        <p class="page-subtitle">Suite integrada de aplicações core de seguro de danos que gerenciam apólices, faturamento e sinistros ponta a ponta, em uma única plataforma com dados, fluxos e APIs compartilhados.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="visao-geral">Visão Geral</h2>
+        <div class="section-divider"></div>
+        <p>Guidewire InsuranceSuite is an integrated suite of core applications de seguro de danos, PolicyCenter, BillingCenter, and ClaimCenter that manages policy, billing, and claims end to end on a single platform with shared data, workflows, and APIs.</p>
+        <p style="margin-top:0.6rem;">Delivered on the Guidewire Cloud Platform (GWCP), it benefits from managed security, observability, and regular ski-release updates that reduce maintenance and keep operations current.</p>
+        <p style="margin-top:0.6rem;">Together, these products speed decisions, improve accuracy, and enhance the customer experience across policy, billing, and claims.</p>
+
+        <!-- Diagrama: Arquitetura das aplicações cloud -->
+        <div style="border:1px solid #ccc;border-radius:8px;padding:1rem 1.5rem;margin-top:1rem;background:#005a7a;color:#fff;font-size:0.82rem;">
+          <div style="text-align:center;margin-bottom:0.8rem;">
+            <div style="display:inline-block;border:2px solid #f0c040;padding:0.3rem 1rem;border-radius:4px;font-weight:700;font-size:0.85rem;">👤 User</div>
+            <div style="font-size:0.82rem;margin:0.2rem 0;">↕</div>
+            <div style="display:inline-block;border:2px solid #f0c040;padding:0.3rem 1rem;border-radius:4px;font-size:0.85rem;">Jutro Self Service Platform</div>
+          </div>
+          <div style="display:grid;grid-template-columns:auto 1fr;gap:0.8rem;align-items:center;">
+            <div style="border:2px solid #f0c040;border-radius:6px;padding:0.5rem;text-align:center;font-size:0.82rem;max-width:80px;">Analytics<br>(Explore and Predict)</div>
+            <div style="border:2px solid #fff;border-radius:6px;padding:0.8rem;">
+              <div style="font-weight:700;text-align:center;margin-bottom:0.5rem;">InsuranceSuite</div>
+              <div style="display:flex;gap:0.5rem;justify-content:center;">
+                <div style="border:2px solid #f0c040;padding:0.3rem 0.6rem;border-radius:4px;font-size:0.82rem;">PolicyCenter</div>
+                <div style="font-size:0.8rem;">↔</div>
+                <div style="border:2px solid #f0c040;padding:0.3rem 0.6rem;border-radius:4px;font-size:0.82rem;">BillingCenter</div>
+                <div style="font-size:0.8rem;">↔</div>
+                <div style="border:2px solid #f0c040;padding:0.3rem 0.6rem;border-radius:4px;font-size:0.82rem;">ClaimsCenter</div>
+              </div>
+            </div>
+          </div>
+          <div style="text-align:center;margin-top:0.6rem;font-size:0.82rem;color:#ccc;">↕</div>
+          <div style="border:2px solid #fff;border-radius:6px;padding:0.6rem;text-align:center;margin-top:0.3rem;">
+            <div style="font-weight:700;font-size:0.8rem;margin-bottom:0.4rem;">Guidewire Cloud Platform (GWCP)</div>
+            <div style="display:flex;justify-content:center;gap:1rem;font-size:0.82rem;color:#ccc;">
+              <span>APIs</span><span>SECURITY</span><span>DATA SERVICES</span><span>SCALABILITY</span><span>CONTINUOUS IMPROVEMENT</span>
+            </div>
+          </div>
+        </div>
+
+        <p style="margin-top:1rem;">All these applications are seamlessly integrated within GWCP. Data flows securely and efficiently between PolicyCenter, ClaimCenter, BillingCenter, and the other components. This integration ensures that information is always up to date and accessible to the right people at the right time.</p>
+        <p style="margin-top:0.6rem;"><strong>Integration in action:</strong></p>
+        <ul class="goal-list" style="margin-top:0.4rem;">
+          <li>When a user updates their address in a self-service portal, the change is instantly reflected in PolicyCenter, BillingCenter, and ClaimCenter.</li>
+          <li>Explore shows how the business is performing so teams can spot trends and improve processes, while Predict embeds model scores in InsuranceSuite to guide underwriting, claims, and customer interactions in real time.</li>
+        </ul>
+        <p style="margin-top:0.8rem;">The platform's architecture supports flexibility and scalability, allowing insurers to add new capabilities or scale up as their business grows. Continuous improvement is built in, with regular updates and enhancements delivered by Guidewire.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="como-as-aplicacoes-trabalham-juntas">Como as Aplicações Trabalham Juntas</h2>
+        <div class="section-divider"></div>
+        <p>Here's a scenario to explain how Guidewire Cloud apps work together from quote to claim. An agent, a policyholder, an underwriter, a billing system, a claims adjuster, and a product manager each play a part, and data flows seamlessly between the apps, so no one has to retype information.</p>
+
+        <!-- Diagrama: Fluxo quote-to-claim -->
+        <div style="overflow-x:auto;margin:0.8rem 0;">
+          <div style="display:flex;gap:0.5rem;align-items:flex-start;min-width:600px;font-size:0.82rem;">
+            <div style="border:2px solid #e05080;border-radius:6px;padding:0.6rem;text-align:center;min-width:100px;background:#fff;">
+              <div style="background:#2a5080;color:#fff;padding:0.2rem;border-radius:4px;font-size:0.82rem;margin-bottom:0.4rem;">Jutro Agent Experience</div>
+              <div style="font-size:0.82rem;color:#555;">Archie Armstrong<br><em>Insurance Agent</em></div>
+              <div style="background:#4a7090;color:#fff;padding:0.2rem;border-radius:3px;font-size:0.82rem;margin-top:0.4rem;">Transactions</div>
+              <div style="border:1px solid #ccc;padding:0.15rem;font-size:0.82rem;margin-top:0.2rem;">Quote and Buy</div>
+              <div style="border:1px solid #ccc;padding:0.15rem;font-size:0.82rem;margin-top:0.1rem;">Policy Change</div>
+            </div>
+            <div style="align-self:center;">→</div>
+            <div style="border:2px solid #e05080;border-radius:6px;padding:0.6rem;text-align:center;min-width:100px;background:#fff;">
+              <div style="background:#2a5080;color:#fff;padding:0.2rem;border-radius:4px;font-size:0.82rem;margin-bottom:0.4rem;">PolicyCenter</div>
+              <div style="font-size:0.82rem;color:#555;">Alice Applegate<br><em>Underwriter</em></div>
+              <div style="background:#1a8a6a;color:#fff;padding:0.2rem;border-radius:3px;font-size:0.82rem;margin-top:0.4rem;">Tasks</div>
+              <div style="border:1px solid #ccc;padding:0.15rem;font-size:0.82rem;margin-top:0.2rem;">Evaluate Submissions</div>
+              <div style="border:1px solid #ccc;padding:0.15rem;font-size:0.82rem;margin-top:0.1rem;">Bind Policies</div>
+            </div>
+            <div style="align-self:center;">→</div>
+            <div style="border:2px solid #e05080;border-radius:6px;padding:0.6rem;text-align:center;min-width:100px;background:#fff;">
+              <div style="background:#2a5080;color:#fff;padding:0.2rem;border-radius:4px;font-size:0.82rem;margin-bottom:0.4rem;">Jutro Policyholder Experience</div>
+              <div style="font-size:0.82rem;color:#555;">Ray Newton<br><em>Policyholder</em></div>
+              <div style="background:#1a8a6a;color:#fff;padding:0.2rem;border-radius:3px;font-size:0.82rem;margin-top:0.4rem;">Tasks</div>
+              <div style="border:1px solid #ccc;padding:0.15rem;font-size:0.82rem;margin-top:0.2rem;">Manage Policy Details</div>
+              <div style="border:1px solid #ccc;padding:0.15rem;font-size:0.82rem;margin-top:0.1rem;">File Claim</div>
+            </div>
+            <div style="align-self:center;">→</div>
+            <div style="border:2px solid #e05080;border-radius:6px;padding:0.6rem;text-align:center;min-width:100px;background:#fff;">
+              <div style="background:#2a5080;color:#fff;padding:0.2rem;border-radius:4px;font-size:0.82rem;margin-bottom:0.4rem;">ClaimCenter</div>
+              <div style="font-size:0.82rem;color:#555;">Andy Applegate<br><em>Claims Adjuster</em></div>
+              <div style="background:#1a8a6a;color:#fff;padding:0.2rem;border-radius:3px;font-size:0.82rem;margin-top:0.4rem;">Tasks</div>
+              <div style="border:1px solid #ccc;padding:0.15rem;font-size:0.82rem;margin-top:0.2rem;">Review Claims</div>
+              <div style="border:1px solid #ccc;padding:0.15rem;font-size:0.82rem;margin-top:0.1rem;">Resolve Claims</div>
+            </div>
+            <div style="align-self:center;">→</div>
+            <div style="border:2px solid #e05080;border-radius:6px;padding:0.6rem;text-align:center;min-width:100px;background:#fff;">
+              <div style="background:#2a5080;color:#fff;padding:0.2rem;border-radius:4px;font-size:0.82rem;margin-bottom:0.4rem;">Explore</div>
+              <div style="font-size:0.82rem;color:#555;">Lynzi Taft<br><em>Product Manager</em></div>
+              <div style="background:#1a8a6a;color:#fff;padding:0.2rem;border-radius:3px;font-size:0.82rem;margin-top:0.4rem;">Tasks</div>
+              <div style="border:1px solid #ccc;padding:0.15rem;font-size:0.82rem;margin-top:0.2rem;">Visualize dashboards</div>
+              <div style="border:1px solid #ccc;padding:0.15rem;font-size:0.82rem;margin-top:0.1rem;">Review performance metrics</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion" style="margin-top:1rem;">
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">1. Jutro Agent Experience — Archie (Insurance Agent) <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">
+              <p>Archie (an Insurance Agent) starts a new insurance quote in the Jutro web app for his customer, Ray Newton. Ray is looking to insure his house, built in 1949 and his car a 2022 model. Archie enters basic information, uploads a document, and the Jutro app sends the details straight to PolicyCenter, no rekeying or flagging for anything that needs an underwriter's review. In this case, houses built before 1950 need an underwriter review before the policy can be bound. This flag is automatically sent to an underwriter.</p>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">2. PolicyCenter — Alice (Underwriter) <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">
+              <p>Alice (an underwriter) opens Archie's submission for Ray, she checks coverage and pricing, asks for one missing detail, reviews the flag for Ray's house. Satisfied with Archies answers she then binds the policy. At bind, PolicyCenter sends billing instructions to BillingCenter, which creates the down payment and installment schedule; that schedule is returned to the Jutro app so Archie and Ray can see it immediately.</p>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">3. Jutro Policyholder Experience — Ray (Policyholder) <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">
+              <p>Ray (a policyholder) logs in on his phone, reviews his new policy and installment plan, and pays the down payment in the same portal. Months later, when he has a fender-bender, Ray reports the claim, first notice of loss (FNOL) in Jutro, uploads photos, and then sees any deductible and claim payment updates and tracks status and messages without calling in.</p>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">4. ClaimCenter — Andy (Claims Adjuster) <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">
+              <p>Andy (the underwriter) logs into ClaimCenter where he receives Ray's claim prefilled from the Jutro app, verifies coverage, sets reserves, and orders repairs. When a deductible applies, ClaimCenter coordinates the deductible and any claim disbursements with BillingCenter, and status/payment updates flow back to Jutro so Ray (and Archie) see them in real time without calling in.</p>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">5. Explore — Lynzi (Product Manager) <span class="acc-arrow">▾</span></button>
+            <div class="acc-body">
+              <p>Lynzi views a Liveboard showing Archie's quote-to-bind, Alice's referral rates, Ray's claim cycle time, and payment status trends. She sets alerts for spikes (for example, weather events) and shares the dashboard link so underwriting, claims, and billing teams can adjust quickly.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ PÁGINA 12 ══ -->
+    <div class="page-section" id="page-12">
+      <div class="page-header">
+        <h1>Jutro Digital Platform</h1>
+        <div class="divider"></div>
+        <p class="page-subtitle">Toolset Guidewire para criação de apps web e mobile insurer-branded que funcionam integradas ao InsuranceSuite no GWCP.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="o-que-e-a-jutro-digital-platform">O que é a Jutro Digital Platform?</h2>
+        <div class="section-divider"></div>
+        <p>Jutro Digital Platform is a Guidewire toolset for building insurer-branded web and mobile apps that work smoothly with InsuranceSuite on the Guidewire Cloud Platform. Using a software development kit (SDK), and prebuilt templates, teams can quickly launch common journeys like getting a quote, buying a policy, reporting a claim, self-service, and renewals, without retyping data between systems.</p>
+        <p style="margin-top:0.6rem;">Behind the scenes, Jutro uses secure Cloud APIs to read and write data in InsuranceSuite and to start or update transactions, for example, creating a new claim when someone reports a loss, updating policy details, or posting a payment.</p>
+        <p style="margin-top:0.6rem;">Jutro can also connect to approved non-Guidewire systems when needed, so customers, agents, and employees get a secure, consistent experience that's fast to launch and easy to update over time.</p>
+        <p style="margin-top:0.6rem;">JDP provides you with a toolbox to enable rapid development and flexible deployment of your applications.</p>
+
+        <!-- Diagrama: JDP Toolbox -->
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.6rem;margin-top:1rem;font-size:0.82rem;">
+          <div style="background:#2a5080;color:#fff;border-radius:6px;padding:0.7rem;">
+            <div style="font-weight:700;margin-bottom:0.5rem;font-size:0.8rem;">Design System and UI Libraries</div>
+            <div style="display:flex;flex-direction:column;gap:0.25rem;">
+              <div style="background:rgba(255,255,255,0.15);padding:0.2rem 0.4rem;border-radius:3px;font-size:0.82rem;">Components</div>
+              <div style="background:rgba(255,255,255,0.15);padding:0.2rem 0.4rem;border-radius:3px;font-size:0.82rem;">Patterns</div>
+              <div style="background:rgba(255,255,255,0.15);padding:0.2rem 0.4rem;border-radius:3px;font-size:0.82rem;">Principles and Guidelines</div>
+              <div style="background:rgba(255,255,255,0.15);padding:0.2rem 0.4rem;border-radius:3px;font-size:0.82rem;">UI Libraries</div>
+            </div>
+            <div style="margin-top:0.5rem;font-size:0.82rem;font-style:italic;">Build delightful user experiences</div>
+          </div>
+          <div style="background:#2a5080;color:#fff;border-radius:6px;padding:0.7rem;">
+            <div style="font-weight:700;margin-bottom:0.5rem;font-size:0.8rem;">App Templates</div>
+            <div style="display:flex;flex-direction:column;gap:0.25rem;">
+              <div style="background:rgba(255,255,255,0.15);padding:0.2rem 0.4rem;border-radius:3px;font-size:0.82rem;">Starter Templates</div>
+              <div style="background:rgba(255,255,255,0.15);padding:0.2rem 0.4rem;border-radius:3px;font-size:0.82rem;">Demo/Training Templates</div>
+              <div style="background:rgba(255,255,255,0.15);padding:0.2rem 0.4rem;border-radius:3px;font-size:0.82rem;">Experience Templates</div>
+            </div>
+            <div style="margin-top:0.5rem;font-size:0.82rem;font-style:italic;">Speed up development</div>
+          </div>
+          <div style="background:#2a5080;color:#fff;border-radius:6px;padding:0.7rem;">
+            <div style="font-weight:700;margin-bottom:0.5rem;font-size:0.8rem;">Digital SDK for Cloud APIs</div>
+            <div style="display:flex;flex-direction:column;gap:0.25rem;">
+              <div style="background:rgba(255,255,255,0.15);padding:0.2rem 0.4rem;border-radius:3px;font-size:0.82rem;">Digital SDK</div>
+              <div style="background:rgba(255,255,255,0.15);padding:0.2rem 0.4rem;border-radius:3px;font-size:0.82rem;">UI Extensions</div>
+              <div style="font-size:0.82rem;margin-top:0.3rem;color:#ccc;">PolicyCenter · ClaimCenter · BillingCenter</div>
+            </div>
+            <div style="margin-top:0.5rem;font-size:0.82rem;font-style:italic;">Surface the modern InsuranceSuite core</div>
+          </div>
+          <div style="background:#2a5080;color:#fff;border-radius:6px;padding:0.7rem;">
+            <div style="font-weight:700;margin-bottom:0.5rem;font-size:0.8rem;">Developer Workflow and Infrastructure</div>
+            <div style="display:flex;flex-direction:column;gap:0.25rem;">
+              <div style="background:rgba(255,255,255,0.15);padding:0.2rem 0.4rem;border-radius:3px;font-size:0.82rem;">App Management</div>
+              <div style="background:rgba(255,255,255,0.15);padding:0.2rem 0.4rem;border-radius:3px;font-size:0.82rem;">Source Code</div>
+              <div style="background:rgba(255,255,255,0.15);padding:0.2rem 0.4rem;border-radius:3px;font-size:0.82rem;">Build Management</div>
+              <div style="font-size:0.82rem;color:#ccc;margin-top:0.2rem;">Jutro Web Apps</div>
+            </div>
+            <div style="margin-top:0.5rem;font-size:0.82rem;font-style:italic;">Deploy and manage flexibly</div>
+          </div>
+        </div>
+
+        <p style="margin-top:1rem;">Jutro applications are built using industry-standard <strong>React</strong>.</p>
+        <p style="margin-top:0.4rem;">JDP enables you to deliver personalized experiences for <strong>any user</strong> across <strong>every product line</strong> and <strong>distribution channel</strong>.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="o-que-voce-pode-fazer-com-o-jutro">O que Você Pode Fazer com o Jutro</h2>
+        <div class="section-divider"></div>
+        <p>With the Jutro Digital Platform, teams can quickly design, connect, and launch modern Web and mobile experiences on GWCP.</p>
+        <p style="margin-top:0.5rem;">Jutro turns digital ideas into working apps fast. Here's how it helps you build, connect to InsuranceSuite, reuse components, and ship changes safely at scale:</p>
+        <ul class="goal-list" style="margin-top:0.6rem;">
+          <li><strong>Build insurer-branded web and mobile apps:</strong> Teams create self-service experiences (for customers, agents, and staff) using Jutro's ready-made design components and page templates, all connected to InsuranceSuite on GWCP.</li>
+          <li><strong>Start fast with prebuilt journeys:</strong> Out-of-the-box templates for common tasks, like getting a quote, reporting a claim (FNOL/First Report of Injury), renewals, and agent workflows—can be customized to your rules and branding.</li>
+          <li><strong>Connect to core systems and beyond:</strong> Jutro connects with InsuranceSuite through cloud APIs (secure, standard connections) and can also talk to non-Guidewire systems, which helps during migrations or hybrid setups.</li>
+          <li><strong>Reuse pieces at scale:</strong> You can package screens or features as small, standalone "micro-frontends" and embed them in other apps (even non-Jutro), so teams can deliver updates faster.</li>
+          <li><strong>Streamlined developer workflow:</strong> On GWCP, Jutro supports safe, automated build and release steps (CI/CD), promotion between environments (dev → test → prod), and global content delivery, so changes ship quickly and predictably.</li>
+          <li><strong>Built-in security and access:</strong> Standard sign-in (single sign-on) and modern token-based access keep sessions secure and aligned with GWCP standards, while roles and permissions control who can see or do what.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2 id="usuarios-tipicos-da-jutro-digital-platform">Usuários Típicos da Jutro Digital Platform</h2>
+        <div class="section-divider"></div>
+        <p>JDP enables you to deliver personalized experiences for any user across every product line and distribution channel:</p>
+
+        <!-- Diagrama: Personas / LOBs / Transactions / Distribution -->
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.6rem;margin-top:0.8rem;font-size:0.82rem;">
+          <div style="background:#e07a20;color:#fff;border-radius:6px;padding:0.7rem;">
+            <div style="font-weight:700;margin-bottom:0.5rem;">Personas</div>
+            <div style="background:rgba(255,255,255,0.2);padding:0.2rem 0.4rem;border-radius:3px;margin-bottom:0.2rem;font-size:0.82rem;">Agent</div>
+            <div style="background:rgba(255,255,255,0.2);padding:0.2rem 0.4rem;border-radius:3px;font-size:0.82rem;">Policyholder</div>
+          </div>
+          <div style="background:#1a8a7a;color:#fff;border-radius:6px;padding:0.7rem;">
+            <div style="font-weight:700;margin-bottom:0.5rem;">Lines of Business</div>
+            <div style="background:rgba(255,255,255,0.2);padding:0.2rem 0.4rem;border-radius:3px;margin-bottom:0.2rem;font-size:0.82rem;">Personal Auto</div>
+            <div style="background:rgba(255,255,255,0.2);padding:0.2rem 0.4rem;border-radius:3px;margin-bottom:0.2rem;font-size:0.82rem;">Commercial Auto</div>
+            <div style="background:rgba(255,255,255,0.2);padding:0.2rem 0.4rem;border-radius:3px;margin-bottom:0.2rem;font-size:0.82rem;">Workers Compensation</div>
+            <div style="background:rgba(255,255,255,0.2);padding:0.2rem 0.4rem;border-radius:3px;font-size:0.82rem;">Homeowners</div>
+          </div>
+          <div style="background:#2a9ad0;color:#fff;border-radius:6px;padding:0.7rem;">
+            <div style="font-weight:700;margin-bottom:0.5rem;">Transactions</div>
+            <div style="background:rgba(255,255,255,0.2);padding:0.2rem 0.4rem;border-radius:3px;margin-bottom:0.2rem;font-size:0.82rem;">Quote and Buy</div>
+            <div style="background:rgba(255,255,255,0.2);padding:0.2rem 0.4rem;border-radius:3px;margin-bottom:0.2rem;font-size:0.82rem;">Policy Change</div>
+            <div style="background:rgba(255,255,255,0.2);padding:0.2rem 0.4rem;border-radius:3px;margin-bottom:0.2rem;font-size:0.82rem;">Renewal</div>
+            <div style="background:rgba(255,255,255,0.2);padding:0.2rem 0.4rem;border-radius:3px;margin-bottom:0.2rem;font-size:0.82rem;">Claim Notification</div>
+            <div style="background:rgba(255,255,255,0.2);padding:0.2rem 0.4rem;border-radius:3px;font-size:0.82rem;">Cancellation</div>
+          </div>
+          <div style="background:#3a4ab0;color:#fff;border-radius:6px;padding:0.7rem;">
+            <div style="font-weight:700;margin-bottom:0.5rem;">Distribution Channels</div>
+            <div style="background:rgba(255,255,255,0.2);padding:0.2rem 0.4rem;border-radius:3px;margin-bottom:0.2rem;font-size:0.82rem;">Jutro app</div>
+            <div style="background:rgba(255,255,255,0.2);padding:0.2rem 0.4rem;border-radius:3px;margin-bottom:0.2rem;font-size:0.82rem;">EnterpriseEngage app</div>
+            <div style="background:rgba(255,255,255,0.2);padding:0.2rem 0.4rem;border-radius:3px;font-size:0.82rem;">Non-Guidewire</div>
+          </div>
+        </div>
+
+        <ul class="goal-list" style="margin-top:1rem;">
+          <li><strong>Personas:</strong> JDP supports building digital experiences for any persona. This includes internal roles like agents, producers, and Customer Service Representatives (CSRs), as well as external roles like policyholders.</li>
+          <li><strong>Lines of Business (LOBs):</strong> You can build apps for any LOB. This is especially true for LOBs created with APD on Guidewire Cloud. Experience templates provide starting points for common LOBs such as Personal Auto, Homeowners, Commercial Auto, and Workers Comp.</li>
+          <li><strong>Transactions:</strong> JDP supports transactions such as Quote and Buy, Policy Change, Renewal, Claim Notification, and Cancellation.</li>
+          <li><strong>Distribution Channels:</strong> JDP lets you deploy experiences as <strong>Standalone apps</strong> (complete web applications) or as <strong>Micro frontends (MFEs)</strong> that can be embedded into existing Jutro apps, <strong>EnterpriseEngage</strong>, or third-party web apps.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ══ PÁGINA 13 ══ -->
+    <div class="page-section" id="page-13">
+      <div class="page-header">
+        <h1>PolicyCenter</h1>
+        <div class="divider"></div>
+        <p class="page-subtitle">O sistema de administração de apólices do InsuranceSuite — ciclo de vida completo de produtos e apólices no GWCP.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-divider"></div>
+        <p>PolicyCenter is a policy administration system that enables insurers to quickly launch new products using <strong>Advanced Product Designer (ADP)</strong>, adapt to policyholder needs, and scale efficiently. It manages the entire policy lifecycle for personal and commercial insurance, offering tools for quoting, issuing, endorsing, and renewing policies. PolicyCenter features a rating engine, business intelligence, and integrations with external data sources for risk analysis. PolicyCenter also offers robust integration capabilities with legacy systems and third-party applications, making it versatile for insurers of all sizes.</p>
+        <p style="margin-top:0.6rem;">Within InsuranceSuite, PolicyCenter is the <strong>system of record</strong> for policy data and lifecycle transactions and is designed to operate collaboratively with BillingCenter and ClaimCenter for invoicing, payments, cancellations/reinstatements, renewals, and policy validation.</p>
+        <p style="margin-top:0.6rem;">PolicyCenter is delivered as a <strong>single-tenant application</strong> that benefits from GWCP's managed infrastructure, security, observability, and regular ski release updates, allowing insurers to focus on business innovation rather than platform maintenance.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="capacidades-do-ciclo-de-vida-da-apolice">Capacidades do Ciclo de Vida da Apólice</h2>
+        <div class="section-divider"></div>
+        <p>PolicyCenter supports the full policy lifecycle across six key stages:</p>
+
+        <!-- Diagrama: ciclo de vida em 6 etapas -->
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.6rem;margin-top:0.8rem;font-size:0.82rem;">
+          <div style="background:#0d2d4a;color:#fff;border-radius:8px;padding:0.8rem;">
+            <div style="font-weight:700;color:#4fc3f7;margin-bottom:0.4rem;">① Product Design</div>
+            <p style="font-size:0.82rem;line-height:1.4;">Business Teams are empowered to design and launch new products using no-code, business-friendly tooling that work with PolicyCenter to bring products to life from coverage design to digital experiences.</p>
+          </div>
+          <div style="background:#0d2d4a;color:#fff;border-radius:8px;padding:0.8rem;">
+            <div style="font-weight:700;color:#4fc3f7;margin-bottom:0.4rem;">② Submission Processing</div>
+            <p style="font-size:0.82rem;line-height:1.4;">Streamline the intake process for insurance policy submissions with PolicyCenter. Also, automate ISO forms processing and empower underwriting teams with an intuitive user interface for data validation.</p>
+          </div>
+          <div style="background:#0d2d4a;color:#fff;border-radius:8px;padding:0.8rem;">
+            <div style="font-weight:700;color:#4fc3f7;margin-bottom:0.4rem;">③ Risk Analysis</div>
+            <p style="font-size:0.82rem;line-height:1.4;">Leverage embedded analytics with PolicyCenter to make more accurate decisions about each risk. Make powerful data available at the point of decision-making to create a more efficient process.</p>
+          </div>
+          <div style="background:#0d2d4a;color:#fff;border-radius:8px;padding:0.8rem;">
+            <div style="font-weight:700;color:#4fc3f7;margin-bottom:0.4rem;">④ Underwriting and Rating</div>
+            <p style="font-size:0.82rem;line-height:1.4;">PolicyCenter allows underwriters to leverage a full view of each account and submission to help make better, faster decisions. Also, it improves efficiency with an agile, cloud-based rating engine.</p>
+          </div>
+          <div style="background:#0d2d4a;color:#fff;border-radius:8px;padding:0.8rem;">
+            <div style="font-weight:700;color:#4fc3f7;margin-bottom:0.4rem;">⑤ Quote, Bind, and Issue</div>
+            <p style="font-size:0.82rem;line-height:1.4;">Automate these processes in PolicyCenter based on your business needs and integrate with the services you prefer to get policies to your customers more efficiently.</p>
+          </div>
+          <div style="background:#0d2d4a;color:#fff;border-radius:8px;padding:0.8rem;">
+            <div style="font-weight:700;color:#4fc3f7;margin-bottom:0.4rem;">⑥ Informed Renewal</div>
+            <p style="font-size:0.82rem;line-height:1.4;">Integrate PolicyCenter with claims and other systems to streamline renewal decisions.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 id="o-que-voce-pode-fazer-com-o-policycenter">O que Você Pode Fazer com o PolicyCenter</h2>
+        <div class="section-divider"></div>
+        <p>With PolicyCenter, teams can implement products, quote and issue policies, and service changes on GWCP.</p>
+        <p style="margin-top:0.5rem;">PolicyCenter turns day-to-day policy work into guided steps. Here's how it helps you launch products, price accurately, and manage changes:</p>
+        <ul class="goal-list" style="margin-top:0.6rem;">
+          <li><strong>Launch and update insurance products:</strong> Define coverages, limits, and rules (using Guidewire's product tools) so new offerings go live faster and stay consistent.</li>
+          <li><strong>Quote, rate, and bind policies:</strong> Capture submissions, calculate premiums with the built-in rating engine, and issue policies, routing exceptions to an underwriter when needed.</li>
+          <li><strong>Service the policy lifecycle:</strong> Handle endorsements (policy changes), renewals, cancellations, reinstatements, and rewrites with clear workflows and audit trails.</li>
+          <li><strong>Apply underwriting rules and approvals:</strong> Use automated checks, referral rules, and authority limits to keep decisions consistent.</li>
+          <li><strong>Connect to billing and claims:</strong> Send billing instructions to BillingCenter and share policy details with ClaimCenter so invoices, payments, and claims stay in sync without rekeying.</li>
+          <li><strong>Generate documents and communications:</strong> Produce quotes, forms, and letters from templates, and keep a record of what was sent and when.</li>
+          <li><strong>Manage work and productivity:</strong> Assign tasks, track progress, and use work queues so teams know what to do next and managers can see status at a glance.</li>
+          <li><strong>Integrate and extend with APIs:</strong> Use secure cloud APIs to connect PolicyCenter to digital apps (like Jutro) and other systems when needed.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2 id="usuarios-tipicos-do-policycenter">Usuários Típicos do PolicyCenter</h2>
+        <div class="section-divider"></div>
+        <p>Some typical users of PolicyCenter are:</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem;margin-top:0.8rem;">
+          <!-- Insurance Professionals -->
+          <div style="border:2px solid #0d2d4a;border-radius:8px;padding:1rem;">
+            <div style="font-weight:700;font-size:0.95rem;color:#0d2d4a;margin-bottom:0.6rem;text-align:center;">Insurance Professionals</div>
+            <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;font-size:0.82rem;color:#555;font-style:italic;justify-content:center;">Archie Armstrong · Insurance Agent</div>
+            <ul class="goal-list" style="font-size:0.8rem;margin-top:0.3rem;">
+              <li><strong>Agents/Producers/Brokers:</strong> Create submissions, quote, and service policy changes for customers.</li>
+              <li><strong>Underwriters:</strong> Evaluate submissions, apply guidelines, manage referrals, and bind policies.</li>
+              <li><strong>Policy Service Representatives (CSRs):</strong> Process endorsements, renewals, cancellations, and reinstatements.</li>
+            </ul>
+          </div>
+          <!-- Business Users -->
+          <div style="border:2px solid #0d2d4a;border-radius:8px;padding:1rem;">
+            <div style="font-weight:700;font-size:0.95rem;color:#0d2d4a;margin-bottom:0.6rem;text-align:center;">Business Users</div>
+            <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;font-size:0.82rem;color:#555;font-style:italic;justify-content:center;">Emma · Business Analyst</div>
+            <ul class="goal-list" style="font-size:0.8rem;margin-top:0.3rem;">
+              <li><strong>Business Analysts:</strong> Gather requirements, model workflows, and validate that configurations meet business needs.</li>
+            </ul>
+          </div>
+          <!-- Technical Users -->
+          <div style="border:2px solid #0d2d4a;border-radius:8px;padding:1rem;">
+            <div style="font-weight:700;font-size:0.95rem;color:#0d2d4a;margin-bottom:0.6rem;text-align:center;">Technical Users</div>
+            <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.5rem;font-size:0.82rem;color:#555;font-style:italic;justify-content:center;">Chase · Configuration Developer</div>
+            <ul class="goal-list" style="font-size:0.8rem;margin-top:0.3rem;">
+              <li><strong>Developers:</strong> Configure, extend, and integrate PolicyCenter with rating, documents, payments, and external systems.</li>
+              <li><strong>Solution Architects:</strong> Ensure PolicyCenter fits the company's overall systems and data flows, and meets quality goals like performance, security, reliability, scalability, and compliance. They choose integration patterns and set standards so the system is safe, fast, and easy to operate.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ PÁGINA 14 ══ -->
+    <div class="page-section" id="page-14">
+      <div class="page-header">
+        <h1>ClaimCenter</h1>
+        <div class="divider"></div>
+        <p class="page-subtitle">O sistema de gestão de sinistros da Guidewire — do FNOL ao fechamento, totalmente integrado ao InsuranceSuite.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-divider"></div>
+        <p>ClaimCenter is a comprehensive software solution that manages all aspects of insurance claims, from <strong>first notice of loss (FNOL)</strong> through investigation, evaluation, settlement, and closure. It provides tools for workflow automation, decision support, and integration with other systems, enabling insurers to streamline claims operations and improve customer service.</p>
+        <p style="margin-top:0.6rem;">ClaimCenter streamlines claims handling so work is routed to the right people, financials are controlled and auditable, and customers receive timely, consistent service. It integrates with <strong>PolicyCenter</strong> and <strong>BillingCenter</strong> to share policy/billing context and execute financial transactions, giving teams a 360° view while keeping processes governed.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="ciclo-de-vida-do-sinistro">Ciclo de Vida do Sinistro</h2>
+        <div class="section-divider"></div>
+        <p>ClaimCenter supports the complete claim lifecycle across six stages:</p>
+
+        <div class="accordion" style="margin-top:0.8rem;">
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="true" onclick="toggleAcc(this)">① Claim Intake <span class="acc-arrow">▾</span></button>
+            <div class="acc-body open"><p>At the start, a claim is reported through web or mobile, and the system captures the First Notice of Loss, verifies the customer, and links the claim to the correct policy automatically. The system checks coverage, creates initial exposures, and routes the claim to the right handler so the investigation can start right away.</p></div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">② Assign <span class="acc-arrow">▾</span></button>
+            <div class="acc-body"><p>Next, ClaimCenter assigns the claim to the right team or adjuster based on factors like line of business, location, complexity, and workload, keeping assignments balanced. When activated, predictive segmentation further refines who should handle higher-risk or more complex claims, and catastrophe tags help teams manage surge volumes.</p></div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">③ Evaluate <span class="acc-arrow">▾</span></button>
+            <div class="acc-body"><p>The adjuster investigates and documents the claim, plans tasks, and manages evidence in one place. As needed, they can request vendor services (such as towing, repairs, or medical reviews), open a fraud/SIU case, track litigation, or perform reinsurance checks — all while seeing near real-time dashboards and weather validation alerts inside ClaimCenter to guide decisions.</p></div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">④ Reserve and Pay <span class="acc-arrow">▾</span></button>
+            <div class="acc-body"><p>ClaimCenter uses built-in rules and approvals to keep money handling safe and consistent. You set aside funds for each part of the claim (reserves), and every payment or recovery is recorded. Payments can go by check, bank transfer (EFT), or instant digital payout; before money is sent, the system checks policy limits and, when applicable, any reinsurance coverage.</p></div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">⑤ Negotiation <span class="acc-arrow">▾</span></button>
+            <div class="acc-body"><p>When it's time to settle, the system supports offers and counteroffers, the approvals needed, and documentation of the outcome, when a claim is litigated. Predictive signals (like severity or litigation likelihood) can be used to guide negotiation strategy and escalation.</p></div>
+          </div>
+          <div class="acc-item">
+            <button type="button" class="acc-header" aria-expanded="false" onclick="toggleAcc(this)">⑥ Close <span class="acc-arrow">▾</span></button>
+            <div class="acc-body"><p>Before closing a claim, the system checks that all payments and recoveries are reconciled. This includes money recovered from another party (subrogation) and money from selling damaged property (salvage). It also verifies that required documents are complete and approvals are recorded. After closing, the claim can be archived according to your company's retention policy. The record remains available for reporting and retrieval.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 id="o-que-voce-pode-fazer-com-o-claimcenter">O que Você Pode Fazer com o ClaimCenter</h2>
+        <div class="section-divider"></div>
+        <p>With ClaimCenter, teams can report and triage new claims, investigate them, and resolve them on GWCP.</p>
+        <p style="margin-top:0.5rem;">ClaimCenter guides each step of the claims process. Here's how it helps you capture First Notice of Loss (FNOL), manage investigations, control payments, and close claims:</p>
+        <ul class="goal-list" style="margin-top:0.6rem;">
+          <li><strong>Capture First Notice of Loss (FNOL),</strong> auto-segment by complexity, and assign the claim to the right handler or team.</li>
+          <li><strong>Access policy details and manage the investigation</strong> by creating a workplan, recording notes and documents, and coordinating vendors (repairs, rentals, medical, and legal).</li>
+          <li><strong>Manage financials</strong> by setting and adjusting reserves, issuing payments and advances, and tracking recoveries (for example, money recovered from another party and proceeds from selling damaged property), with a full audit trail.</li>
+          <li><strong>Enforce approvals and authority limits,</strong> then negotiate, settle, and close the claim.</li>
+          <li><strong>Provide digital self-service with Jutro</strong> so customers and agents can report a claim and check status online, reducing calls and speeding updates.</li>
+          <li><strong>Stay in sync and work smarter</strong> by pulling policy context from PolicyCenter, coordinating payments with BillingCenter, and applying rules (and optional analytics) to guide next best actions.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2 id="usuarios-tipicos-do-claimcenter">Usuários Típicos do ClaimCenter</h2>
+        <div class="section-divider"></div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem;margin-top:0.8rem;">
+          <!-- Insurance Professionals -->
+          <div style="border:2px solid #0d2d4a;border-radius:8px;padding:1rem;">
+            <div style="font-weight:700;font-size:0.95rem;color:#0d2d4a;margin-bottom:0.6rem;text-align:center;">Insurance Professionals</div>
+            <div style="font-size:0.82rem;color:#555;font-style:italic;text-align:center;margin-bottom:0.5rem;">Alice Applegate · Underwriter</div>
+            <ul class="goal-list" style="font-size:0.8rem;margin-top:0.3rem;">
+              <li><strong>Underwriter:</strong> May review claims data for risk assessment and policy decisions.</li>
+              <li><strong>Insurance Agent:</strong> Submits claims on behalf of customers and tracks claim status.</li>
+              <li><strong>Claims Adjuster:</strong> Handles the day-to-day management and resolution of claims.</li>
+              <li><strong>Claims Supervisor/Manager:</strong> Oversees adjusters, reviews complex claims, and ensures compliance.</li>
+              <li><strong>Case Manager:</strong> Manages specialized claims, such as workers' compensation or medical cases.</li>
+            </ul>
+          </div>
+          <!-- Business Users -->
+          <div style="border:2px solid #0d2d4a;border-radius:8px;padding:1rem;">
+            <div style="font-weight:700;font-size:0.95rem;color:#0d2d4a;margin-bottom:0.6rem;text-align:center;">Business Users</div>
+            <div style="font-size:0.82rem;color:#555;font-style:italic;text-align:center;margin-bottom:0.5rem;">Emma · Business Analyst</div>
+            <ul class="goal-list" style="font-size:0.8rem;margin-top:0.3rem;">
+              <li><strong>Business Analyst:</strong> Configures workflows, analyzes claims data, and supports process improvement.</li>
+            </ul>
+          </div>
+          <!-- Technical Users -->
+          <div style="border:2px solid #0d2d4a;border-radius:8px;padding:1rem;">
+            <div style="font-weight:700;font-size:0.95rem;color:#0d2d4a;margin-bottom:0.6rem;text-align:center;">Technical Users</div>
+            <div style="font-size:0.82rem;color:#555;font-style:italic;text-align:center;margin-bottom:0.5rem;">Chase · Configuration Developer</div>
+            <ul class="goal-list" style="font-size:0.8rem;margin-top:0.3rem;">
+              <li><strong>IT/Developer:</strong> Supports system configuration, integration, and customization.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ PÁGINA 15 ══ -->
+    <div class="page-section" id="page-15">
+      <div class="page-header">
+        <h1>BillingCenter</h1>
+        <div class="divider"></div>
+        <p class="page-subtitle">O sistema dedicado de faturamento e recebíveis da Guidewire para seguradoras P&C — integrado ao InsuranceSuite.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-divider"></div>
+        <p>BillingCenter is Guidewire's dedicated billing and receivables system for P&C insurers. It manages billing accounts, invoices, payments, refunds, collections, adjustments, audits, commissions, and the data needed for finance and reporting. It integrates with policy systems, payment gateways, lockbox, document services, and general ledger systems, and can run standalone or as part of InsuranceSuite.</p>
+        <p style="margin-top:0.6rem;">BillingCenter centralizes premium billing and cash application so insurers can bill accurately, accept payments securely, manage delinquencies consistently, and publish reliable financials, while staying in sync with <strong>PolicyCenter</strong>, <strong>ClaimCenter</strong>, and downstream accounting.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="areas-de-atendimento-de-contas">Áreas de Atendimento de Contas</h2>
+        <div class="section-divider"></div>
+        <p>BillingCenter manages all phases of the billing account lifecycle around a central <strong>Account Servicing</strong> hub:</p>
+
+        <!-- Diagrama: 6 segmentos ao redor de Account Servicing -->
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.6rem;margin-top:0.8rem;font-size:0.82rem;">
+          <div style="background:#0d8a6a;color:#fff;border-radius:8px;padding:0.8rem;">
+            <div style="font-weight:700;margin-bottom:0.3rem;">Quote and Issue</div>
+            <p style="font-size:0.82rem;line-height:1.4;">When a policy is quoted and issued in PolicyCenter, BillingCenter receives billing instructions and sets up the account, invoicing schedule, and payment plan.</p>
+          </div>
+          <div style="background:#0d8a6a;color:#fff;border-radius:8px;padding:0.8rem;">
+            <div style="font-weight:700;margin-bottom:0.3rem;">Policy Changes and Term Events</div>
+            <p style="font-size:0.82rem;line-height:1.4;">Endorsements, renewals, cancellations, and reinstatements trigger billing adjustments — pro-rated charges or credits — automatically synchronized from PolicyCenter.</p>
+          </div>
+          <div style="background:#0d6a8a;color:#fff;border-radius:8px;padding:0.8rem;">
+            <div style="font-weight:700;margin-bottom:0.3rem;">Billing Setup and Invoicing</div>
+            <p style="font-size:0.82rem;line-height:1.4;">Configures payment plans, billing schedules, and invoice delivery. Generates clear statements with charges (premium, taxes, fees), bill dates, and due dates, sent on schedule.</p>
+          </div>
+          <div style="background:#0d6a8a;color:#fff;border-radius:8px;padding:0.8rem;">
+            <div style="font-weight:700;margin-bottom:0.3rem;">Payments and Reconciliation</div>
+            <p style="font-size:0.82rem;line-height:1.4;">Accepts checks (including lockbox), cash, money orders, credit/debit cards, ACH/EFT, batch uploads, and recurring AutoPay. Automatically matches payments to invoices; unmatched amounts go to suspense. Full audit trail on every transaction.</p>
+          </div>
+          <div style="background:#1a4a8a;color:#fff;border-radius:8px;padding:0.8rem;">
+            <div style="font-weight:700;margin-bottom:0.3rem;">Delinquencies and Collections</div>
+            <p style="font-size:0.82rem;line-height:1.4;">Runs late-notice (dunning) plans with configurable fees and timelines. Triggers reinstatement or cancellation steps in PolicyCenter when payment rules require it.</p>
+          </div>
+          <div style="background:#1a4a8a;color:#fff;border-radius:8px;padding:0.8rem;">
+            <div style="font-weight:700;margin-bottom:0.3rem;">Commissions and Reporting</div>
+            <p style="font-size:0.82rem;line-height:1.4;">Applies producer/agent commission rules and generates commission payments on schedule. Provides finance teams with reconciled data for general ledger and regulatory reporting.</p>
+          </div>
+        </div>
+        <div style="background:#f0f4f8;border-radius:8px;padding:0.7rem;margin-top:0.6rem;text-align:center;font-weight:600;color:#0d2d4a;">
+          Account Servicing — central hub: full account view, balances, invoices, payments, notes, and exceptions in one place.
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 id="o-que-voce-pode-fazer-com-o-billingcenter">O que Você Pode Fazer com o BillingCenter</h2>
+        <div class="section-divider"></div>
+        <p>BillingCenter automatically creates and sends invoices, applies payments (including AutoPay and lockbox), runs delinquency plans, and calculates commissions. Staff get involved for exceptions and approvals, such as disputes, adjustments or write-offs, refunds, complex allocations, and actions above authority.</p>
+        <p style="margin-top:0.5rem;">BillingCenter turns day-to-day billing work into guided steps. Here's how it helps invoice, collect, resolve delinquencies, and stay in sync with the rest of InsuranceSuite:</p>
+        <ul class="goal-list" style="margin-top:0.6rem;">
+          <li><strong>Create and send invoices:</strong> Turn policy charges (premium, taxes, fees) into clear statements with bill and due dates, and send them on schedule.</li>
+          <li><strong>Take payments securely:</strong> Accept checks (including lockbox), cash, money orders, credit/debit cards, ACH/EFT bank transfers, batch uploads, and recurring (AutoPay) payments, and record refunds or reversals when needed.</li>
+          <li><strong>Apply money and reconcile:</strong> BillingCenter automatically matches payments to the correct invoices and, if the target invoice isn't known yet, places the payment in a temporary holding (suspense) account until it can be applied; all changes are captured in a full audit trail.</li>
+          <li><strong>Manage delinquencies and collections:</strong> Run late-notice (dunning) plans with fees and timelines, and trigger reinstatement or cancellation steps when rules require it.</li>
+          <li><strong>Handle adjustments and exceptions:</strong> Post credits, write-offs, and corrections, and keep customers informed with consistent messages.</li>
+          <li><strong>Calculate and pay commissions:</strong> Apply producer/agent commission rules and generate commission payments on schedule.</li>
+          <li><strong>See the full account picture:</strong> View balances, invoices, payments, plans, and notes in one place so clerks and service teams can answer questions quickly.</li>
+          <li><strong>Connect with core systems:</strong> Share billing instructions from PolicyCenter and coordinate claim payments or recoveries with ClaimCenter, without retyping data.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2 id="usuarios-tipicos-do-billingcenter">Usuários Típicos do BillingCenter</h2>
+        <div class="section-divider"></div>
+        <p>Some of the users who interact with BillingCenter include:</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem;margin-top:0.8rem;">
+          <!-- Insurance Professionals -->
+          <div style="border:2px solid #0d2d4a;border-radius:8px;padding:1rem;">
+            <div style="font-weight:700;font-size:0.95rem;color:#0d2d4a;margin-bottom:0.6rem;text-align:center;">Insurance Professionals</div>
+            <div style="font-size:0.82rem;color:#555;font-style:italic;text-align:center;margin-bottom:0.5rem;">Archie Armstrong · Insurance Agent</div>
+            <ul class="goal-list" style="font-size:0.8rem;margin-top:0.3rem;">
+              <li><strong>Underwriters and agents:</strong> May need to access billing information as part of their workflow.</li>
+              <li><strong>Billing team:</strong> BillingCenter is their daily workspace to set up payment plans, generate and send invoices, apply payments and refunds, and monitor past-due accounts. They handle exceptions (disputes, adjustments, write-offs), approve items above authority, answer customer questions with the full account view, and run simple reports to reconcile balances and track activity.</li>
+            </ul>
+          </div>
+          <!-- Business Users -->
+          <div style="border:2px solid #0d2d4a;border-radius:8px;padding:1rem;">
+            <div style="font-weight:700;font-size:0.95rem;color:#0d2d4a;margin-bottom:0.6rem;text-align:center;">Business Users</div>
+            <div style="font-size:0.82rem;color:#555;font-style:italic;text-align:center;margin-bottom:0.5rem;">Emma · Business Analyst</div>
+            <ul class="goal-list" style="font-size:0.8rem;margin-top:0.3rem;">
+              <li><strong>Business Analyst:</strong> Analyze billing processes, gather requirements for system changes, and ensure that business needs are translated into system functionality.</li>
+            </ul>
+          </div>
+          <!-- Technical Users -->
+          <div style="border:2px solid #0d2d4a;border-radius:8px;padding:1rem;">
+            <div style="font-weight:700;font-size:0.95rem;color:#0d2d4a;margin-bottom:0.6rem;text-align:center;">Technical Users</div>
+            <div style="font-size:0.82rem;color:#555;font-style:italic;text-align:center;margin-bottom:0.5rem;">Chase · Configuration Developer</div>
+            <ul class="goal-list" style="font-size:0.8rem;margin-top:0.3rem;">
+              <li><strong>Developers:</strong> Configure, customize, and integrate BillingCenter with other systems.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ PÁGINA 16 ══ -->
+    <div class="page-section" id="page-16">
+      <div class="page-header">
+        <h1>GWCP Analytics</h1>
+        <div class="divider"></div>
+        <p class="page-subtitle">Explore (BI operacional) e Predict (analytics preditivo) — inteligência embarcada no InsuranceSuite.</p>
+      </div>
+
+      <!-- ── EXPLORE ── -->
+      <div class="section">
+        <h2 id="explore">Explore</h2>
+        <div class="section-divider"></div>
+        <p><strong>Guidewire Explore</strong> is a cloud-native business intelligence and visualization application that empowers insurance professionals with practical analytics, enabling them to access and analyze near real time data from <strong>Guidewire InsuranceSuite</strong>. It delivers role-based dashboards and self-service exploration across policy, billing, and claims so teams can quickly see what's happening, why it's happening, and where to focus.</p>
+        <p style="margin-top:0.6rem;">Explore gives everyone a shared operational picture so they can monitor KPIs, spot trends and outliers, and align decisions across functions, without leaving the core Guidewire ecosystem. It complements predictive tools by explaining performance and patterns, while keeping access and governance consistent with platform standards.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="o-que-voce-pode-fazer-com-o-explore">O que Você Pode Fazer com o Explore</h2>
+        <div class="section-divider"></div>
+        <p>With Explore, management view near-real time dashboards and search-driven insights from InsuranceSuite so everyone can understand what's happening and where to focus.</p>
+        <p style="margin-top:0.5rem;">Explore turns day-to-day questions into clear answers. Here's how it helps monitor performance, investigate trends, and share insights quickly:</p>
+        <ul class="goal-list" style="margin-top:0.6rem;">
+          <li><strong>Track what matters in one place:</strong> Use role-based dashboards (Liveboards) to watch key metrics for policy, billing, and claims, and spot trends or outliers fast.</li>
+          <li><strong>Ask questions in plain language:</strong> Type a question to get search-driven "Answers," drill into the details, and use AI-assisted analysis to uncover patterns you might otherwise miss.</li>
+          <li><strong>Start fast with curated content:</strong> Out-of-the-box, insurance-ready dashboards and metrics get you going quickly; you can extend them with datasets published from Data Studio.</li>
+          <li><strong>Set alerts and take action:</strong> Create threshold or trend alerts on KPIs so teams are notified when something changes and can respond right away.</li>
+          <li><strong>Embed insights where people work:</strong> Place Liveboards inside core apps (like PolicyCenter or ClaimCenter) and control who sees what with simple role/group access.</li>
+          <li><strong>Support every line of business:</strong> Use prebuilt operational views for underwriting and claims (e.g., hit ratios, cycle times, leakage) and adapt them to your products and regions.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2 id="usuarios-tipicos-do-explore">Usuários Típicos do Explore</h2>
+        <div class="section-divider"></div>
+        <p>Some of the typical users of Explore are:</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem;margin-top:0.8rem;">
+          <div style="border:2px solid #0d2d4a;border-radius:8px;padding:1rem;">
+            <div style="font-weight:700;font-size:0.95rem;color:#0d2d4a;margin-bottom:0.3rem;text-align:center;">Insurance Professionals</div>
+            <div style="font-size:0.82rem;color:#555;font-style:italic;text-align:center;margin-bottom:0.5rem;">Dave · Claims Manager</div>
+            <ul class="goal-list" style="font-size:0.8rem;margin-top:0.3rem;">
+              <li><strong>Claims Manager:</strong> Uses Explore each morning to review claim inventory, severity, and cycle times by region. Sets alerts for spikes (e.g., weather events) and redistributes workloads based on Liveboard filters.</li>
+            </ul>
+          </div>
+          <div style="border:2px solid #0d2d4a;border-radius:8px;padding:1rem;">
+            <div style="font-weight:700;font-size:0.95rem;color:#0d2d4a;margin-bottom:0.3rem;text-align:center;">Business Users</div>
+            <div style="font-size:0.82rem;color:#555;font-style:italic;text-align:center;margin-bottom:0.5rem;">Sudha · Product Manager</div>
+            <ul class="goal-list" style="font-size:0.8rem;margin-top:0.3rem;">
+              <li><strong>Product Manager:</strong> Tracks quote-to-bind, premium growth, and loss trends by segment and channel. Drills into outliers with search and shares a Liveboard link with underwriting and finance to align actions.</li>
+            </ul>
+          </div>
+          <div style="border:2px solid #0d2d4a;border-radius:8px;padding:1rem;">
+            <div style="font-weight:700;font-size:0.95rem;color:#0d2d4a;margin-bottom:0.3rem;text-align:center;">Technical Developers</div>
+            <div style="font-size:0.82rem;color:#555;font-style:italic;text-align:center;margin-bottom:0.5rem;">Bruce · Data Analyst</div>
+            <ul class="goal-list" style="font-size:0.8rem;margin-top:0.3rem;">
+              <li><strong>Data Analyst:</strong> Publishes curated datasets, builds role-based Liveboards, and defines KPI thresholds with scheduled alerts. Partners with ops leaders to iterate dashboards so frontline teams get the metrics they need.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── PREDICT ── -->
+      <div class="section">
+        <h2 id="predict">Predict</h2>
+        <div class="section-divider"></div>
+        <p><strong>Predictive Analytics (Predict)</strong> runs and manages machine-learning models. Analytics Manager embeds the resulting scores and recommendations into InsuranceSuite screens and workflows so underwriters, pricing teams, and claims professionals see guidance in real time.</p>
+        <p style="margin-top:0.6rem;">With <strong>Analytics Manager</strong>, teams use low-code configuration to place scores on screens, map inputs and outputs, and trigger business rules (routing, referrals, alerts) without redeploying core apps. Predict provides <strong>bring-your-own-model (BYOM)</strong> so organizations can import and run their existing models on GWCP. Typical uses include risk selection at quote and renewal, pricing optimization, claims triage and severity, and fraud or subrogation identification.</p>
+        <p style="margin-top:0.6rem;">Behind the scenes, Predict and Analytics Manager handle controlled rollout, versioning, and ongoing performance monitoring so models remain governed and auditable. Standard platform access and integrations ensure insights reach PolicyCenter, ClaimCenter, and BillingCenter securely and consistently, helping teams act faster and measure improvement over time.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="ciclo-de-vida-do-analytics-manager">Ciclo de Vida do Analytics Manager</h2>
+        <div class="section-divider"></div>
+        <p>Analytics Manager orchestrates the full ML lifecycle — from data preparation to embedding scores and continuously improving models:</p>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.5rem;margin-top:0.8rem;font-size:0.82rem;">
+          <div style="background:#0d2d4a;color:#fff;border-radius:8px;padding:0.7rem;">
+            <div style="font-weight:700;color:#4fc3f7;margin-bottom:0.3rem;">① Prepare trusted data</div>
+            <p style="line-height:1.4;">Curate and validate the data that feeds the models through the Guidewire Data Platform.</p>
+          </div>
+          <div style="background:#0d2d4a;color:#fff;border-radius:8px;padding:0.7rem;">
+            <div style="font-weight:700;color:#4fc3f7;margin-bottom:0.3rem;">② Build or import models (BYOM)</div>
+            <p style="line-height:1.4;">Create new models or bring your existing ones, keep versions organized, and get them ready to activate in InsuranceSuite with Analytics Manager.</p>
+          </div>
+          <div style="background:#0d2d4a;color:#fff;border-radius:8px;padding:0.7rem;">
+            <div style="font-weight:700;color:#4fc3f7;margin-bottom:0.3rem;">③ Configure in Analytics Manager</div>
+            <p style="line-height:1.4;">Use on-screen settings to map inputs and outputs, choose when scoring runs, and decide where results appear — most updates do not require redeploying the core apps.</p>
+          </div>
+          <div style="background:#0d2d4a;color:#fff;border-radius:8px;padding:0.7rem;">
+            <div style="font-weight:700;color:#4fc3f7;margin-bottom:0.3rem;">④ Place score in the UI</div>
+            <p style="line-height:1.4;">Scores and explanations appear on predefined Analytics pages in InsuranceSuite. Admins enable these pages and choose what to show through Analytics Manager settings.</p>
+          </div>
+          <div style="background:#0d2d4a;color:#fff;border-radius:8px;padding:0.7rem;">
+            <div style="font-weight:700;color:#4fc3f7;margin-bottom:0.3rem;">⑤ Trigger decisions in workflows</div>
+            <p style="line-height:1.4;">Call models in real time (quote, renewal, FNOL, triage), then route, alert, or automate steps based on the results.</p>
+          </div>
+          <div style="background:#0d2d4a;color:#fff;border-radius:8px;padding:0.7rem;">
+            <div style="font-weight:700;color:#4fc3f7;margin-bottom:0.3rem;">⑥ Take actions in core apps</div>
+            <p style="line-height:1.4;">Based on the score, the system can send a case to the right person, mark it as urgent or routine, create tasks or alerts, ask for approval, or complete a step automatically.</p>
+          </div>
+          <div style="background:#0d2d4a;color:#fff;border-radius:8px;padding:0.7rem;">
+            <div style="font-weight:700;color:#4fc3f7;margin-bottom:0.3rem;">⑦ Monitor and govern</div>
+            <p style="line-height:1.4;">Track performance and monitor drift, manage approvals and access, and maintain an auditable record of change over time.</p>
+          </div>
+          <div style="background:#0d2d4a;color:#fff;border-radius:8px;padding:0.7rem;">
+            <div style="font-weight:700;color:#4fc3f7;margin-bottom:0.3rem;">⑧ Learn and Improve</div>
+            <p style="line-height:1.4;">Review outcomes, capture feedback, and iterate models to continuously improve accuracy and business results.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 id="o-que-voce-pode-fazer-com-predictive-analytics">O que Você Pode Fazer com Predictive Analytics</h2>
+        <div class="section-divider"></div>
+        <p>With Predictive Analytics (Predict), teams embed model scores and recommendations directly into InsuranceSuite so people get real-time guidance in the screens and workflows they already use.</p>
+        <p style="margin-top:0.5rem;">Predict turns raw data into next-best actions. Here's how it helps improve decisions, speed up work, and measure results:</p>
+        <ul class="goal-list" style="margin-top:0.6rem;">
+          <li><strong>Guide underwriting and pricing:</strong> Show risk and profitability scores at quote and renewal so low-risk policies can flow straight through and higher-risk ones route to an underwriter.</li>
+          <li><strong>Triage claims and reduce leakage:</strong> Surface severity, litigation, or fraud risk early, then route the claim to the right handler or team and prioritize the next steps.</li>
+          <li><strong>Configure and deploy quickly:</strong> Use Analytics Manager to place scores on screens, map inputs/outputs, and trigger rules, with low-code setup and support for bringing your own models.</li>
+          <li><strong>Run scoring when you need it:</strong> Call models in real time during key steps (quote, FNOL, renewal) or on a schedule for batch scenarios.</li>
+          <li><strong>Integrate across apps and channels:</strong> Deliver insights consistently in PolicyCenter, ClaimCenter, and BillingCenter, and surface them in digital experiences (like Jutro) with secure access controls.</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2 id="usuarios-tipicos-do-predictive-analytics">Usuários Típicos do Predictive Analytics</h2>
+        <div class="section-divider"></div>
+        <p>Some typical users of analytics are:</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.8rem;margin-top:0.8rem;">
+          <div style="border:2px solid #0d2d4a;border-radius:8px;padding:1rem;">
+            <div style="font-weight:700;font-size:0.95rem;color:#0d2d4a;margin-bottom:0.3rem;text-align:center;">Insurance Professionals</div>
+            <div style="font-size:0.82rem;color:#555;font-style:italic;text-align:center;margin-bottom:0.5rem;">Dave · Claims Manager</div>
+            <ul class="goal-list" style="font-size:0.8rem;margin-top:0.3rem;">
+              <li><strong>Actuaries:</strong> Incorporate model insights into rating plans, reserving assumptions, and pricing governance.</li>
+              <li><strong>Underwriting Managers:</strong> Operationalize risk scores, set referral rules, and refine underwriting guidelines.</li>
+              <li><strong>Claims Managers/SIU:</strong> Use fraud/routing models to prioritize investigations and optimize claim handling.</li>
+            </ul>
+          </div>
+          <div style="border:2px solid #0d2d4a;border-radius:8px;padding:1rem;">
+            <div style="font-weight:700;font-size:0.95rem;color:#0d2d4a;margin-bottom:0.3rem;text-align:center;">Business Users</div>
+            <div style="font-size:0.82rem;color:#555;font-style:italic;text-align:center;margin-bottom:0.5rem;">Emma · Business Analyst</div>
+            <ul class="goal-list" style="font-size:0.8rem;margin-top:0.3rem;">
+              <li><strong>Pricing Analysts:</strong> Run scenario tests, elasticity studies, and lift analyses to inform rate changes.</li>
+              <li><strong>Business Analysts:</strong> Translate business problems into modeling use cases and define success metrics.</li>
+            </ul>
+          </div>
+          <div style="border:2px solid #0d2d4a;border-radius:8px;padding:1rem;">
+            <div style="font-weight:700;font-size:0.95rem;color:#0d2d4a;margin-bottom:0.3rem;text-align:center;">Technical Users</div>
+            <div style="font-size:0.82rem;color:#555;font-style:italic;text-align:center;margin-bottom:0.5rem;">Chase · Configuration Developer</div>
+            <ul class="goal-list" style="font-size:0.8rem;margin-top:0.3rem;">
+              <li><strong>Integration Developers:</strong> Expose scores via APIs and embed model outputs into core workflows.</li>
+              <li><strong>Data Scientists:</strong> Develop, validate, and deploy models (risk, propensity, fraud) and monitor model performance.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ PÁGINA 17 ══ -->
+    <div class="page-section" id="page-17">
+      <div class="page-header">
+        <h1>Resumo do Guidewire Cloud Platform Overview</h1>
+        <div class="divider"></div>
+        <p class="page-subtitle">Consolidação dos pontos principais do curso e próximos passos de aprendizado.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-divider"></div>
+        <div style="background:#e8f4f8;border:1px solid #a0cfe0;border-radius:8px;padding:1rem 1.2rem;text-align:center;margin-bottom:1rem;">
+          <div style="font-weight:700;font-size:1rem;margin-bottom:0.4rem;">Congratulations!</div>
+          <p style="font-size:0.88rem;">You have now completed the course content. Review the information in this section to help you on your learning journey and then proceed to the knowledge check to validate your understanding.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 id="o-que-voce-aprendeu">O que Você Aprendeu</h2>
+        <div class="section-divider"></div>
+        <p>You now have a broad understanding of the Guidewire Cloud Platform (GWCP), its key terms, and the main components that support it, Guidewire Home, the development and release process, the Cloud Integration Framework, and the Data Platform.</p>
+        <p style="margin-top:0.6rem;">You also understand what each core application does: Jutro (digital self-service), PolicyCenter (quotes and policies), ClaimCenter (claims), and BillingCenter (billing and payments). You can describe how customer and policy tasks move across these apps from quote to claim. You also know where analytics fits: Explore shows what's happening, and Predict, through Analytics Manager, guides what to do next.</p>
+        <p style="margin-top:0.6rem;">These are the key takeaways from this course:</p>
+        <ul class="goal-list" style="margin-top:0.6rem;">
+          <li><strong>GWCP is the secure cloud foundation for Guidewire applications.</strong>
+            <ul class="sub-list">
+              <li>It runs core apps such as Jutro, PolicyCenter, ClaimCenter, BillingCenter, Explore, and Predict.</li>
+              <li>Guidewire Home is the entry point to open apps, pin favorites, and check basic status.</li>
+              <li>Regular cloud updates keep apps current, secure, and reliable.</li>
+            </ul>
+          </li>
+          <li><strong>Core applications work together to move tasks from quote to claim without retyping data.</strong>
+            <ul class="sub-list">
+              <li>Jutro starts and tracks digital tasks for customers, agents, and staff.</li>
+              <li>PolicyCenter handles quotes, pricing, and policy changes.</li>
+              <li>BillingCenter manages invoices, payments, and collections.</li>
+              <li>ClaimCenter manages claim intake, investigation, payments, and closure.</li>
+            </ul>
+          </li>
+          <li><strong>Data, analytics, and integrations make decisions clearer and connections easier.</strong>
+            <ul class="sub-list">
+              <li>The Data Platform provides a single, trusted view of InsuranceSuite data.</li>
+              <li>Explore shows near real-time dashboards and trends.</li>
+              <li>Predict, through Analytics Manager, adds scores and recommendations to everyday screens.</li>
+              <li>The Cloud Integration Framework connects systems with standard methods such as APIs and events, and the Marketplace offers prebuilt connectors and templates.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2 id="feedback-e-proximos-passos">Feedback e Próximos Passos</h2>
+        <div class="section-divider"></div>
+        <div style="background:#e8f4f8;border:1px solid #a0cfe0;border-radius:8px;padding:1rem 1.2rem;margin-bottom:1rem;">
+          <div style="font-weight:700;font-size:0.95rem;margin-bottom:0.4rem;">We want your feedback!</div>
+          <p style="font-size:0.85rem;">Guidewire Education welcomes your feedback on the content of this course and the learner experience so that we can improve our educational offerings.</p>
+          <ul class="goal-list" style="font-size:0.85rem;margin-top:0.5rem;">
+            <li>To provide feedback or report issues on a specific page, use the links under <em>Was this page helpful?</em> at the end of each page.</li>
+            <li>To provide feedback on the entire course, take the survey after this course.</li>
+            <li>If you have questions or feedback that you would like to discuss further, contact your Guidewire representative.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 id="recomendacoes-para-continuar-aprendendo">Recomendações para Continuar Aprendendo</h2>
+        <div class="section-divider"></div>
+        <p>After completing this course, use the following resources to deepen your knowledge and continue your learning journey.</p>
+
+        <h3 style="margin-top:0.8rem;font-size:0.95rem;color:#0d2d4a;">Documentation Resources</h3>
+        <p style="font-size:0.85rem;margin-top:0.3rem;">To deepen your knowledge of the topics covered in this course, refer to the following sections of Guidewire Documentation:</p>
+        <ul class="goal-list" style="font-size:0.85rem;margin-top:0.3rem;">
+          <li>Guidewire Cloud Platform</li>
+          <li>Guidewire Home</li>
+          <li>Access Cloud Platform apps and services</li>
+        </ul>
+
+        <h3 style="margin-top:0.8rem;font-size:0.95rem;color:#0d2d4a;">Training Resources</h3>
+        <p style="font-size:0.85rem;margin-top:0.3rem;">To continue your learning journey, consider taking the following training courses in Guidewire Education:</p>
+        <ul class="goal-list" style="font-size:0.85rem;margin-top:0.3rem;">
+          <li>Developing with Guidewire Cloud</li>
+          <li>PolicyCenter Overview</li>
+          <li>Jutro Digital Platform Overview</li>
+          <li>Data Analytics Overview</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pagination">
+      <button type="button" class="btn secondary" id="btn-prev" disabled>← Anterior</button>
+      <span class="page-info" id="page-info">Página 1 de 17</span>
+      <button type="button" class="btn" id="btn-next">Próxima →</button>
+    </div>
+    <a href="Guidewire_Home.html" class="home-footer-link">← Voltar ao Home</a>
+
+  </main>
+</div>
+
+<script>
+  const TOTAL_PAGES = 17;
+  const _gwcp_saved = parseInt(localStorage.getItem('gwcp_page') || '1') || 1;
+  let currentPage = Math.min(Math.max(_gwcp_saved, 1), TOTAL_PAGES);
+  // Safety-net: garante init mesmo que o final do arquivo seja truncado
+  document.addEventListener('DOMContentLoaded', function() { goToPage(currentPage); });
+
+  function pageExists(n) { return !!document.getElementById('page-' + n); }
+
+  function goToPage(n) {
+    if (n < 1 || n > TOTAL_PAGES || !pageExists(n)) return;
+    document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+    document.getElementById('page-' + n).classList.add('active');
+    currentPage = n;
+    try { localStorage.setItem('gwcp_page', n); } catch(e) {}
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    updateUI();
+  }
+
+  function toggleGroup(groupId) {
+    const sub = document.getElementById(groupId);
+    const header = sub && sub.previousElementSibling;
+    if (!sub) return;
+    const isOpen = sub.classList.toggle('open');
+    if (header) header.classList.toggle('expanded', isOpen);
+  }
+
+  function updateUI() {
+    const _h1 = document.getElementById('page-' + currentPage)?.querySelector('h1');
+    if (_h1) { const el = document.getElementById('bc-page'); if (el) el.textContent = _h1.textContent; }
+    document.getElementById('btn-prev').disabled = currentPage === 1;
+    document.getElementById('btn-next').disabled = currentPage === TOTAL_PAGES || !pageExists(currentPage + 1);
+    document.getElementById('page-info').textContent = 'Página ' + currentPage + ' de ' + TOTAL_PAGES;
+    const pct = Math.round((currentPage / TOTAL_PAGES) * 100);
+    document.getElementById('sidebar-progress').style.width = pct + '%';
+
+    document.querySelectorAll('.nav-btn[data-page]').forEach(btn => {
+      const p = Number(btn.dataset.page);
+      const dot = btn.querySelector('.dot');
+      btn.removeAttribute('aria-current');
+      if (p === currentPage) { btn.setAttribute('aria-current', 'page'); dot.className = 'dot current'; }
+      else if (p < currentPage) { dot.className = 'dot done'; }
+      else { dot.className = 'dot pending'; }
+    });
+
+    document.querySelectorAll('.nav-group').forEach(group => {
+      const groupId = group.dataset.group;
+      const header = group.querySelector('.nav-group-header');
+      const dot = header.querySelector('.dot');
+      const pages = Array.from(group.querySelectorAll('.nav-btn[data-page]')).map(b => Number(b.dataset.page));
+      header.classList.remove('active');
+      if (pages.includes(currentPage)) {
+        dot.className = 'dot current'; header.classList.add('active');
+        document.getElementById(groupId).classList.add('open');
+        header.classList.add('expanded');
+      } else if (pages.length && pages.every(p => p < currentPage)) {
+        dot.className = 'dot done';
+      } else { dot.className = 'dot pending'; }
+    });
+  }
+
+  function toggleAcc(btn) {
+    const body = btn.nextElementSibling;
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    body.classList.toggle('open', !open);
+  }
+
+  const menuToggle = document.getElementById('menu-toggle');
+  const sidebarEl  = document.querySelector('aside');
+  const overlayEl  = document.getElementById('sidebar-overlay');
+
+  function openSidebar() {
+    sidebarEl.classList.add('open'); overlayEl.classList.add('open');
+    menuToggle.textContent = '✕';
+    menuToggle.setAttribute('aria-label', 'Fechar menu de navegação');
+  }
+  function closeSidebar() {
+    sidebarEl.classList.remove('open'); overlayEl.classList.remove('open');
+    menuToggle.textContent = '☰';
+    menuToggle.setAttribute('aria-label', 'Abrir menu de navegação');
+  }
+  menuToggle.addEventListener('click', () => { sidebarEl.classList.contains('open') ? closeSidebar() : openSidebar(); });
+  overlayEl.addEventListener('click', closeSidebar);
+
+  document.getElementById('btn-prev').addEventListener('click', () => goToPage(currentPage - 1));
+  document.getElementById('btn-next').addEventListener('click', () => goToPage(currentPage + 1));
+  document.querySelectorAll('.nav-btn[data-page]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      goToPage(Number(btn.dataset.page));
+      if (window.innerWidth <= 768) closeSidebar();
+    });
+  });
+
+  goToPage(currentPage);
+</script>
+
+</body>
+</html>
